@@ -1,0 +1,69 @@
+
+API USUARIOS
+---------------------------
+-crear usuario (registro) 
+-entrar como usuario (loging) 
+-confirmar usuario (email activacion)
+-editar usuario (propio)
+-recuperar contraseña (email)
+-borrar usuario (propio o admin)
+
+-ver info de usuario propio
+-ver info de usuario otros
+
+-ver compras
+-ver ventas
+
+
+API PRODUCTOS
+----------------
+-crear producto
+-editar producto
+-borrar producto
+-listar productos
+-ver info de producto
+-compartir enlaces
+
+
+
+API FOTOS
+------------------
+-crear foto
+-borrar foto
+-editar (mais adiante)
+
+
+
+API RESERVAS
+----------------------------
+-crear reserva
+-aceptar/rechazar reserva (el vendedor)
+-cancelar reserva (el comprador)
+-listar reservas
+
+
+
+API MENSAJES
+------------------------
+-ver lista de conversaciones
+-ver lista de mensajes de una conversacion
+-enviar mensaje
+
+
+
+API FAVORITOS
+-------------------
+crear favoritos
+ver favs
+borrar favs
+
+
+
+API VOTOS
+--------------------
+-crear voto
+-listar voto
+-media de votos
+-editar voto
+-borrar voto
+

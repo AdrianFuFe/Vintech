@@ -4,26 +4,17 @@ async function newProduct(req, res, next) {
   let connection;
   try {
     connection = await getConnection();
-    const { title, price, description, ubication, id_category } = req.body;
+    const { title, price, description, ubication } = req.body;
     const [result] = await connection.query(
       `
-        INSERT INTO products(id_seller, title, price, description, ubication, modification_date, id_category, status)
-        VALUES(?,?,?,?,?,?,?,?)`,
-      [
-        1,
-        title,
-        price,
-        description,
-        ubication,
-        new Date(),
-        id_category,
-        "active",
-      ]
+        INSERT INTO products(title, price, description, ubication, modification_date)
+        VALUES(?, ?, ?, ?, ?)`,
+      [title, price, description, ubication, new Date()]
     );
 
     res.send({
-      status: "ok",
-      message: "Nueva entrada pending",
+      status: "pending",
+      message: "Nueva entrada en proceso de programación",
       id: result.insertId,
     });
   } catch (error) {

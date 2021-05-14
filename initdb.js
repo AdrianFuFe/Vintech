@@ -79,7 +79,7 @@ function createProducts(connection) {
         price DECIMAL(7,2) NOT NULL,
         description TEXT,
         ubication VARCHAR(60),
-        modification_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        modification_date TIMESTAMP,
         category ENUM('ordenadores', 'telefonia', 'audio', 'foto', 'video', 'televisores', 'consolas', 'redes', 'otros'),
         status ENUM('active', 'deleted', 'reserved', 'selled')
         );`,

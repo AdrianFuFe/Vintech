@@ -57,11 +57,12 @@ function createUsers(connection) {
         fname VARCHAR(25),
         lname VARCHAR(50),
         email VARCHAR(80) UNIQUE NOT NULL,
-        pwd VARCHAR(20) NOT NULL,
+        pwd TINYTEXT NOT NULL,
         bio TEXT,
         last_ubication VARCHAR(60),
         creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        status ENUM('active', 'deleted')
+        status ENUM('active', 'deleted'),
+        activation_code TINYTEXT
         );`,
     (error) => {
       if (error) console.error(error.sqlMessage);

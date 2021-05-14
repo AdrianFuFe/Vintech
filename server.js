@@ -7,6 +7,10 @@ const port = process.env.PORT;
 const app = express();
 
 //REQUERIMIENTO DE CONTROLLERS
+
+//CONTROLERS FOR USERS
+const createUser = require("./controllers/users/createUser")
+
 //CONTROLADORES DE PRODUCTO
 const { newProduct } = require("./controllers/products/newProduct");
 
@@ -17,8 +21,23 @@ const { validAuth } = require("./middlewares/validAuth");
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 
+
+//ENDPOINTS
+//USUARIO
+//create user
+app.post("/users", createUser)
+//confirm user
+//login user
+//show user info (other)
+//show user info (own)
+//recover pass
+//edit user
+//delete user
+
 //CREAR PRODUCTO
 app.post("/product", validAuth, newProduct);
+
+
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES
 app.use((error, req, res, next) => {

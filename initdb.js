@@ -24,7 +24,6 @@ function main() {
   createProductImgs(connection);
   createBuyedList(connection);
   createFavList(connection);
-  createCategories(connection);
   endConnection(connection);
 }
 
@@ -81,8 +80,7 @@ function createProducts(connection) {
         description TEXT,
         ubication VARCHAR(60),
         modification_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        id_category INT UNSIGNED,
-        FOREIGN KEY (id_category) REFERENCES categories(id),
+        category ENUM('ordenadores', 'telefonia', 'audio', 'foto', 'video', 'televisores', 'consolas', 'redes', 'otros'),
         status ENUM('active', 'deleted', 'reserved', 'selled')
         );`,
     (error) => {
@@ -189,19 +187,6 @@ function createFavList(connection) {
         FOREIGN KEY (id_user) REFERENCES users(id),
         id_product INT UNSIGNED,
         FOREIGN KEY (id_product) REFERENCES products(id)
-        );`,
-    (error) => {
-      if (error) console.error(error.sqlMessage);
-    }
-  );
-}
-
-function createCategories(connection) {
-  connection.query(
-    `CREATE TABLE categories(
-        id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(60),
-        img VARCHAR(40)
         );`,
     (error) => {
       if (error) console.error(error.sqlMessage);

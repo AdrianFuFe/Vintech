@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const fileUpload = require("express-fileupload");
 
 const port = process.env.PORT;
 const app = express();
@@ -19,6 +20,7 @@ const { canEdit } = require("./middlewares/canEdit");
 //APLICACIÓN DE MIDDLEWARES GENERALES
 app.use(morgan("dev"));
 app.use(bodyParser.json());
+app.use(fileUpload());
 
 //APLICACIÓN DE CONTROLADORES PARA ENDPOINTS
 
@@ -28,7 +30,7 @@ app.post("/product", validAuth, newProduct);
 //EDITAR PRODUCTO
 app.put("/product/:id", validAuth, canEdit, editProduct);
 //AÑADIR FOTO DE PRODUCTO
-app.post("/product/:id/images", validAuth, canEdit, addProductPhoto);
+app.post("/product/:id/images", validAuth, addProductPhoto);
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES
 app.use((error, req, res, next) => {

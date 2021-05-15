@@ -31,6 +31,9 @@ async function logUser(req,res,next){
             throw new Error("No existe un usuario con ese email")
         }
 
+        //comprobamos que el usuario activase su cuenta
+        if (user[0].status !== "active") throw new Error ("Antes de entrar debes activar tu cuenta")
+
         //comparamos la contraseña
         const passwordDb = user[0].pwd
         try{

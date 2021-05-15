@@ -9,7 +9,8 @@ const app = express();
 //REQUERIMIENTO DE CONTROLLERS
 
 //CONTROLERS FOR USERS
-const createUser = require("./controllers/users/createUser")
+const {createUser} = require("./controllers/users/createUser");
+const {activateUser} = require("./controllers/users/activateUser");
 
 //CONTROLADORES DE PRODUCTO
 const { newProduct } = require("./controllers/products/newProduct");
@@ -24,9 +25,10 @@ app.use(bodyParser.json());
 
 //ENDPOINTS
 //USUARIO
-//create user
-app.post("/users", createUser)
-//confirm user
+//crear usuario
+app.post("/user", createUser);
+//activar usuario
+app.put("/activation/:activationCode", activateUser);
 //login user
 //show user info (other)
 //show user info (own)

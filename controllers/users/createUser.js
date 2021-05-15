@@ -59,7 +59,7 @@ async function createUser(req, res, next){
                 email,
                 pwd,
                 creation_date,
-                activation_code
+                activationCode
                 )VALUES(
                     "${username}",
                     "${email}",
@@ -75,6 +75,7 @@ async function createUser(req, res, next){
 
         //enviamos email de confirmacion
         try{
+            const validationLink = `${process.env.DOMINIO}/activation/${activationCode}`;
             sendgrid.setApiKey(process.env.APIKEY);
             const message = {
                 to: email,
@@ -84,6 +85,7 @@ async function createUser(req, res, next){
                 `
                 <div>
                     <h1> Gracias por registrate en Vintage Place</h1>
+                    <p> Activa tu cuenta haciendo click en el siguiente enlace ${validationLink} </p>
                 </div>
                 `
             }
@@ -103,4 +105,4 @@ async function createUser(req, res, next){
     }
 }
 
-module.exports = createUser;
+module.exports = {createUser};

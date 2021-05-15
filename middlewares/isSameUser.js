@@ -1,14 +1,33 @@
-const {getConnection} = require("../db");
+const jsonwebtoken = require("jsonwebtoken");
 
 async function isSameUser (req,res,next){
-    let connection;
+
+    const {id}=req.params
 
     try{
-        connection = await getConnection();
+        const {authorization} = req.headers;
+        //error si no existe cabecera de autorizacion
+        if (!authorization) throw new Error ("La peticion debe incluir un token");
 
-        const authorization = req.headers
+        //comprobar que el token es valido
+        let tokenInfo;
+        try{
+            tokenInfo = jsonwebtoken.verify(authorization, process.env.SECRET)
+        }catch(error){
+            throw new Error ("El token no se pudo verificar")
+        }
+
+        req.auth = tokenInfo
+        
+        //comprobamos 
+        if(req.auth.id !== parseInt(id)){
+            throw new Error("Los ids no coinciden")
+        }
+
         next();
     }catch(error){
         next(error)
     }
 }
+
+module.exports = {isSameUser};

@@ -6,8 +6,8 @@ async function getUser (req,res,next){
         connection = await getConnection();
         
         const {id} = req.params;
-        let user;
 
+        let user;
         //obtenemos datos de user
         try{
             [user] = await connection.query(`

@@ -1,6 +1,7 @@
 const {getConnection} = require("../../db");
 const bcrypt = require ("bcrypt");
 const jsonwebtoken = require("jsonwebtoken");
+require("dotenv").config();
 
 async function logUser(req,res,next){
     let connection

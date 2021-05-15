@@ -19,6 +19,7 @@ const { newProduct } = require("./controllers/products/newProduct");
 
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
+const { isSameUser } = require("./middlewares/isSameUser");
 
 //APLICACIÓN DE MIDDLEWARES GENERALES
 app.use(morgan("dev"));
@@ -34,13 +35,14 @@ app.put("/activation/:activationCode", activateUser);
 //login user
 app.get("/login", logUser);
 //get user info
-app.get("/user/:id", validAuth, getUser);
+app.get("/user/:id", isSameUser, getUser);
 //show user info (other)
 //show user info (own)
 //recover pass
-//edit user
-//delete user
-
+//editar user
+//app.put("/user/:id",isSameUser, editUser);
+//borrar-desactivar user
+//app.put("/user/:id",isSameUser, User);
 //CREAR PRODUCTO
 app.post("/product", validAuth, newProduct);
 

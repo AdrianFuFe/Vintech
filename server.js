@@ -13,6 +13,8 @@ const {createUser} = require("./controllers/users/createUser");
 const {activateUser} = require("./controllers/users/activateUser");
 const {getUser} = require("./controllers/users/getUser");
 const {logUser} = require("./controllers/users/logUser");
+const {editUser} = require("./controllers/users/editUser");
+const {deleteUser} = require("./controllers/users/deleteUser");
 
 //CONTROLADORES DE PRODUCTO
 const { newProduct } = require("./controllers/products/newProduct");
@@ -40,9 +42,12 @@ app.get("/user/:id", isSameUser, getUser);
 //show user info (own)
 //recover pass
 //editar user
-//app.put("/user/:id",isSameUser, editUser);
+app.put("/user/:id",isSameUser, editUser);
 //borrar-desactivar user
-//app.put("/user/:id",isSameUser, User);
+app.delete("/user/:id",isSameUser, deleteUser);
+
+
+
 //CREAR PRODUCTO
 app.post("/product", validAuth, newProduct);
 

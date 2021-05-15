@@ -11,6 +11,8 @@ const app = express();
 //CONTROLERS FOR USERS
 const {createUser} = require("./controllers/users/createUser");
 const {activateUser} = require("./controllers/users/activateUser");
+const {getUser} = require("./controllers/users/getUser");
+const {logUser} = require("./controllers/users/logUser");
 
 //CONTROLADORES DE PRODUCTO
 const { newProduct } = require("./controllers/products/newProduct");
@@ -30,6 +32,9 @@ app.post("/user", createUser);
 //activar usuario
 app.put("/activation/:activationCode", activateUser);
 //login user
+app.get("/login", logUser);
+//get user info
+app.get("/user/:id", validAuth, getUser);
 //show user info (other)
 //show user info (own)
 //recover pass

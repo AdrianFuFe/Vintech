@@ -11,6 +11,7 @@ const app = express();
 //CONTROLADORES DE PRODUCTO
 const { newProduct } = require("./controllers/products/newProduct");
 const { editProduct } = require("./controllers/products/editProduct");
+const { deleteProduct} = require ('./controllers/products/deleteProduct')
 const { addProductPhoto } = require("./controllers/products/addProductPhoto");
 
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
@@ -29,6 +30,8 @@ app.use(fileUpload());
 app.post("/product", validAuth, newProduct);
 //EDITAR PRODUCTO
 app.put("/product/:id", validAuth, canEdit, editProduct);
+//BORRAR PRODUCTO
+app.delete('/product/:id', validAuth, canEdit, deleteProduct)
 //AÑADIR FOTO DE PRODUCTO
 app.post("/product/:id/images", validAuth, addProductPhoto);
 

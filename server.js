@@ -10,6 +10,8 @@ const app = express();
 //REQUERIMIENTO DE CONTROLLERS
 //CONTROLADORES DE PRODUCTO
 const { newProduct } = require("./controllers/products/newProduct");
+const { getProduct } = require("./controllers/products/getProduct");
+const { listProducts } = require("./controllers/products/listProducts");
 const { editProduct } = require("./controllers/products/editProduct");
 const { deleteProduct } = require("./controllers/products/deleteProduct");
 const { addImgProduct } = require("./controllers/products/addImgProduct");
@@ -29,6 +31,10 @@ app.use(fileUpload());
 //CONTROLADORES DE PRODUCTO
 //CREAR PRODUCTO
 app.post("/product", validAuth, newProduct);
+//OBTENER PRODUCTO
+app.get("/product/:id", getProduct);
+//BUSCAR PRODUCTOS
+app.get("/product", listProducts);
 //EDITAR PRODUCTO
 app.put("/product/:id", validAuth, canEdit, editProduct);
 //BORRAR PRODUCTO

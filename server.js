@@ -11,8 +11,9 @@ const app = express();
 //CONTROLADORES DE PRODUCTO
 const { newProduct } = require("./controllers/products/newProduct");
 const { editProduct } = require("./controllers/products/editProduct");
-const { deleteProduct} = require ('./controllers/products/deleteProduct')
-const { addProductPhoto } = require("./controllers/products/addProductPhoto");
+const { deleteProduct } = require("./controllers/products/deleteProduct");
+const { addImgProduct } = require("./controllers/products/addImgProduct");
+const { deleteImgProduct } = require("./controllers/products/deleteImgProduct");
 
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
@@ -31,9 +32,11 @@ app.post("/product", validAuth, newProduct);
 //EDITAR PRODUCTO
 app.put("/product/:id", validAuth, canEdit, editProduct);
 //BORRAR PRODUCTO
-app.delete('/product/:id', validAuth, canEdit, deleteProduct)
+app.delete("/product/:id", validAuth, canEdit, deleteProduct);
 //AÑADIR FOTO DE PRODUCTO
-app.post("/product/:id/images", validAuth, addProductPhoto);
+app.post("/product/:id/images", validAuth, canEdit, addImgProduct);
+//BORRAR FOTO DE PRODUCTO
+app.delete("/product/:id/images/:imgId", validAuth, canEdit, deleteImgProduct);
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES
 app.use((error, req, res, next) => {

@@ -1,4 +1,5 @@
 const { getConnection } = require("../../db");
+const { entryExists } = require("../../helpers");
 
 async function deleteProduct(req, res, next) {
   let connection;
@@ -7,9 +8,10 @@ async function deleteProduct(req, res, next) {
 
     const { id } = req.params;
 
-    //MEJORABLE: NO COMPROBAMOS QUE EXISTE EL PRODUCTO ANTES DE BORRARLO
+    if ((await entryExists("products", id)) === false)
+      throw new Error(`El producto con id ${id} no existe`);
 
-    const [result] = await connection.query(
+    await connection.query(
       `
       DELETE FROM products
       WHERE id=?`,

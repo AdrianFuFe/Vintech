@@ -2,6 +2,7 @@ const path = require("path");
 const fs = require("fs").promises;
 const sharp = require("sharp");
 const uuid = require("uuid");
+const { getConnection } = require("./db");
 
 const uploadsDir = path.join(__dirname, process.env.UPLOADS_DIR);
 
@@ -23,4 +24,37 @@ async function uploadImage({ file, directory }) {
   return filename;
 }
 
-module.exports = {uploadImage}
+async function deleteImage({ directory, file }) {
+  const imagePath = path.join(uploadsDir, directory, file);
+
+  await fs.unlink(imagePath);
+}
+
+async function entryExists(table, id) {
+  let connection;
+  try {
+    connection = await getConnection();
+    let result;
+
+    const [query] = await connection.query(
+      `
+    SELECT * FROM ${table}
+    WHERE id=?`,
+      [id]
+    );
+
+    if (query.length < 1) {
+      result = false;
+    } else {
+      result = true;
+    }
+
+    return result;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    if (connection) connection.release();
+  }
+}
+
+module.exports = { uploadImage, entryExists, deleteImage };

@@ -35,12 +35,11 @@ async function logUser(req,res,next){
         if (user[0].status !== "active") throw new Error ("Antes de entrar debes activar tu cuenta")
 
         //comparamos la contraseña
-        const passwordDb = user[0].pwd
+        const pwdDb = user[0].pwd
         try{
-            const isValid = await bcrypt.compare(pwd,passwordDb);
-            if(isValid === false){
-                throw new Error ("La contraseña no coincide");
-            }
+            const isValid = await bcrypt.compare(pwd,pwdDb);
+            if(isValid === false) throw new Error ("La contraseña no coincide");
+
         }catch(error){
             throw new Error ("No se puede comparar la contraseña");
         }
@@ -51,7 +50,7 @@ async function logUser(req,res,next){
         }
         const token = jsonwebtoken.sign(tokenInfo,process.env.SECRET)
 
-        res.send(token)
+        res.send(`Ha iniciado sesion correctamente, !Bienvenido¡ ${token}`);
 
     }catch(error){
         next(error)

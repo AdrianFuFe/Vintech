@@ -9,6 +9,7 @@ async function resetPwd(req,res,next){
         const {code} = req.params;
         const {pwd, confirmPwd} = req.body;
 
+        //comprobamos que existe un usuario con ese codigo de reseteo
         let existingUser;
         try{
             [existingUser] = await connection.query (`
@@ -23,7 +24,28 @@ async function resetPwd(req,res,next){
 
         if(existingUser.length < 1) throw new Error ("No existe el usuarios con ese codigo de reseteo en la bbdd")
 
-        res.send('funciono');
+        if(pwd !== confirmPwd) throw new Error ("Las contraseñas no coinciden");
+
+        //codificamos la nueva pwd
+        let pwdDb;
+        try{
+            pwdDb = await bcrypt.hash(pwd, 10);
+        }catch(error){
+            throw new Error ("La contraseña no se pudo codificar")
+        }
+
+        //actualizamos pwd en la bbdd
+        try{
+            await connection.query(`
+            UPDATE users
+            SET pwd=?, activationCode=NULL
+            WHERE activationCode=?
+            `,[pwdDb,code]);
+        }catch(error){
+            throw new Error("No se ha podido actualizar la contraseña")
+        }
+        
+        res.send("La contraseña se ha actualizado con exito");
     }catch(error){
         next(error);
     }finally{

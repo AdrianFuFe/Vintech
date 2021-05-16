@@ -40,9 +40,9 @@ async function createUser(req, res, next){
 
 
         //codificamos password
-        let passwordDb;
+        let pwdDb;
         try{
-            passwordDb = await bcrypt.hash(pwd,10)
+            pwdDb = await bcrypt.hash(pwd,10)
         }catch(error){
             throw new Error("la contraseña no se pudo codificar")
         }
@@ -63,7 +63,7 @@ async function createUser(req, res, next){
                 )VALUES(
                     "${username}",
                     "${email}",
-                    "${passwordDb}",
+                    "${pwdDb}",
                     UTC_TIMESTAMP,
                     "${activationCode}"
                 )

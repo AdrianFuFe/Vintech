@@ -3,7 +3,7 @@ const {getConnection} = require ("../../db");
 const crypto = require("crypto");
 const sendgrid = require("@sendgrid/mail");
 
-async function recPwd(req,res,next){
+async function recoverPwd(req,res,next){
     let connection
     try{
         connection = await getConnection();
@@ -60,7 +60,7 @@ async function recPwd(req,res,next){
         }
 
 
-        res.send(code)
+        res.send("Correo de recuperacion enviado")
     }catch(error){
         next(error);
     }finally{
@@ -68,4 +68,4 @@ async function recPwd(req,res,next){
     }
 }
 
-module.exports = {recPwd};
+module.exports = {recoverPwd};

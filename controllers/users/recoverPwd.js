@@ -1,7 +1,7 @@
 require("dotenv").config();
 const {getConnection} = require ("../../db");
 const crypto = require("crypto");
-const sendgrid = require("@sendgrid/mail");
+const {sendMail}= require("../../helpers");
 
 async function recoverPwd(req,res,next){
     let connection
@@ -38,27 +38,15 @@ async function recoverPwd(req,res,next){
         }
 
         //enviar correo de recuperacion
-        try{
-            //creamos un link de recuperacion
-            const recoverLink = `${process.env.DOMINIO}/reset/${code}`;
-
-            sendgrid.setApiKey(process.env.APIKEY);
-            const message = {
-                to: email,
-                from: process.env.SEND_FROM,
-                subject: "recuperacion de contraseña",
-                html:
-                `<div>
-                    <h1> Hola, has solicitado recuperar tu contraseña </h1>
-                    <p> Para resetear tu contraseña haz click en el siguiente enlace ${recoverLink}</p>
-                </div>`
-            }
-            await sendgrid.send(message);
-
-        }catch(error){
-            throw new Error ("No se ha podido enviar el email de recuperacion")
-        }
-
+        //creamos un link de recuperacion
+        const recoverLink = `${process.env.DOMINIO}/reset/${code}`;
+        await sendMail({
+            to:email,
+            subject:"Recuperacion de contraseña",
+            message: `Hola, has solicitado recuperar tu contraseña 
+            Para resetear tu contraseña haz click en el siguiente enlace
+            ${recoverLink}`
+        });
 
         res.send("Correo de recuperacion enviado")
     }catch(error){

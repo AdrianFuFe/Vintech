@@ -17,6 +17,11 @@ const { deleteProduct } = require("./controllers/products/deleteProduct");
 const { addImgProduct } = require("./controllers/products/addImgProduct");
 const { deleteImgProduct } = require("./controllers/products/deleteImgProduct");
 
+//CONTROLADORES DE MENSAJE
+const { sendMessage } = require("./controllers/messages/sendMessage");
+const { listConversations } = require("./controllers/messages/listConversations");
+const { listMessages } = require("./controllers/messages/listMessages");
+
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
 const { canEdit } = require("./middlewares/canEdit");
@@ -43,6 +48,14 @@ app.delete("/product/:id", validAuth, canEdit, deleteProduct);
 app.post("/product/:id/images", validAuth, canEdit, addImgProduct);
 //BORRAR FOTO DE PRODUCTO
 app.delete("/product/:id/images/:imgId", validAuth, canEdit, deleteImgProduct);
+
+//CONTROLADORES DE MENSAJES
+//ENVIAR MENSAJE
+app.post("/product/:id/messages", validAuth, sendMessage);
+//LISTAR CONVERSACIONES
+app.get("/user/:id/messages", validAuth, listConversations);
+//LISTAR MENSAJES
+app.get("/product/:id/messages", validAuth, listMessages);
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES
 app.use((error, req, res, next) => {

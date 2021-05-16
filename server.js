@@ -2,6 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const fileUpload = require("express-fileupload");
+
 
 const port = process.env.PORT;
 const app = express();
@@ -15,6 +17,8 @@ const {getUser} = require("./controllers/users/getUser");
 const {logUser} = require("./controllers/users/logUser");
 const {editUser} = require("./controllers/users/editUser");
 const {deleteUser} = require("./controllers/users/deleteUser");
+const {recPwd} = require("./controllers/users/recPwd");
+const {resetPwd} = require("./controllers/users/resetPwd");
 
 //CONTROLADORES DE PRODUCTO
 const { newProduct } = require("./controllers/products/newProduct");
@@ -26,6 +30,7 @@ const { isSameUser } = require("./middlewares/isSameUser");
 //APLICACIÓN DE MIDDLEWARES GENERALES
 app.use(morgan("dev"));
 app.use(bodyParser.json());
+app.use(fileUpload());
 
 
 //ENDPOINTS
@@ -40,13 +45,14 @@ app.get("/login", logUser);
 app.get("/user/:id", isSameUser, getUser);
 //show user info (other)
 //show user info (own)
-//recover pass
 //editar user
 app.put("/user/:id",isSameUser, editUser);
 //borrar-desactivar user
 app.delete("/user/:id",isSameUser, deleteUser);
-
-
+//recover pwd
+app.put("/recoverPwd",recPwd);
+//reset pwd
+app.put("/reset/:code",resetPwd);
 
 //CREAR PRODUCTO
 app.post("/product", validAuth, newProduct);

@@ -52,7 +52,7 @@ function createUsers(connection) {
   connection.query(
     `CREATE TABLE users(
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-        img VARCHAR(40),
+        img TINYTEXT,
         username VARCHAR(50) NOT NULL,
         fname VARCHAR(25),
         lname VARCHAR(50),

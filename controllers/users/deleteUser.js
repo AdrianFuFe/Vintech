@@ -5,15 +5,15 @@ async function deleteUser(req,res,next){
 
     try{
         connection = await getConnection();
+        const{id}=req.params;
 
         try{
-
             //borramos user
             await connection.query(`
             DELETE
             FROM users
             WHERE id=?
-            `,[req.auth.id]);
+            `,[id]);
             
         }catch(error){
             throw new Error ("No se pudo borrar el usuario");

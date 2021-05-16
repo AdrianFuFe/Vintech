@@ -39,23 +39,23 @@ app.use(fileUpload());
 //crear usuario
 app.post("/user", createUser);
 //activar usuario
-app.put("/activation/:activationCode", activateUser);
+app.get("/activation/:activationCode", activateUser);
 //login user
 app.get("/login", logUser);
 //get user info
-app.get("/user/:id", isSameUser, getUser);
+app.get("/user/:id", validAuth, getUser);
 //show user info (other)
 //show user info (own)
 //editar user
-app.put("/user/:id",isSameUser, editUser);
+app.put("/user/:id",validAuth, isSameUser, editUser);
 //borrar-desactivar user
-app.delete("/user/:id",isSameUser, deleteUser);
+app.delete("/user/:id",validAuth, isSameUser, deleteUser);
 //recover pwd
 app.put("/recoverPwd",recoverPwd);
 //reset pwd
 app.put("/reset/:code",resetPwd);
 //editar pwd
-app.put("/user/editPwd/:id",isSameUser, changePwd)
+app.put("/user/editPwd/:id",validAuth, isSameUser, changePwd)
 
 //CREAR PRODUCTO
 app.post("/product", validAuth, newProduct);

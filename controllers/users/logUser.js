@@ -24,25 +24,18 @@ async function logUser(req,res,next){
             WHERE email=?
             `,[email])
         }catch(error){
-            throw new Error ("No se ha podido obtener los datos de usuario")
+            throw new Error ("No se ha podido obtener los datos de usuario");
         }
         //si no hay usuarios con ese email nos devuelve un error
-        if(user.length < 1){
-            throw new Error("No existe un usuario con ese email")
-        }
+        if(user.length < 1) throw new Error("No existe un usuario con ese email");
 
         //comprobamos que el usuario activase su cuenta
         if (user[0].status !== "active") throw new Error ("Antes de entrar debes activar tu cuenta")
 
-        //comparamos la contraseña
         const pwdDb = user[0].pwd
-        try{
-            const isValid = await bcrypt.compare(pwd,pwdDb);
-            if(isValid === false) throw new Error ("La contraseña no coincide");
-
-        }catch(error){
-            throw new Error ("No se puede comparar la contraseña");
-        }
+        //comparamos la contraseña
+        const isValid = await bcrypt.compare(pwd,pwdDb);
+        if(!isValid) throw new Error ("La contraseña no coincide ");
 
         //creamos token
         const tokenInfo = {
@@ -50,7 +43,10 @@ async function logUser(req,res,next){
         }
         const token = jsonwebtoken.sign(tokenInfo,process.env.SECRET)
 
-        res.send(`Ha iniciado sesion correctamente, !Bienvenido¡ ${token}`);
+        res.send({
+            status: "ok",
+            token: token
+        });
 
     }catch(error){
         next(error)

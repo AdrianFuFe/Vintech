@@ -1,6 +1,5 @@
-require("dotenv").config();
 const { getConnection } = require("../../db");
-const sendgrid = require ("@sendgrid/mail");
+const { sendMail } = require("../../helpers");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 
@@ -40,13 +39,7 @@ async function createUser(req, res, next){
 
 
         //codificamos password
-        let pwdDb;
-        try{
-            pwdDb = await bcrypt.hash(pwd,10)
-        }catch(error){
-            throw new Error("la contraseña no se pudo codificar")
-        }
-
+        let pwdDb = await bcrypt.hash(pwd,10);
 
         //crear codigo de registro para activacion
         const activationCode = crypto.randomBytes(20).toString("hex").slice(0,20)
@@ -74,34 +67,22 @@ async function createUser(req, res, next){
 
 
         //enviamos email de confirmacion
-        try{
-            const validationLink = `${process.env.DOMINIO}/activation/${activationCode}`;
-            sendgrid.setApiKey(process.env.APIKEY);
-            const message = {
-                to: email,
-                from: process.env.SEND_FROM,
-                subject: username,
-                html:
-                `
-                <div>
-                    <h1> Gracias por registrate en Vintage Place</h1>
-                    <p> Activa tu cuenta haciendo click en el siguiente enlace ${validationLink} </p>
-                </div>
-                `
-            }
-            await sendgrid.send(message);
-        }catch(error){
-            throw new Error ("No se pudo enviar el email")
-        }
+        const validationLink = `${process.env.DOMINIO}/activation/${activationCode}`;
+        await sendMail({ 
+            to: email,
+            subject: "Registro Vintech Place",
+            message: 
+            `Gracias por registrate en Vintage Place
+            Activa tu cuenta haciendo click en el siguiente enlace 
+            ${validationLink}`
+        })
 
-
-
-        res.send ('usuario creado correctamente, active su cuenta en su direccion de email');
+        res.send ('usuario creado correctamente');
 
     }catch(error){
         next(error);
     }finally{
-        if(connection) connection.release;
+        if(connection) connection.release; 
     }
 }
 

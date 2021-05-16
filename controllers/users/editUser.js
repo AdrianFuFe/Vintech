@@ -1,9 +1,6 @@
-require("dotenv").config();
 const {getConnection} = require("../../db");
-const fs = require("fs").promises;
-const path = require("path");
-const sharp = require("sharp");
-const uuid = require("uuid");
+const { uploadImage } = require("../../helpers"); 
+
 
 async function editUser(req,res,next){
     let connection;
@@ -11,6 +8,9 @@ async function editUser(req,res,next){
         connection = await getConnection();
 
         const {username, fname, lname, email, bio, last_ubication} = req.body;
+        
+        //comprobamos que siempre exista email y username
+        if(!username || !email) throw new Error ("El nombre de usuario y el email son obligatorios");
 
         //comprobamos que no exista un usuario con el mismo email
         let existingUser
@@ -20,42 +20,27 @@ async function editUser(req,res,next){
             FROM users
             WHERE email=? AND NOT id=?
             `,[email, req.auth.id]);
-
         }catch(error){
             throw new Error ("No se ha podido buscar el usuario")
         }
-
         //comprobamos que el nuevo email no coincida con uno ya existente
         if(existingUser.length > 0) throw new Error ("Ya existe un usuario con este email")
 
 
     //CAMBIO DE IMAGEN PERFIL
     //actualiza el perfil si incluye la img
-    if(req.files.img){
+    if(req.files){
         let nameFile;
         try {
-            //crear ruta de carpeta contenedora
-            const imageFolder = path.join(__dirname, process.env.UPLOADS_DIR);
-            //crear la carpeta contenedora
-            await fs.mkdir(imageFolder, {recursive:true});
-            //aplicamos sharp a la img
-            const imgSharped = sharp(req.files.img.data);
-            const infoImg = await imgSharped.metadata();
-
-            //filtro de redimension de img
-            if(infoImg.width > 1000) imgSharped.resize(1000);
-
-            //modificacion de nombre de img
-            nameFile = `${uuid.v4()}.jpg`;
-            //guardamos la img en la carpeta
-            await imgSharped.toFile(path.join(imageFolder, nameFile));
-
+            nameFile = await uploadImage({
+                file: req.files.picture,
+                directory: "avatares"
+            });
         }catch(error){
             throw new Error ("No se ha podido subir la imagen");
         }
 
-
-        //ACTUALIZAR DATOS DE USUARIO
+        //actualiza los datos de usuario incluyendo la img
         try{
             await connection.query(`
             UPDATE users

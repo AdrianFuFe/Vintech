@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "a9193558-7e09-42cc-a7a8-978f64b8f232",
+		"name": "vintech_place",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "newProduct",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"Telefóno de pasos 2\",\n    \"price\": 10.66,\n    \"description\": \"Teléfono de los antiguos, de los que van por pasos\",\n    \"ubication\": \"O Grove\",\n    \"category\": \"telefonia\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3300/product",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editProduct",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"Este título está cambiadisimo\",\n    \"price\":34,\n    \"description\":\"Esta descripcion está actualizadisima\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3300/product/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"product",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addImgProduct",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/home/anxogcd/Descargas/telefono.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3300/product/1/images",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"product",
+						"1",
+						"images"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProduct",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3300/product/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"product",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteImgProduct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getProduct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3300/product/11",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"product",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3300/product?search=hola",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"product"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "hola"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendMessage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3300/product/11/messages",
+					"host": [
+						"localhost"
+					],
+					"port": "3300",
+					"path": [
+						"product",
+						"11",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listConversations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listMessages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}

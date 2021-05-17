@@ -1,36 +1,44 @@
 
-API USUARIOS
+API USUARIOS    
 ---------------------------
--crear usuario (registro) 
--entrar como usuario (loging) 
--confirmar usuario (email activacion)
--editar usuario (propio)
--recuperar contraseña (email)
--borrar usuario (propio o admin)
+-crear usuario (registro)       x
+-entrar como usuario (loging)   x*
+-confirmar usuario (email activacion)       X
+-editar usuario (propio)        X*
+-recuperar contraseña (email)       X*
+-borrar usuario (propio)        X*
 
--ver info de usuario propio
--ver info de usuario otros
+-ver info de usuario propio     X*
+-ver info de usuario otros      -
 
--ver compras
--ver ventas
+-ver compras    
+-ver ventas     
 
 
-API PRODUCTOS
+
+*username unico e login con username ou email
+*comprobar peticion edicion de foto perfil
+*revisar a recuperacion de contrasinal
+*mirar borrado de productos asociados
+*productos propios
+
+
+API PRODUCTOS*
 ----------------
--crear producto
--editar producto
--borrar producto
--listar productos
--ver info de producto
--compartir enlaces
+-crear producto     X
+-editar producto       X
+-borrar producto        X
+-listar productos       X
+-ver info de producto       X
+-compartir enlaces      -
 
+*comrprobar interaccions con middlewares usuario
 
-
-API FOTOS
+API FOTOS DE PRODUCTOS      X
 ------------------
--crear foto
--borrar foto
--editar (mais adiante)
+-crear foto  X
+-borrar foto  X 
+-editar (mais adiante)  *
 
 
 
@@ -43,11 +51,15 @@ API RESERVAS
 
 
 
-API MENSAJES
+API MENSAJES*
 ------------------------
--ver lista de conversaciones
--ver lista de mensajes de una conversacion
--enviar mensaje
+-ver lista de conversaciones       X* 
+-ver lista de mensajes de una conversacion     X 
+-enviar mensaje     X
+
+
+*comprobar interaccion con middlewares usuario
+*comprobar interaccion listar conversaciones
 
 
 
@@ -66,4 +78,4 @@ API VOTOS
 -media de votos
 -editar voto
 -borrar voto
-
+-middleware permisos voto

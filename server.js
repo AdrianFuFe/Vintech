@@ -23,10 +23,22 @@ const {changePwd} = require("./controllers/users/editPwd");
 
 //CONTROLADORES DE PRODUCTO
 const { newProduct } = require("./controllers/products/newProduct");
+const { getProduct } = require("./controllers/products/getProduct");
+const { listProducts } = require("./controllers/products/listProducts");
+const { editProduct } = require("./controllers/products/editProduct");
+const { deleteProduct } = require("./controllers/products/deleteProduct");
+const { addImgProduct } = require("./controllers/products/addImgProduct");
+const { deleteImgProduct } = require("./controllers/products/deleteImgProduct");
+
+//CONTROLADORES DE MENSAJE
+const { sendMessage } = require("./controllers/messages/sendMessage");
+const { listConversations } = require("./controllers/messages/listConversations");
+const { listMessages } = require("./controllers/messages/listMessages");
 
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
 const { isSameUser } = require("./middlewares/isSameUser");
+const { canEdit } = require("./middlewares/canEdit");
 
 //APLICACIÓN DE MIDDLEWARES GENERALES
 app.use(morgan("dev"));
@@ -34,7 +46,8 @@ app.use(bodyParser.json());
 app.use(fileUpload());
 
 
-//ENDPOINTS
+//APLICACIÓN DE CONTROLADORES PARA ENDPOINTS
+
 //USUARIO
 //crear usuario
 app.post("/user", createUser);
@@ -57,8 +70,29 @@ app.put("/reset/:code",resetPwd);
 //editar pwd
 app.put("/user/editPwd/:id",validAuth, isSameUser, changePwd)
 
+//CONTROLADORES DE PRODUCTO
 //CREAR PRODUCTO
 app.post("/product", validAuth, newProduct);
+//OBTENER PRODUCTO
+app.get("/product/:id", getProduct);
+//BUSCAR PRODUCTOS
+app.get("/product", listProducts);
+//EDITAR PRODUCTO
+app.put("/product/:id", validAuth, canEdit, editProduct);
+//BORRAR PRODUCTO
+app.delete("/product/:id", validAuth, canEdit, deleteProduct);
+//AÑADIR FOTO DE PRODUCTO
+app.post("/product/:id/images", validAuth, canEdit, addImgProduct);
+//BORRAR FOTO DE PRODUCTO
+app.delete("/product/:id/images/:imgId", validAuth, canEdit, deleteImgProduct);
+
+//CONTROLADORES DE MENSAJES
+//ENVIAR MENSAJE
+app.post("/product/:id/messages", validAuth, sendMessage);
+//LISTAR CONVERSACIONES
+app.get("/user/:id/messages", validAuth, listConversations);
+//LISTAR MENSAJES
+app.get("/product/:id/messages", validAuth, listMessages);
 
 
 

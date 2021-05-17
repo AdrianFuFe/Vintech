@@ -24,9 +24,10 @@ async function sendMail(to, subject, message) {
 
 
 
+//path de subida de imagenes
+const uploadsDir = path.join(__dirname, process.env.UPLOADS_DIR);
+
 async function uploadImage({ file, directory }) {
-    //path de subida de imagenes
-    const uploadsDir = path.join(__dirname, process.env.UPLOADS_DIR);
     //subdirectorio subida imagenes siguiendo del path anterior
     const targetDir = path.join(uploadsDir, directory);
     //aseguramos que el directorio existe
@@ -54,8 +55,31 @@ async function deleteImage({ directory, file }) {
 }
 
 
+async function entryExists(table, id) {
+  let connection;
+  try {
+    connection = await getConnection();
+    let result;
 
+    const [query] = await connection.query(
+      `
+    SELECT * FROM ${table}
+    WHERE id=?`,
+      [id]
+    );
 
+    if (query.length < 1) {
+      result = false;
+    } else {
+      result = true;
+    }
 
+    return result;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    if (connection) connection.release();
+  }
+}
 
-module.exports = {sendMail};
+module.exports = { uploadImage, entryExists, deleteImage, sendMail };

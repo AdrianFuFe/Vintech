@@ -11,9 +11,18 @@ async function newProduct(req, res, next) {
 
     const [result] = await connection.query(
       `
-        INSERT INTO products(id_seller, title, price, description, ubication, category, status)
-        VALUES(?, ?, ?, ?, ?, ?, ?)`,
-      [req.auth.id, title, price, description, ubication, category, "active"]
+        INSERT INTO products(id_seller, title, price, description, ubication, modification_date, category, status)
+        VALUES(?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        req.auth.id,
+        title,
+        price,
+        description,
+        ubication,
+        new Date(),
+        category,
+        "active",
+      ]
     );
 
     res.send({

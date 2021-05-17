@@ -1,58 +1,61 @@
-const {getConnection} = require("../../db");
-const bcrypt = require ("bcrypt");
+const { getConnection } = require("../../db");
+const bcrypt = require("bcrypt");
 const jsonwebtoken = require("jsonwebtoken");
 require("dotenv").config();
 
-async function logUser(req,res,next){
-    let connection
-    try{
-        connection = await getConnection();
-        
-        //obtenemos datos de la peticion
-        const {email,pwd} = req.body;
-        //comprobamos que no falten datos
-        if(!email || !pwd){
-            throw new Error ("Faltan datos de acceso")
-        }
-        
-        let user;
-        //obtener datos de usuario
-        try{
-            [user] = await connection.query(`
+async function logUser(req, res, next) {
+  let connection;
+  try {
+    connection = await getConnection();
+
+    //obtenemos datos de la peticion
+    const { email, pwd } = req.body;
+    //comprobamos que no falten datos
+    if (!email || !pwd) {
+      throw new Error(
+        "Para acceder son necesarios los datos email y contraseña"
+      );
+    }
+
+    let user;
+    //obtener datos de usuario
+
+    [user] = await connection.query(
+      `
             SELECT *
             FROM users
             WHERE email=?
-            `,[email])
-        }catch(error){
-            throw new Error ("No se ha podido obtener los datos de usuario");
-        }
-        //si no hay usuarios con ese email nos devuelve un error
-        if(user.length < 1) throw new Error("No existe un usuario con ese email");
+            `,
+      [email]
+    );
 
-        //comprobamos que el usuario activase su cuenta
-        if (user[0].status !== "active") throw new Error ("Antes de entrar debes activar tu cuenta")
+    //si no hay usuarios con ese email nos devuelve un error
+    if (user.length < 1) throw new Error("No existe un usuario con ese email");
 
-        const pwdDb = user[0].pwd
-        //comparamos la contraseña
-        const isValid = await bcrypt.compare(pwd,pwdDb);
-        if(!isValid) throw new Error ("La contraseña no coincide ");
+    //comprobamos que el usuario activase su cuenta
+    if (user[0].status !== "active")
+      throw new Error("Antes de entrar debes activar tu cuenta");
 
-        //creamos token
-        const tokenInfo = {
-            id: user[0].id
-        }
-        const token = jsonwebtoken.sign(tokenInfo,process.env.SECRET)
+    const pwdDb = user[0].pwd;
+    //comparamos la contraseña
+    const isValid = await bcrypt.compare(pwd, pwdDb);
+    if (!isValid) throw new Error("La contraseña no coincide ");
 
-        res.send({
-            status: "ok",
-            token: token
-        });
+    //creamos token
+    const tokenInfo = {
+      id: user[0].id,
+    };
+    const token = jsonwebtoken.sign(tokenInfo, process.env.SECRET);
 
-    }catch(error){
-        next(error)
-    }finally{
-        if(connection) connection.release();
-    }
+    res.send({
+      status: "OK",
+      token: token,
+    });
+  } catch (error) {
+    next(error);
+  } finally {
+    if (connection) connection.release();
+  }
 }
 
-module.exports = {logUser}
+module.exports = { logUser };

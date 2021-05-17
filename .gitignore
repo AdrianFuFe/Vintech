@@ -1,3 +1,6 @@
 node_modules
 .env
 static
+package-lock.json
+package.json
+tokens.txt

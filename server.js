@@ -4,22 +4,21 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 
-
 const port = process.env.PORT;
 const app = express();
 
 //REQUERIMIENTO DE CONTROLLERS
 
 //CONTROLERS FOR USERS
-const {createUser} = require("./controllers/users/createUser");
-const {activateUser} = require("./controllers/users/activateUser");
-const {getUser} = require("./controllers/users/getUser");
-const {logUser} = require("./controllers/users/logUser");
-const {editUser} = require("./controllers/users/editUser");
-const {deleteUser} = require("./controllers/users/deleteUser");
-const {recoverPwd} = require("./controllers/users/recoverPwd");
-const {resetPwd} = require("./controllers/users/resetPwd");
-const {changePwd} = require("./controllers/users/editPwd");
+const { createUser } = require("./controllers/users/createUser");
+const { activateUser } = require("./controllers/users/activateUser");
+const { getUser } = require("./controllers/users/getUser");
+const { logUser } = require("./controllers/users/logUser");
+const { editUser } = require("./controllers/users/editUser");
+const { deleteUser } = require("./controllers/users/deleteUser");
+const { recoverPwd } = require("./controllers/users/recoverPwd");
+const { resetPwd } = require("./controllers/users/resetPwd");
+const { changePwd } = require("./controllers/users/changePwd");
 
 //CONTROLADORES DE PRODUCTO
 const { newProduct } = require("./controllers/products/newProduct");
@@ -32,7 +31,9 @@ const { deleteImgProduct } = require("./controllers/products/deleteImgProduct");
 
 //CONTROLADORES DE MENSAJE
 const { sendMessage } = require("./controllers/messages/sendMessage");
-const { listConversations } = require("./controllers/messages/listConversations");
+const {
+  listConversations,
+} = require("./controllers/messages/listConversations");
 const { listMessages } = require("./controllers/messages/listMessages");
 
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
@@ -45,30 +46,27 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(fileUpload());
 
-
 //APLICACIÓN DE CONTROLADORES PARA ENDPOINTS
 
 //USUARIO
-//crear usuario
+//CREAR USUARIO
 app.post("/user", createUser);
-//activar usuario
+//ACTIVAR USUARIO
 app.get("/activation/:activationCode", activateUser);
-//login user
+//LOGIN USUARIO
 app.get("/login", logUser);
-//get user info
+//OBTENER INFORMACIÓN DE USUARIO
 app.get("/user/:id", validAuth, getUser);
-//show user info (other)
-//show user info (own)
-//editar user
-app.put("/user/:id",validAuth, isSameUser, editUser);
-//borrar-desactivar user
-app.delete("/user/:id",validAuth, isSameUser, deleteUser);
-//recover pwd
-app.put("/recoverPwd",recoverPwd);
-//reset pwd
-app.put("/reset/:code",resetPwd);
-//editar pwd
-app.put("/user/editPwd/:id",validAuth, isSameUser, changePwd)
+//EDITAR USUARIO
+app.put("/user/:id", validAuth, isSameUser, editUser);
+//BORRAR USUARIO
+app.delete("/user/:id", validAuth, isSameUser, deleteUser);
+//RECOVER PASSWORD
+app.put("/recoverPwd", recoverPwd);
+//RESET PASSWORD
+app.put("/reset/:code", resetPwd);
+//EDITAR PASSWORD
+app.put("/user/changePwd/:id", validAuth, isSameUser, changePwd);
 
 //CONTROLADORES DE PRODUCTO
 //CREAR PRODUCTO
@@ -90,11 +88,9 @@ app.delete("/product/:id/images/:imgId", validAuth, canEdit, deleteImgProduct);
 //ENVIAR MENSAJE
 app.post("/product/:id/messages", validAuth, sendMessage);
 //LISTAR CONVERSACIONES
-app.get("/user/:id/messages", validAuth, listConversations);
+app.get("/user/:id/messages", validAuth, isSameUser, listConversations);
 //LISTAR MENSAJES
 app.get("/product/:id/messages", validAuth, listMessages);
-
-
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES
 app.use((error, req, res, next) => {

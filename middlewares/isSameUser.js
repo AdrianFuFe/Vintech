@@ -1,13 +1,15 @@
+async function isSameUser(req, res, next) {
+  try {
+    const { id } = req.params;
+    if (req.auth.id !== Number(id))
+      throw new Error(
+        `No tienes permiso para realizar esa acción sobre el id ${id}`
+      );
 
-async function isSameUser (req,res,next){
-    try{        
-        const {id}=req.params
-        if(req.auth.id !== Number(id)) throw new Error("No se puede acceder, id de usuario incorrecto");
-
-        next();
-    }catch(error){
-        next(error)
-    }
+    next();
+  } catch (error) {
+    next(error);
+  }
 }
 
-module.exports = {isSameUser};
+module.exports = { isSameUser };

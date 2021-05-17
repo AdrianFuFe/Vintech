@@ -61,7 +61,7 @@ function createUsers(connection) {
         bio TEXT,
         last_ubication VARCHAR(60),
         creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        status ENUM('active', 'deleted'),
+        status ENUM('inactive', 'active'),
         activationCode TINYTEXT
         );`,
     (error) => {
@@ -75,14 +75,14 @@ function createProducts(connection) {
     `CREATE TABLE products(
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         id_seller INT UNSIGNED,
-        FOREIGN KEY (id_seller) REFERENCES users(id),
+        FOREIGN KEY (id_seller) REFERENCES users(id) ON DELETE CASCADE,
         title TINYTEXT NOT NULL,
         price DECIMAL(7,2) NOT NULL,
         description TEXT,
         ubication VARCHAR(60),
         modification_date TIMESTAMP,
         category ENUM('ordenadores', 'telefonia', 'audio', 'foto', 'video', 'televisores', 'consolas', 'redes', 'otros'),
-        status ENUM('active', 'deleted', 'reserved', 'selled')
+        status ENUM('active', 'reserved', 'selled')
         );`,
     (error) => {
       if (error) console.error(error.sqlMessage);
@@ -97,7 +97,7 @@ function createBookings(connection) {
         date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         meeting_date TIMESTAMP,
         ubication VARCHAR(60),
-        status ENUM('pending', 'sent', 'read', 'rejected', 'accepted'),
+        status ENUM('sent', 'read', 'rejected', 'accepted'),
         id_user_A INT UNSIGNED,
         FOREIGN KEY (id_user_A) REFERENCES users(id),
         id_user_B INT UNSIGNED,
@@ -116,7 +116,7 @@ function createMessages(connection) {
     `CREATE TABLE messages(
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         text TEXT NOT NULL,
-        status ENUM('pending', 'sent', 'read'),
+        status ENUM('sent', 'read'),
         date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         id_user_A INT UNSIGNED,
         FOREIGN KEY (id_user_A) REFERENCES users(id),
@@ -155,7 +155,7 @@ function createProductImgs(connection) {
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         img VARCHAR(40),
         id_product INT UNSIGNED,
-        FOREIGN KEY (id_product) REFERENCES products(id)
+        FOREIGN KEY (id_product) REFERENCES products(id) ON DELETE CASCADE
         );`,
     (error) => {
       if (error) console.error(error.sqlMessage);

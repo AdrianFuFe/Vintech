@@ -1,4 +1,5 @@
 const { getConnection } = require("../../db");
+const { entryExists } = require("../../helpers");
 
 async function sendMessage(req, res, next) {
   let connection;
@@ -9,6 +10,9 @@ async function sendMessage(req, res, next) {
     const { id } = req.params;
 
     if (!text) throw new Error("El campo texto no puede estar vacío");
+
+    if ((await entryExists("products", id)) === false)
+      throw new Error(`El producto con id ${id} no existe`);
 
     const [idUserB] = await connection.query(
       `

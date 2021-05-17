@@ -7,7 +7,21 @@ async function canEdit(req, res, next) {
 
     const { id } = req.params;
 
-    //HACEMOS LOS PROCESOS NECESARIOS
+    const [result] = await connection.query(
+      `
+      SELECT id_seller
+      FROM products
+      WHERE id=?
+    `,
+      [id]
+    );
+
+    if (result.length < 1) throw new Error("La entrada no existe");
+
+    if (req.auth.id !== result[0].id_seller)
+      throw new Error(
+        "No puedes realizar esta acción porque el producto no te pertenece"
+      );
 
     next();
   } catch (error) {

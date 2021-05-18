@@ -45,9 +45,11 @@ API FOTOS DE PRODUCTOS      X
 API RESERVAS
 ----------------------------
 -crear reserva
--aceptar/rechazar reserva (el vendedor)
+-responder reserva (el vendedor)
 -cancelar reserva (el comprador)
--listar reservas
+-listar reservas recibidas
+-listar reservas enviadas
+-listar todas tus reservas
 
 
 

@@ -9,7 +9,7 @@ const app = express();
 
 //REQUERIMIENTO DE CONTROLLERS
 
-//CONTROLERS FOR USERS
+//CONTROLADORES DE USUARIO
 const { createUser } = require("./controllers/users/createUser");
 const { activateUser } = require("./controllers/users/activateUser");
 const { getUser } = require("./controllers/users/getUser");
@@ -35,6 +35,12 @@ const {
   listConversations,
 } = require("./controllers/messages/listConversations");
 const { listMessages } = require("./controllers/messages/listMessages");
+
+
+//CONTROLADORES DE RESERVAS
+const { newBooking } = require("./controllers/bookings/newBooking");
+
+
 
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
@@ -91,6 +97,13 @@ app.post("/product/:id/messages/:userId", validAuth, sendMessage);
 app.get("/user/:id/messages", validAuth, isSameUser, listConversations);
 //LISTAR MENSAJES
 app.get("/product/:id/messages/:userId", validAuth, listMessages);
+
+
+//CONTROLADORES DE RESERVAS
+//CREAR RESERVA
+app.post("/products/:id_product", validAuth, newBooking);
+
+
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES
 app.use((error, req, res, next) => {

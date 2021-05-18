@@ -59,7 +59,8 @@ async function entryExists(table, id) {
 
     const [query] = await connection.query(
       `
-    SELECT * FROM ${table}
+    SELECT * 
+    FROM ${table}
     WHERE id=?`,
       [id]
     );
@@ -78,4 +79,31 @@ async function entryExists(table, id) {
   }
 }
 
-module.exports = { uploadImage, entryExists, deleteImage, sendMail };
+
+
+async function entryExistsPrueba(table, id) {
+  let connection;
+  try {
+    connection = await getConnection();
+    let result;
+
+    const [query] = await connection.query(
+      `
+    SELECT * 
+    FROM ${table}
+    WHERE id=?`,
+      [id]
+    );
+
+    result = query[0];
+    if (query.length < 1) result = false;
+
+    return result;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    if (connection) connection.release();
+  }
+}
+
+module.exports = { uploadImage, entryExists, deleteImage, sendMail, entryExistsPrueba };

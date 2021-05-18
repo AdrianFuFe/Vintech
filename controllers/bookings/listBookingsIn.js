@@ -1,26 +1,32 @@
 const { getConnection } = require("../../db");
+const { entryExists } = require("../../helpers");
 
 async function listBookingsIn (req,res,next){
     let connection;
     try {
         connection = await getConnection();
 
-        //comprobar que existe token usuario aunque para estar ahi ya deberia estar comprobado
+        let { id } = req.params;
+        let result;
 
-        //buscar na BBDD as reservas con id_venderdor igual a la id de token
-        let bookingsIn;
-        [bookingsIn] = await connection.query(`
+        //comprobamos si existe el usuario 
+        result = await entryExists("users",id);
+        if(result == false) throw new Error (`El usuario con ID ${id} no existe`);
+
+        //buscar en la BBDD las reservas con id_venderdor igual a la id de params
+        [result] = await connection.query(`
         SELECT *
         FROM bookings
         WHERE id_user_A=?
-        `,[req.auth.id]);
+        `,[id]);
+        //si no existe devolvemos un error
+        if(result == false) throw new Error (`El usuario con ID ${id} no ha recibido ninguna reserva`);
         
-        console.log(bookingsIn);
-
         res.send({
             status:"OK",
-            bookings:[bookingsIn],
-        })
+            bookings:[result],
+        });
+
     } catch (error) {
         next(error);
     }finally{

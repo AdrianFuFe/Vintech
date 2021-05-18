@@ -1,7 +1,7 @@
 const { getConnection } = require("../../db");
 const { entryExists } = require("../../helpers");
 
-async function getBookingOut (req,res,next){
+async function cancelBookingOut (req,res,next){
     let connection;
     try {
         connection = await getConnection();
@@ -23,12 +23,23 @@ async function getBookingOut (req,res,next){
         FROM bookings
         WHERE id_user_B=? AND id_product=?
         `,[id,idProduct]);
-
         if(result.length < 1) throw new Error (`No existe la reserva del usuario comprador con ID ${id} para el producto con ID ${idProduct}`);
+        
+        let idBk = result[0].id;
+
+        console.log(idBk);
+
+        //borrar reserva de la BBDD
+        await connection.query(`
+        DELETE
+        FROM bookings
+        WHERE id=?
+        `,[idBk]); 
+
 
         res.send({
             status:"OK",
-            booking:[result],
+            message: `La reserva con ID ${idBk} del producto ${idProduct} ha sido eliminada`,
         })
     } catch (error) {
         next(error);
@@ -37,4 +48,4 @@ async function getBookingOut (req,res,next){
     }
 }
 
-module.exports = { getBookingOut };
+module.exports = { cancelBookingOut };

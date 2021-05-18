@@ -1,5 +1,5 @@
 const { getConnection } = require("../../db");
-const { entryExistsPrueba } = require("../../helpers");
+const { getDbInfo } = require("../../helpers");
 
 async function newBooking (req,res,next){
     let connection;
@@ -22,17 +22,17 @@ async function newBooking (req,res,next){
 
         //comprobar si el producto existe
         //si existe devolvemos su info
-        const { id_product } = req.params;
-        const product = await entryExistsPrueba("products", id_product);
+        const { idProduct } = req.params;
+        const result = await getDbInfo("products", idProduct);
         //si no existe devolvemos un error
-        if(product == false) throw new Error ("No existe ningun producto con ese ID");
+        if(result == false) throw new Error ("No existe ningun producto con ese ID");
 
         //comprobar que el producto este activo para su compra
-        if(product.status != "active") throw new Error ("No es posible comprar este producto");
+        if(result.status != "active") throw new Error ("No es posible comprar este producto");
         
         
         //comprobar que el comprador no es el vendedor
-        if(req.auth.id === product.id_seller) throw new Error ("No puedes comprar tus propios productos")
+        if(req.auth.id === result.id_seller) throw new Error ("No puedes comprar tus propios productos")
         
 
         //comprobar que no existe ya una reserva del mismo producto por el mismo comprador
@@ -43,7 +43,7 @@ async function newBooking (req,res,next){
                     FROM bookings
                     WHERE id_product=? AND id_user_B=?
                     `,
-                    [id_product,req.auth.id]
+                    [idProduct,req.auth.id]
                 );
                 if(productBooked.length > 0) throw new Error ("Ya has realizado una reserva de ese producto")
 
@@ -62,7 +62,7 @@ async function newBooking (req,res,next){
                 "sent",
                 product.id_seller,
                 req.auth.id,
-                req.params.id_product,
+                req.params.idProduct,
             ]
             );
             

@@ -81,7 +81,7 @@ async function entryExists(table, id) {
 
 
 
-async function entryExistsPrueba(table, id) {
+async function getDbInfo(table, id) {
   let connection;
   try {
     connection = await getConnection();
@@ -106,4 +106,4 @@ async function entryExistsPrueba(table, id) {
   }
 }
 
-module.exports = { uploadImage, entryExists, deleteImage, sendMail, entryExistsPrueba };
+module.exports = { uploadImage, entryExists, deleteImage, sendMail, getDbInfo };

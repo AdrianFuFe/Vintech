@@ -86,11 +86,11 @@ app.delete("/product/:id/images/:imgId", validAuth, canEdit, deleteImgProduct);
 
 //CONTROLADORES DE MENSAJES
 //ENVIAR MENSAJE
-app.post("/product/:id/messages", validAuth, sendMessage);
+app.post("/product/:id/messages/:userId", validAuth, sendMessage);
 //LISTAR CONVERSACIONES
 app.get("/user/:id/messages", validAuth, isSameUser, listConversations);
 //LISTAR MENSAJES
-app.get("/product/:id/messages", validAuth, listMessages);
+app.get("/product/:id/messages/:userId", validAuth, listMessages);
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES
 app.use((error, req, res, next) => {

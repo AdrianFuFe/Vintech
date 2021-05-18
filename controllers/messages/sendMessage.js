@@ -7,12 +7,16 @@ async function sendMessage(req, res, next) {
     connection = await getConnection();
 
     const { text } = req.body;
-    const { id } = req.params;
+    const { id, userId } = req.params;
 
     if (!text) throw new Error("El campo texto no puede estar vacío");
 
     if ((await entryExists("products", id)) === false)
       throw new Error(`El producto con id ${id} no existe`);
+    if ((await entryExists("users", userId)) === false)
+      throw new Error(`El usuario con id ${userId} no existe`);
+
+    //COMPROBAR SI EL USERID ES EL VENDEDOR DE ID
 
     const [idUserB] = await connection.query(
       `
@@ -21,6 +25,10 @@ async function sendMessage(req, res, next) {
     WHERE id=?`,
       [id]
     );
+
+    //Si el vendedor del producto soy yo mismo, envío el mensaje a mi interlocutor y no a mi mismo
+    if (idUserB[0].id_seller === req.auth.id)
+      idUserB[0].id_seller = Number(userId);
 
     const [result] = await connection.query(
       `

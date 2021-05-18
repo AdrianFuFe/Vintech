@@ -7,11 +7,14 @@ async function listConversations(req, res, next) {
 
     const { id } = req.params;
 
-      //ESTA QUERY AGRUPA MAL
+      //QUERY DE LOSAS, REPASAR
     const [results] = await connection.query(
       `
-      SELECT * FROM messages
-      WHERE date IN (SELECT MAX(date) FROM messages WHERE id_user_A=? OR id_user_B=? GROUP BY id_product, id_user_A OR id_user_B) ORDER BY date DESC
+      SELECT a. id, a.text, a.date, a.id_user_A, a.id_user_B, a.id_product
+      FROM messages a
+      LEFT JOIN messages b ON (a.id_user_A = b.id_user_B AND a.date < b.date)
+      WHERE b.id IS NULL
+      AND (a.id_user_A = 1 or a.id_user_B = 1);
       `,
       [id, id]
     );

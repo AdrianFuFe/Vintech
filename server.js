@@ -39,7 +39,10 @@ const { listMessages } = require("./controllers/messages/listMessages");
 
 //CONTROLADORES DE RESERVAS
 const { newBooking } = require("./controllers/bookings/newBooking");
-
+const { listBookingsIn } = require("./controllers/bookings/listBookingsIn");
+const { listBookingsOut } = require("./controllers/bookings/listBookingsOut");
+const { getBookingOut } = require("./controllers/bookings/getBookingOut");
+const { getBookingIn } = require("./controllers/bookings/getBookingIn");
 
 
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
@@ -101,7 +104,16 @@ app.get("/product/:id/messages/:userId", validAuth, listMessages);
 
 //CONTROLADORES DE RESERVAS
 //CREAR RESERVA
-app.post("/products/:id_product", validAuth, newBooking);
+app.post("/product/:id_product", validAuth, newBooking);
+//VER RESERVAS ENTRANTES
+app.get("/user/:id/bookings-in", validAuth, listBookingsIn);
+//VER RESERVA CONCRETA ENTRANTE
+app.get("/user/:id/bookings-in/:idProduct", validAuth, getBookingIn);
+//VER RESERVAS REALIZADAS
+app.get("/user/:id/bookings-out", validAuth, listBookingsOut);
+//VER RESERVA CONCRETA REALIZADA
+app.get("/user/:id/bookings-out/:idProduct", validAuth, getBookingOut);
+
 
 
 

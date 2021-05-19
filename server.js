@@ -44,7 +44,8 @@ const { listBookingsOut } = require("./controllers/bookings/listBookingsOut");
 const { getBookingOut } = require("./controllers/bookings/getBookingOut");
 const { getBookingIn } = require("./controllers/bookings/getBookingIn");
 const { cancelBookingOut } = require("./controllers/bookings/cancelBookingOut");
-
+const { acceptBooking } = require("./controllers/bookings/acceptBooking")
+const { rejectBooking } = require("./controllers/bookings/rejectBooking")
 
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
@@ -116,8 +117,10 @@ app.get("/user/:id/bookings-out", validAuth, listBookingsOut);
 app.get("/user/:id/bookings-out/:idProduct", validAuth, getBookingOut);
 //CANCELAR UNA RESERVA REALIZADA
 app.delete("/user/:id/bookings-out/:idProduct/cancel", validAuth, cancelBookingOut);
-
-
+//ACEPTAR RESERVA Y ESTABLECER FECHA Y LUGAR DE COMPRA
+app.get("/user/:id/bookings-in/:idProduct/accepted", acceptBooking);
+//RECHAZAR RESERVA
+app.get("/user/:id/bookings-in/:idProduct/rejected", rejectBooking);
 
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES

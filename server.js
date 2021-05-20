@@ -137,7 +137,7 @@ app.get("/product/:idProduct/addFav", validAuth, addFav);
 //ELIMINAR FAVORITO
 app.delete("/product/:idProduct/deleteFav", validAuth, deleteFav);
 //LISTAR FAVORITOS
-app.get("/user/:id/favs", listFavs);
+app.get("/user/:id/favs",validAuth, listFavs);
 //VER UN FAVORITO
 app.get("/product/:idProduct", getFav);
 

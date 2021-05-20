@@ -25,17 +25,18 @@ async function addFav (req,res,next){
         WHERE id_user=? AND id_product=?
         `,[req.auth.id,idProduct]
         );
-
         if(favExist.length > 0) throw new Error ("Este producto ya esta en tu lista de favoritos")
 
+        
 
         //creamos entrada de fav en la BBDD
-        await connection.query(`
+        const [newFav] = await connection.query(`
         INSERT INTO fav_list
-        (id_user,id_product)
+            (id_user,id_product)
         VALUES (?,?)
         `,[req.auth.id,idProduct]);
 
+        
         res.send({
             status: "OK",
             message:`Se ha añadido el producto con ID ${idProduct} a tu lista de favoritos`,

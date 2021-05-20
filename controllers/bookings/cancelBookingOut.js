@@ -27,8 +27,6 @@ async function cancelBookingOut (req,res,next){
         
         let idBk = result[0].id;
 
-        console.log(idBk);
-
         //borrar reserva de la BBDD
         await connection.query(`
         DELETE

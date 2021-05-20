@@ -44,8 +44,16 @@ const { listBookingsOut } = require("./controllers/bookings/listBookingsOut");
 const { getBookingOut } = require("./controllers/bookings/getBookingOut");
 const { getBookingIn } = require("./controllers/bookings/getBookingIn");
 const { cancelBookingOut } = require("./controllers/bookings/cancelBookingOut");
-const { acceptBooking } = require("./controllers/bookings/acceptBooking")
-const { rejectBooking } = require("./controllers/bookings/rejectBooking")
+const { acceptBooking } = require("./controllers/bookings/acceptBooking");
+const { rejectBooking } = require("./controllers/bookings/rejectBooking");
+
+
+//CONTROLADORES DE FAVORITOS
+const { addFav } = require("./controllers/favs/addFav");
+const { deleteFav } = require("./controllers/favs/deleteFav");
+const { listFavs } = require("./controllers/favs/listFavs");
+const { getFav } = require("./controllers/favs/getFav");
+
 
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
@@ -121,6 +129,19 @@ app.delete("/user/:id/bookings-out/:idProduct/cancel", validAuth, cancelBookingO
 app.get("/user/:id/bookings-in/:idProduct/accepted", acceptBooking);
 //RECHAZAR RESERVA RECIBIDA
 app.get("/user/:id/bookings-in/:idProduct/rejected", rejectBooking);
+
+
+//CONTROLADORES DE FAVORITOS
+//AÑADIR FAVORITO
+app.get("/product/:idProduct/addFav", validAuth, addFav);
+//ELIMINAR FAVORITO
+app.delete("/product/:idProduct/deleteFav", validAuth, deleteFav);
+//LISTAR FAVORITOS
+app.get("/user/:id/favs", listFavs);
+//VER UN FAVORITO
+app.get("/product/:idProduct", getFav);
+
+
 
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES

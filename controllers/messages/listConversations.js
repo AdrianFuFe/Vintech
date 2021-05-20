@@ -7,14 +7,14 @@ async function listConversations(req, res, next) {
 
     const { id } = req.params;
 
-      //QUERY DE LOSAS, REPASAR
     const [results] = await connection.query(
       `
-      SELECT a. id, a.text, a.date, a.id_user_A, a.id_user_B, a.id_product
-      FROM messages a
-      LEFT JOIN messages b ON (a.id_user_A = b.id_user_B AND a.date < b.date)
+      SELECT c.*, U.username FROM (SELECT M.id, M.text, M.date, M.id_user_A, M.id_user_B, M.id_product
+      FROM messages M
+      LEFT JOIN messages b ON (M.id_user_A = b.id_user_B AND M.date < b.date)
       WHERE b.id IS NULL
-      AND (a.id_user_A = 1 or a.id_user_B = 1);
+      AND (M.id_user_A = ? or M.id_user_B = ?)) c
+      LEFT JOIN users U ON c.id_user_A = U.id;
       `,
       [id, id]
     );

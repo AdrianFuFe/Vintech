@@ -36,10 +36,17 @@ const {
 } = require("./controllers/messages/listConversations");
 const { listMessages } = require("./controllers/messages/listMessages");
 
+//CONTROLADORES DE VOTOS
+const { sendVote } = require("./controllers/votes/sendVote");
+const { listVotes } = require("./controllers/votes/listVotes");
+const { editVote } = require("./controllers/votes/editVote");
+
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
 const { isSameUser } = require("./middlewares/isSameUser");
 const { canEdit } = require("./middlewares/canEdit");
+const { canVote } = require("./middlewares/canVote");
+const { canEditVote } = require("./middlewares/canEditVote");
 
 //APLICACIÓN DE MIDDLEWARES GENERALES
 app.use(morgan("dev"));
@@ -91,6 +98,11 @@ app.post("/product/:id/messages/:userId", validAuth, sendMessage);
 app.get("/user/:id/messages", validAuth, isSameUser, listConversations);
 //LISTAR MENSAJES
 app.get("/product/:id/messages/:userId", validAuth, listMessages);
+
+//CONTROLADORES DE VOTOS
+app.post("/user/:id/votes", validAuth, canVote, sendVote);
+app.get("/user/:id/votes", listVotes);
+app.put("/vote/:id", validAuth, canEditVote, editVote);
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES
 app.use((error, req, res, next) => {

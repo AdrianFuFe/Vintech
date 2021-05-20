@@ -1,11 +1,11 @@
 const { getConnection } = require("../../db");
 
-async function sendVote(req, res, next) {
+async function editVote(req, res, next) {
   let connection;
   try {
     connection = await getConnection();
-    const { stars, comment } = req.body;
     const { id } = req.params;
+    const { stars, comment } = req.body;
     const possibilities = [0, 1, 2, 3, 4, 5];
 
     if (!stars) throw new Error("La petición debe incluír una puntuación");
@@ -14,13 +14,15 @@ async function sendVote(req, res, next) {
 
     await connection.query(
       `
-    INSERT INTO feedbacks (stars, comment, id_user_A, id_user_B)
-    VALUES (?, ?, ?, ?)`,
-      [stars, comment, req.auth.id, id]
+    UPDATE feedbacks
+    SET stars = ?, comment = ?
+    WHERE id = ?`,
+      [stars, comment, id]
     );
+
     res.send({
       status: "OK",
-      message: "Tu voto ha sido enviado con éxito",
+      message: "El voto ha sido modificado con éxito",
     });
   } catch (error) {
     next(error);
@@ -29,4 +31,4 @@ async function sendVote(req, res, next) {
   }
 }
 
-module.exports = { sendVote };
+module.exports = { editVote };

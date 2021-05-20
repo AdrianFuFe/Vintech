@@ -107,9 +107,9 @@ app.get("/product/:id/messages/:userId", validAuth, listMessages);
 //CONTROLADORES DE RESERVAS
 //CREAR RESERVA
 app.post("/product/:idProduct", validAuth, newBooking);
-//VER LISTA RESERVAS ENTRANTES
+//VER LISTA RESERVAS RECIBIDA
 app.get("/user/:id/bookings-in", validAuth, listBookingsIn);
-//VER UNA RESERVA ENTRANTE
+//VER UNA RESERVA RECIBIDA
 app.get("/user/:id/bookings-in/:idProduct", validAuth, getBookingIn);
 //VER LISTA RESERVAS REALIZADAS
 app.get("/user/:id/bookings-out", validAuth, listBookingsOut);
@@ -117,9 +117,9 @@ app.get("/user/:id/bookings-out", validAuth, listBookingsOut);
 app.get("/user/:id/bookings-out/:idProduct", validAuth, getBookingOut);
 //CANCELAR UNA RESERVA REALIZADA
 app.delete("/user/:id/bookings-out/:idProduct/cancel", validAuth, cancelBookingOut);
-//ACEPTAR RESERVA Y ESTABLECER FECHA Y LUGAR DE COMPRA
+//ACEPTAR RESERVA RECIBIDA Y ESTABLECER FECHA Y LUGAR DE COMPRA
 app.get("/user/:id/bookings-in/:idProduct/accepted", acceptBooking);
-//RECHAZAR RESERVA
+//RECHAZAR RESERVA RECIBIDA
 app.get("/user/:id/bookings-in/:idProduct/rejected", rejectBooking);
 
 

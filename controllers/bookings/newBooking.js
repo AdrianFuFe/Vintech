@@ -28,7 +28,7 @@ async function newBooking (req,res,next){
         if(result == false) throw new Error ("No existe ningun producto con ese ID");
 
         //comprobar que el producto este activo para su compra
-        if(result.status != "active") throw new Error ("No es posible comprar este producto");
+        if(result.status != "active") throw new Error ("No es posible reservar este producto");
         
         
         //comprobar que el comprador no es el vendedor
@@ -37,16 +37,14 @@ async function newBooking (req,res,next){
 
         //comprobar que no existe ya una reserva del mismo producto por el mismo comprador
         let productBooked;
-                [productBooked] = await connection.query(
-                    `
-                    SELECT *
-                    FROM bookings
-                    WHERE id_product=? AND id_user_B=?
-                    `,
-                    [idProduct,req.auth.id]
-                );
-                if(productBooked.length > 0) throw new Error ("Ya has realizado una reserva de ese producto")
-
+        [productBooked] = await connection.query(
+        `
+        SELECT *
+        FROM bookings
+        WHERE id_product=? AND id_user_B=?
+        `,[idProduct,req.auth.id]
+        );
+        if(productBooked.length > 0) throw new Error ("Ya has realizado una reserva de ese producto")
 
 
         //si existe el producto y comprador y vendedor son diferentes usuarios

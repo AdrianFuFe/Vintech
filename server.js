@@ -42,6 +42,11 @@ const { listVotes } = require("./controllers/votes/listVotes");
 const { editVote } = require("./controllers/votes/editVote");
 const { deleteVote } = require("./controllers/votes/deleteVote");
 
+//CONTROLADORES DE FAVS
+const { addFav } = require("./controllers/favs/addFav");
+const { listFavs } = require("./controllers/favs/listFavs");
+const { deleteFav } = require("./controllers/favs/deleteFav");
+
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
 const { isSameUser } = require("./middlewares/isSameUser");
@@ -105,6 +110,11 @@ app.post("/user/:id/votes", validAuth, canVote, sendVote);
 app.get("/user/:id/votes", listVotes);
 app.put("/vote/:id", validAuth, canEditVote, editVote);
 app.delete("/vote/:id", validAuth, canEditVote, deleteVote);
+
+//DE FAVS
+app.post("/product/:id/fav", validAuth, addFav);
+app.get("/user/:id/favs", validAuth, isSameUser, listFavs);
+app.delete("/product/:id/fav", validAuth, deleteFav);
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES
 app.use((error, req, res, next) => {

@@ -7,11 +7,14 @@ async function listConversations(req, res, next) {
 
     const { id } = req.params;
 
-      //ESTA QUERY AGRUPA MAL
     const [results] = await connection.query(
       `
-      SELECT * FROM messages
-      WHERE date IN (SELECT MAX(date) FROM messages WHERE id_user_A=? OR id_user_B=? GROUP BY id_product, id_user_A OR id_user_B) ORDER BY date DESC
+      SELECT c.*, U.username FROM (SELECT M.id, M.text, M.date, M.id_user_A, M.id_user_B, M.id_product
+      FROM messages M
+      LEFT JOIN messages b ON (M.id_user_A = b.id_user_B AND M.date < b.date)
+      WHERE b.id IS NULL
+      AND (M.id_user_A = ? or M.id_user_B = ?)) c
+      LEFT JOIN users U ON c.id_user_A = U.id;
       `,
       [id, id]
     );

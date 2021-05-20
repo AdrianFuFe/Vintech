@@ -54,11 +54,19 @@ const { deleteFav } = require("./controllers/favs/deleteFav");
 const { listFavs } = require("./controllers/favs/listFavs");
 const { getFav } = require("./controllers/favs/getFav");
 
+//CONTROLADORES DE VOTOS
+const { sendVote } = require("./controllers/votes/sendVote");
+const { listVotes } = require("./controllers/votes/listVotes");
+const { editVote } = require("./controllers/votes/editVote");
+const { deleteVote } = require("./controllers/votes/deleteVote");
+
 
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
 const { isSameUser } = require("./middlewares/isSameUser");
 const { canEdit } = require("./middlewares/canEdit");
+const { canVote } = require("./middlewares/canVote");
+const { canEditVote } = require("./middlewares/canEditVote");
 
 //APLICACIÓN DE MIDDLEWARES GENERALES
 app.use(morgan("dev"));
@@ -111,7 +119,6 @@ app.get("/user/:id/messages", validAuth, isSameUser, listConversations);
 //LISTAR MENSAJES
 app.get("/product/:id/messages/:userId", validAuth, listMessages);
 
-
 //CONTROLADORES DE RESERVAS
 //CREAR RESERVA
 app.post("/product/:idProduct", validAuth, newBooking);
@@ -130,18 +137,16 @@ app.get("/user/:id/bookings-in/:idProduct/accepted", acceptBooking);
 //RECHAZAR RESERVA RECIBIDA
 app.get("/user/:id/bookings-in/:idProduct/rejected", rejectBooking);
 
+//CONTROLADORES DE VOTOS
+app.post("/user/:id/votes", validAuth, canVote, sendVote);
+app.get("/user/:id/votes", listVotes);
+app.put("/vote/:id", validAuth, canEditVote, editVote);
+app.delete("/vote/:id", validAuth, canEditVote, deleteVote);
 
-//CONTROLADORES DE FAVORITOS
-//AÑADIR FAVORITO
-app.get("/product/:idProduct/addFav", validAuth, addFav);
-//ELIMINAR FAVORITO
-app.delete("/product/:idProduct/deleteFav", validAuth, deleteFav);
-//LISTAR FAVORITOS
-app.get("/user/:id/favs",validAuth, listFavs);
-//VER UN FAVORITO
-app.get("/product/:idProduct", getFav);
-
-
+//DE FAVS
+app.post("/product/:id/fav", validAuth, addFav);
+app.get("/user/:id/favs", validAuth, isSameUser, listFavs);
+app.delete("/product/:id/fav", validAuth, deleteFav);
 
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES

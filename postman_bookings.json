@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "80d9351b-aac8-4f2f-891a-73dc12e8894c",
+		"name": "vintech-place",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "bookings",
+			"item": [
+				{
+					"name": "newBooking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjIxMzU5MTQ4fQ.R26dOusJdUzLLGPVw-75R09q6vzAqKAn1x99KV3sgmA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/product/3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listBookingsIn",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjIxMzU5MTQ4fQ.R26dOusJdUzLLGPVw-75R09q6vzAqKAn1x99KV3sgmA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/user/:id/bookings-in",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								":id",
+								"bookings-in"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listBookingsOut",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjIxMzU5MTQ4fQ.R26dOusJdUzLLGPVw-75R09q6vzAqKAn1x99KV3sgmA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/user/:id/bookings-out",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								":id",
+								"bookings-out"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBookingOut",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjIxMzU5MTQ4fQ.R26dOusJdUzLLGPVw-75R09q6vzAqKAn1x99KV3sgmA"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/user/:id/bookings-out/:idProduct",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								":id",
+								"bookings-out",
+								":idProduct"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								},
+								{
+									"key": "idProduct",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBookingIn",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjIxMzU5MTQ4fQ.R26dOusJdUzLLGPVw-75R09q6vzAqKAn1x99KV3sgmA"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/user/:id/bookings-in/:idProduct",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								":id",
+								"bookings-in",
+								":idProduct"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								},
+								{
+									"key": "idProduct",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "acceptBooking",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjIxMzU5MTQ4fQ.R26dOusJdUzLLGPVw-75R09q6vzAqKAn1x99KV3sgmA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"meetDate\" : \"2030-06-18 19:21:17\",\n    \"ubication\" : \"calle falsa 12,Malaga\",\n    \"status\" : \"accepted\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/:id/bookings-in/:idProduct/accepted",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								":id",
+								"bookings-in",
+								":idProduct",
+								"accepted"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								},
+								{
+									"key": "idProduct",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rejectBooking",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjIxMzU5MTQ4fQ.R26dOusJdUzLLGPVw-75R09q6vzAqKAn1x99KV3sgmA"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/user/:id/bookings-in/:idProduct/rejected",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								":id",
+								"bookings-in",
+								":idProduct",
+								"rejected"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								},
+								{
+									"key": "idProduct",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancelBookingOut",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjIxMzU5MTQ4fQ.R26dOusJdUzLLGPVw-75R09q6vzAqKAn1x99KV3sgmA"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/user/:id/bookings-out/:idProduct/cancel",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								":id",
+								"bookings-out",
+								":idProduct",
+								"cancel"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								},
+								{
+									"key": "idProduct",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

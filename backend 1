@@ -75,7 +75,7 @@ API VOTOS
 --------------------
 -crear voto
 -listar voto
--media de votos
+-media de votos (es una funcionalidad, no un endpoint)
 -editar voto
 -borrar voto
 -middleware permisos voto

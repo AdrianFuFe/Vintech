@@ -40,6 +40,7 @@ const { listMessages } = require("./controllers/messages/listMessages");
 const { sendVote } = require("./controllers/votes/sendVote");
 const { listVotes } = require("./controllers/votes/listVotes");
 const { editVote } = require("./controllers/votes/editVote");
+const { deleteVote } = require("./controllers/votes/deleteVote");
 
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
@@ -103,6 +104,7 @@ app.get("/product/:id/messages/:userId", validAuth, listMessages);
 app.post("/user/:id/votes", validAuth, canVote, sendVote);
 app.get("/user/:id/votes", listVotes);
 app.put("/vote/:id", validAuth, canEditVote, editVote);
+app.delete("/vote/:id", validAuth, canEditVote, deleteVote);
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES
 app.use((error, req, res, next) => {

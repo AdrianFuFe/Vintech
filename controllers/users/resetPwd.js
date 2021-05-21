@@ -14,7 +14,7 @@ async function resetPwd(req, res, next) {
       `
             SELECT *
             FROM users
-            WHERE activationCode=?
+            WHERE activation_code=?
             `,
       [code]
     );
@@ -36,8 +36,8 @@ async function resetPwd(req, res, next) {
     await connection.query(
       `
             UPDATE users
-            SET pwd=?, activationCode=NULL
-            WHERE activationCode=?
+            SET pwd=?, activation_code=NULL
+            WHERE activation_code=?
             `,
       [pwdDb, code]
     );

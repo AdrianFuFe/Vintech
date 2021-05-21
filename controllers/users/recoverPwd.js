@@ -28,7 +28,7 @@ async function recoverPwd(req, res, next) {
     await connection.query(
       `
             UPDATE users
-            SET activationCode=?
+            SET activation_code=?
             WHERE email=?
             `,
       [code, email]

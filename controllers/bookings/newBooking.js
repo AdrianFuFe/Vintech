@@ -6,20 +6,6 @@ async function newBooking (req,res,next){
     try {
         connection = await getConnection();
 
-        /*         
-        *       //comprobar producto
-        *       let product;
-        *       [product] = await connection.query(
-        *            `
-        *            SELECT *
-        *            FROM products
-        *            WHERE id=?
-        *            `,
-        *            [id_product]
-        *        );
-        *        if(product.length < 1) throw new Error ("No existe ningun producto con ese ID")
-        */
-
         //comprobar si el producto existe
         //si existe devolvemos su info
         const { idProduct } = req.params;

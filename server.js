@@ -133,9 +133,9 @@ app.get("/user/:id/bookings-out/:idProduct", validAuth, getBookingOut);
 //CANCELAR UNA RESERVA REALIZADA
 app.delete("/user/:id/bookings-out/:idProduct/cancel", validAuth, cancelBookingOut);
 //ACEPTAR RESERVA RECIBIDA Y ESTABLECER FECHA Y LUGAR DE COMPRA
-app.get("/user/:id/bookings-in/:idProduct/accepted", acceptBooking);
+app.get("/user/:id/bookings-in/:idProduct/accepted", validAuth, acceptBooking);
 //RECHAZAR RESERVA RECIBIDA
-app.get("/user/:id/bookings-in/:idProduct/rejected", rejectBooking);
+app.get("/user/:id/bookings-in/:idProduct/rejected", validAuth, rejectBooking);
 
 //CONTROLADORES DE VOTOS
 app.post("/user/:id/votes", validAuth, canVote, sendVote);

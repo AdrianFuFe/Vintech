@@ -62,7 +62,7 @@ function createUsers(connection) {
         last_ubication VARCHAR(60),
         creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         status ENUM('inactive', 'active'),
-        activationCode TINYTEXT
+        activation_code TINYTEXT
         );`,
     (error) => {
       if (error) console.error(error.sqlMessage);

@@ -49,7 +49,7 @@ async function createUser(req, res, next) {
     //introducir datos en db
       await connection.query(
         `
-            INSERT INTO users(username, email, pwd, activationCode, status)
+            INSERT INTO users(username, email, pwd, activation_code, status)
             VALUES(?, ?, ?, ?, 'inactive')
             `,
         [username, email, pwdDb, activationCode]

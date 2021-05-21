@@ -93,7 +93,7 @@ app.put("/recoverPwd", recoverPwd);
 //RESET PASSWORD
 app.put("/reset/:code", resetPwd);
 //EDITAR PASSWORD
-app.put("/user/changePwd/:id", validAuth, isSameUser, changePwd);
+app.put("/user/:id/changePwd", validAuth, isSameUser, changePwd);
 
 //CONTROLADORES DE PRODUCTO
 //CREAR PRODUCTO

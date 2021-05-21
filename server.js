@@ -122,19 +122,19 @@ app.get("/product/:id/messages/:userId", validAuth, listMessages);
 //CREAR RESERVA
 app.post("/product/:idProduct", validAuth, newBooking);
 //VER LISTA RESERVAS RECIBIDA
-app.get("/user/:id/bookings-in", validAuth, listBookingsIn);
+app.get("/user/:id/bookings-in", validAuth, isSameUser, listBookingsIn);
 //VER UNA RESERVA RECIBIDA
-app.get("/user/:id/bookings-in/:idProduct", validAuth, getBookingIn);
+app.get("/user/:id/bookings-in/:idProduct", validAuth, isSameUser, getBookingIn);
 //VER LISTA RESERVAS REALIZADAS
-app.get("/user/:id/bookings-out", validAuth, listBookingsOut);
+app.get("/user/:id/bookings-out", validAuth, isSameUser, listBookingsOut);
 //VER UNA RESERVA REALIZADA
-app.get("/user/:id/bookings-out/:idProduct", validAuth, getBookingOut);
+app.get("/user/:id/bookings-out/:idProduct", validAuth, isSameUser, getBookingOut);
 //CANCELAR UNA RESERVA REALIZADA
-app.delete("/user/:id/bookings-out/:idProduct/cancel", validAuth, cancelBookingOut);
+app.delete("/user/:id/bookings-out/:idProduct/cancel", validAuth, isSameUser, cancelBookingOut);
 //ACEPTAR RESERVA RECIBIDA Y ESTABLECER FECHA Y LUGAR DE COMPRA
-app.get("/user/:id/bookings-in/:idProduct/accepted", validAuth, acceptBooking);
+app.get("/user/:id/bookings-in/:idProduct/accepted", validAuth, isSameUser, acceptBooking);
 //RECHAZAR RESERVA RECIBIDA
-app.get("/user/:id/bookings-in/:idProduct/rejected", validAuth, rejectBooking);
+app.get("/user/:id/bookings-in/:idProduct/rejected", validAuth, isSameUser, rejectBooking);
 
 //CONTROLADORES DE VOTOS
 app.post("/user/:id/votes", validAuth, canVote, sendVote);

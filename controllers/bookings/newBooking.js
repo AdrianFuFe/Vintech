@@ -34,7 +34,7 @@ async function newBooking (req,res,next){
             `
             INSERT INTO bookings (status, id_user_A, id_user_B, id_product)
             VALUES (?,?,?,?)
-            `,["sent", product.id_seller, req.auth.id, req.params.idProduct,]);
+            `,["sent", result.id_seller, req.auth.id, req.params.idProduct]);
 
         res.send({
             status: "OK",

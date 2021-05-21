@@ -52,7 +52,6 @@ const { rejectBooking } = require("./controllers/bookings/rejectBooking");
 const { addFav } = require("./controllers/favs/addFav");
 const { deleteFav } = require("./controllers/favs/deleteFav");
 const { listFavs } = require("./controllers/favs/listFavs");
-const { getFav } = require("./controllers/favs/getFav");
 
 //CONTROLADORES DE VOTOS
 const { sendVote } = require("./controllers/votes/sendVote");

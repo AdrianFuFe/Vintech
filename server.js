@@ -41,8 +41,7 @@ const { listMessages } = require("./controllers/messages/listMessages");
 const { newBooking } = require("./controllers/bookings/newBooking");
 const { listBookingsIn } = require("./controllers/bookings/listBookingsIn");
 const { listBookingsOut } = require("./controllers/bookings/listBookingsOut");
-const { getBookingOut } = require("./controllers/bookings/getBookingOut");
-const { getBookingIn } = require("./controllers/bookings/getBookingIn");
+const { getBooking } = require("./controllers/bookings/getBooking");
 const { cancelBookingOut } = require("./controllers/bookings/cancelBookingOut");
 const { acceptBooking } = require("./controllers/bookings/acceptBooking");
 const { rejectBooking } = require("./controllers/bookings/rejectBooking");
@@ -123,12 +122,10 @@ app.get("/product/:id/messages/:userId", validAuth, listMessages);
 app.post("/product/:idProduct", validAuth, newBooking);
 //VER LISTA RESERVAS RECIBIDA
 app.get("/user/:id/bookings-in", validAuth, isSameUser, listBookingsIn);
-//VER UNA RESERVA RECIBIDA
-app.get("/user/:id/bookings-in/:idProduct", validAuth, isSameUser, getBookingIn);
 //VER LISTA RESERVAS REALIZADAS
 app.get("/user/:id/bookings-out", validAuth, isSameUser, listBookingsOut);
-//VER UNA RESERVA REALIZADA
-app.get("/user/:id/bookings-out/:idProduct", validAuth, isSameUser, getBookingOut);
+//VER UNA RESERVA
+app.get("/user/:id/bookings/:idBooking", validAuth, isSameUser, getBooking);
 //CANCELAR UNA RESERVA REALIZADA
 app.delete("/user/:id/bookings-out/:idProduct/cancel", validAuth, isSameUser, cancelBookingOut);
 //ACEPTAR RESERVA RECIBIDA Y ESTABLECER FECHA Y LUGAR DE COMPRA

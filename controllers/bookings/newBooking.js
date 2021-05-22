@@ -13,7 +13,7 @@ async function newBooking (req,res,next){
         //si no existe devolvemos un error
         if(result == false) throw new Error ("No existe ningun producto con ese ID");
 
-        //comprobar que el producto este activo para su compra
+        //comprobar que el producto este activo para su reserva
         if(result.status != "active") throw new Error ("No es posible reservar este producto");
         
         //comprobar que el comprador no es el vendedor

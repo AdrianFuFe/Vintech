@@ -1,5 +1,6 @@
 const { getConnection } = require("../../db");
 const { entryExists } = require("../../helpers");
+const { getDbInfo } = require("../../helpers");
 
 async function acceptBooking (req,res,next){
     let connection;
@@ -14,9 +15,11 @@ async function acceptBooking (req,res,next){
         if(result == false) throw new Error (`El usuario con ID ${id} no existe`);
 
         //comprobamos si existe el producto
-        result = await entryExists("products",idProduct);
+        result = await getDbInfo("products",idProduct);
         if(result == false) throw new Error (`El producto con ID ${idProduct} no existe`);
-
+        //comprobamos que el producto no este ya reservado
+        if (result.status != "active") throw new Error (`El producto con ID ${idProduct} ya esta reservado`);
+        
         //buscar en la BBDD la reserva con id_producto e id_vendedor igual a los que pasamos por params
         [result] = await connection.query(`
         SELECT *

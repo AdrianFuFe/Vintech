@@ -338,32 +338,20 @@ app.delete("/user/:id/bookings-out/:idProduct/cancel", validAuth, isSameUser, ca
 	-RES: cancela y elimina una reserva realizada
 	
 
-//ACEPTAR RESERVA RECIBIDA Y ESTABLECER FECHA Y LUGAR DE COMPRA
-app.get("/user/:id/bookings-in/:idProduct/accepted", validAuth, isSameUser, acceptBooking);
+//RESPONDER UNA RESERVA RECIBIDA
+app.get("/user/:id/bookings/:idBooking/:response", validAuth, isSameUser, responseBooking);
 	-METODO: GET
-	-URL: apiUrl/user/:id/bookings-in/:idProduct/accepted
+	-URL: apiUrl/user/:id/bookings/:idBooking/:response
 	-MIDDLEWARES: validAuth, isSameUser
 	-ENDPOINT: acceptBooking
 	-REQ: 
 		-header: req.auth.id
-		-params: id, idProduct
-		-body: meetDate, ubication, status
-	-RES: acepta la reserva recibida, 
-		añade fecha,hora y luegar para la transacción del producto,
-		bloquea la posibilidad de otras reservas del producto.
-	
-
-//RECHAZAR RESERVA RECIBIDA
-app.get("/user/:id/bookings-in/:idProduct/rejected", validAuth, isSameUser, rejectBooking);
-	-METODO:  GET
-	-URL: apiUrl/user/:id/bookings-in/:idProduct/rejected
-	-MIDDLEWARES: validAuth, isSameUser
-	-ENDPOINT: rejectBooking
-	-REQ: 
-		-header: req.auth.id
-		-params: id, idProduct
-		-body: 
-	-RES: rechaza la reserva recibida por un producto
+		-params: id, idProduct, response
+		-body: meetDate, ubication
+	-RES: da una respuesta a la reserva recibida.
+		-Accept: establece fecha, hora y lugar para la transacción del producto,
+			bloqueando además la posibilidad de otras reservas del producto.
+		-Reject: devuelve una respuesta negativa a la reserva.
 	
 	
 	

@@ -12,7 +12,11 @@ async function listProducts(req, res, next) {
         `
       SELECT *
       FROM products
-      WHERE products.id_seller LIKE CONCAT("%", ? , "%") OR products.title LIKE CONCAT("%", ? , "%") OR products.description LIKE CONCAT("%", ? , "%") OR products.ubication LIKE CONCAT("%", ? , "%") OR products.category LIKE CONCAT("%", ? , "%")
+      WHERE products.id_seller LIKE CONCAT("%", ? , "%") 
+        OR products.title LIKE CONCAT("%", ? , "%") 
+        OR products.description LIKE CONCAT("%", ? , "%") 
+        OR products.ubication LIKE CONCAT("%", ? , "%") 
+        OR products.category LIKE CONCAT("%", ? , "%")
       GROUP BY products.id
       ORDER BY modification_date DESC`,
         [search, search, search, search, search]

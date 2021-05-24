@@ -1,39 +1,46 @@
-# Vintech Place
+# VINTECH PLACE
 
 Proyecto sobre web de compra-venta de productos con temática de tecnología retro.
-Los usuarios no registrados solo pueden ver los productos del catálogo.
+
+Los usuarios no registrados solo pueden ver los productos del catálogo y su información.
 Los usuarios registrados pueden editar su perfil,
 	 subir los productos que quieran vender y editar la información de estos,
 	 realizar reservas de los productos que otros usuarios venden,
-	 aceptar, y establecer una fecha, hora y lugar para la transacción; o rechazar las reservas que reciben de otros usuarios,
-	 hablar con el vendedor de un producto sobre este,
+	 aceptar, y establecer una fecha, hora y lugar para la transacción; 
+	 o rechazar las reservas que reciben de otros usuarios,
+	 También podrán hablar con otros usuarios sobre algún producto concreto.
 
 	 
 ---
 
-## Requirements
+## REQUIRIMIENTOS
 
-Para el desarrollo del proyecto hemos utilizado Git, Visual Studio Code, Postman, MySQL Workbench, Node.js y algunas dependencias de Node.js administradas con npm
+Para el desarrollo del proyecto hemos utilizado:
+	-Git
+	-Visual Studio Code 
+	-Postman
+	-MySQL Workbench
+	-Node.js (y algunas dependencias de Node.js administradas con npm)
 
 
 ---
 
-## Install
+## INSTALACION
 
-git clone https://github.com/anxogcd/vintech-place.git  --> copiar repositorio
+git clone https://github.com/anxogcd/vintech-place.git  --> clonar repositorio
 cd PROJECT_TITLE_DIRECTORY  --> movernos al directorio del proyecto
 npm init --> instalar dependencias de proyecto
 
 
 ---
 
-## Configure app
+## CONFIGURACION
 
--crear nuestra conexion en el SGBD	 
+-crear nuestra conexion en el sistema de gestión de base de datos (SGBD)	 
 
 -configurar "env.example" como ".env"
 	PORT = (nº del puerto el el que queramos alojar nuestro servidor local /ej: 3000)
-	MYSQL_HOST = (nombre de la ruta creada en nuestro sistema de gestion de base de datos (SGBD) /ej: localhost ) 
+	MYSQL_HOST = (nombre de la ruta creada en nuestro SGBD /ej: localhost) 
 	MYSQL_USER = (nombre de usuario creado en nuestro SGBD /ej: root) 
 	MYSQL_PASSWORD = (contraseña de usuario para nuestro SGBD /ej: 123456)
 	MYSQL_DATABASE = (nombre de nuestra base de datos /ej: vintechDB)
@@ -53,11 +60,12 @@ npm init --> instalar dependencias de proyecto
 
 ---
 
-## Controllers 		
+## CONTROLADORES 		
 	
 --------------------------------------------USUARIO--------------------------------------------
 
-//CREAR USUARIO	-->	app.post("/user", createUser);
+//CREAR USUARIO
+app.post("/user", createUser);
 	-METODO: POST
 	-URL: apiUrl/user
 	-ENDPOINT: createUser
@@ -66,7 +74,8 @@ npm init --> instalar dependencias de proyecto
 	-RES: registra al nuevo usuario y envia email de activacion de la cuenta
 	
 
-//ACTIVAR USUARIO	-->	app.get("/activation/:activationCode", activateUser);
+//ACTIVAR USUARIO
+app.get("/activation/:activationCode", activateUser);
 	-metodo: GET
 	-URL: apiUrl/activation/:activationCode
 	-ENDPOINT: activateUser
@@ -75,7 +84,8 @@ npm init --> instalar dependencias de proyecto
 	-RES:	cambia estado de usuario a activo
 	
 	
-//LOGIN USUARIO	-->	app.get("/login", logUser);
+//LOGIN USUARIO
+app.get("/login", logUser);
 	-metodo: GET
 	-URL: apiUrl/login
 	-ENDPOINT: logUser
@@ -84,7 +94,8 @@ npm init --> instalar dependencias de proyecto
 	-RES: devuelve el token de usuario
 	
 
-//OBTENER INFORMACIÓN DE USUARIO	-->	app.get("/user/:id", validAuth, getUser);
+//OBTENER INFORMACIÓN DE USUARIO
+app.get("/user/:id", validAuth, getUser);
 	-metodo: GET
 	-URL: apiUrl/user/:id
 	-MIDDLEWARES: validAuth
@@ -95,7 +106,8 @@ npm init --> instalar dependencias de proyecto
 	-RES: muestra la informacion del usuario
 	
 
-//EDITAR USUARIO	-->	app.put("/user/:id", validAuth, isSameUser, editUser);
+//EDITAR USUARIO
+app.put("/user/:id", validAuth, isSameUser, editUser);
 	-metodo: PUT
 	-URL: apiUrl/user/:id
 	-MIDDLEWARES: validAuth, isSameUser
@@ -107,7 +119,8 @@ npm init --> instalar dependencias de proyecto
 	-RES: actualiza los datos de perfil del usuario
 	
 
-//BORRAR USUARIO	-->	app.delete("/user/:id", validAuth, isSameUser, deleteUser);
+//BORRAR USUARIO
+app.delete("/user/:id", validAuth, isSameUser, deleteUser);
 	-metodo: DELETE
 	-URL: apiUrl/user/:id
 	-MIDDLEWARES: validAuth, isSameUser
@@ -118,7 +131,8 @@ npm init --> instalar dependencias de proyecto
 	-RES: elimina el perfil del usuario
 	
 	
-//RECOVER PASSWORD	-->	app.put("/recoverPwd", recoverPwd);
+//RECOVER PASSWORD
+app.put("/recoverPwd", recoverPwd);
 	-metodo: PUT
 	-URL: apiUrl/recoverPwd
 	-ENDPOINT: recoverPwd
@@ -127,7 +141,8 @@ npm init --> instalar dependencias de proyecto
 	-RES: envia email de recuperacion de contraseña
 	
 	
-//RESET PASSWORD	-->	app.put("/reset/:code", resetPwd);
+//RESET PASSWORD
+app.put("/reset/:code", resetPwd);
 	-metodo: PUT
 	-URL: apiUrl/reset/:code
 	-ENDPOINT: resetPwd
@@ -137,7 +152,8 @@ npm init --> instalar dependencias de proyecto
 	-RES:	establece una nueva contraseña
 	
 	
-//EDITAR PASSWORD	-->	app.put("/user/:id/changePwd", validAuth, isSameUser, changePwd);
+//EDITAR PASSWORD
+app.put("/user/:id/changePwd", validAuth, isSameUser, changePwd);
 	-metodo: PUT
 	-URL: apiUrl/user/:id/changePwd
 	-MIDDLEWARES: validAuth, isSameUser
@@ -154,7 +170,8 @@ npm init --> instalar dependencias de proyecto
 --------------------------------------------PRODUCTO--------------------------------------------
 
 
-//CREAR PRODUCTO	-->	app.post("/product", validAuth, newProduct);
+//CREAR PRODUCTO
+app.post("/product", validAuth, newProduct);
 	-metodo: POST
 	-URL: apiUrl/product
 	-MIDDLEWARES: validAuth
@@ -165,7 +182,8 @@ npm init --> instalar dependencias de proyecto
 	-RES: crea un nuevo producto
 	
 	
-//OBTENER PRODUCTO	-->	app.get("/product/:id", getProduct);
+//OBTENER PRODUCTO
+app.get("/product/:id", getProduct);
 	-metodo: GET
 	-URL: apiUrl/product/:id
 	-ENDPOINT: getProduct
@@ -174,7 +192,8 @@ npm init --> instalar dependencias de proyecto
 	-RES: muestra la informacion del producto
 	
 	
-//BUSCAR PRODUCTOS	-->	app.get("/product", listProducts);
+//BUSCAR PRODUCTOS
+app.get("/product", listProducts);
 	-metodo: GET
 	-URL: apiUrl/product?search=
 	_-ENDPOINT: listProducts
@@ -183,7 +202,8 @@ npm init --> instalar dependencias de proyecto
 	-RES: nos muestra los productos aplicando los filtros que le indicamos
 	
 	
-//EDITAR PRODUCTO	-->	app.put("/product/:id", validAuth, canEdit, editProduct);
+//EDITAR PRODUCTO
+app.put("/product/:id", validAuth, canEdit, editProduct);
 	-metodo: PUT
 	-URL: apiUrl/product/:id
 	-MIDDLEWARES: validAuth, canEdit
@@ -195,7 +215,8 @@ npm init --> instalar dependencias de proyecto
 	-RES: cambia la informacion del producto
 	
 	
-//BORRAR PRODUCTO	-->	app.delete("/product/:id", validAuth, canEdit, deleteProduct);
+//BORRAR PRODUCTO
+app.delete("/product/:id", validAuth, canEdit, deleteProduct);
 	-metodo: DELETE
 	-URL: apiUrl/product/:id
 	-MIDDLEWARES: validAuth, canEdit
@@ -206,7 +227,8 @@ npm init --> instalar dependencias de proyecto
 	-RES: elimina el producto
 	
 	
-//AÑADIR FOTO DE PRODUCTO	-->	app.post("/product/:id/images", validAuth, canEdit, addImgProduct);
+//AÑADIR FOTO DE PRODUCTO
+app.post("/product/:id/images", validAuth, canEdit, addImgProduct);
 	-metodo: POST
 	-URL: apiUrl/product/:id/images
 	-MIDDLEWARES: validAuth, canEdit
@@ -218,7 +240,8 @@ npm init --> instalar dependencias de proyecto
 	-RES: añade imagenes a la informacion de un producto
 	
 	
-//BORRAR FOTO DE PRODUCTO	-->	app.delete("/product/:id/images/:imgId", validAuth, canEdit, deleteImgProduct);
+//BORRAR FOTO DE PRODUCTO
+app.delete("/product/:id/images/:imgId", validAuth, canEdit, deleteImgProduct);
 	-metodo: DELETE
 	-URL: apiUrl/product/:id/images/:imgId
 	-MIDDLEWARES: validAuth, canEdit
@@ -234,7 +257,8 @@ npm init --> instalar dependencias de proyecto
 --------------------------------------------MENSAJES--------------------------------------------
 
 
-//ENVIAR MENSAJE	-->	app.post("/product/:id/messages/:userId", validAuth, sendMessage);
+//ENVIAR MENSAJE
+app.post("/product/:id/messages/:userId", validAuth, sendMessage);
 	-METODO: POST
 	-URL: apiUrl/product/:id/messages/:userId
 	-MIDDLEWARES: validAuth

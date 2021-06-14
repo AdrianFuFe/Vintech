@@ -1,10 +1,11 @@
-import { React } from 'react';
-import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { TokenContextProvider } from './components/TokenContextProvider';
-import RegisterPage from './pages/RegisterPage';
-import LoginPage from './pages/LoginPage';
+import { React } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { TokenContextProvider } from "./components/TokenContextProvider";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
 
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -12,15 +13,15 @@ function App() {
       <Router>
         <TokenContextProvider>
           <Switch>
-
+            <Route exact path="/">
+              <HomePage />
+            </Route>
             <Route exact path="/register">
-              <RegisterPage/>
+              <RegisterPage />
             </Route>
-
             <Route exact path="/login">
-              <LoginPage/>
+              <LoginPage />
             </Route>
-
           </Switch>
         </TokenContextProvider>
       </Router>

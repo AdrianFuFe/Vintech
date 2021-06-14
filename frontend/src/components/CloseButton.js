@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const CloseButton = (props) => {
 
   return (
-        <Link to="/">
+        <Link to="/home">cerrar
           <img src={'../images/icons/png/cancel-btn.png'} alt='icono de cerrar'></img>
         </Link>
   )

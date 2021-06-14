@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { TokenContextProvider } from './components/TokenContextProvider';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
-
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <Router>
         <TokenContextProvider>
           <Switch>
+
 
             <Route exact path="/register">
               <RegisterPage/>
@@ -21,6 +22,10 @@ function App() {
               <LoginPage/>
             </Route>
 
+            <Route exact path="/home">
+              <HomePage/>
+            </Route>
+            
           </Switch>
         </TokenContextProvider>
       </Router>

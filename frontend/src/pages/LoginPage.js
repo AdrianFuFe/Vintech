@@ -21,7 +21,7 @@ const LoginPage = (props) => {
           </p>
         </div>
       ) : (
-        <Redirect to="/" />
+        <Redirect to="/home" />
       )}
     </>
   );

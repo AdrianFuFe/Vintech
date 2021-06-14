@@ -12,7 +12,7 @@ const CategoriesButton = (props) => {
   }
 
   return (
-    <Link to="/">
+    <Link to="/categories">
       <svg
         width="150"
         height="150"

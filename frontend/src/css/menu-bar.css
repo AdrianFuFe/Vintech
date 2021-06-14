@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#menu-bar {
+  position: absolute;
+  min-width: 100%;
+  bottom: 0;
+  background: #e0e0e0;
+}
+
+#menu-bar ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+#menu-bar button {
+  min-height: 2rem;
+  min-width: 2rem;
+  border: none;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#menu-bar #home-button {
+  background-image: url("../images/icons/png/home-grey.png");
+}
+
+#menu-bar #categories-button {
+  background-image: url("../images/icons/png/categories-grey.png");
+}
+
+#menu-bar #upload-button {
+  min-height: 3rem;
+  min-width: 3rem;
+  background-image: url("../images/icons/png/upload-grey.png");
+}
+
+#menu-bar #messages-button {
+  background-image: url("../images/icons/png/buzon-grey.png");
+}
+
+#menu-bar #profile-button {
+  background-image: url("../images/icons/png/user-grey.png");
+}

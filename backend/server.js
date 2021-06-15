@@ -97,8 +97,8 @@ app.put("/user/:id/changePwd", validAuth, isSameUser, changePwd);
 app.post("/product", validAuth, newProduct);
 //OBTENER PRODUCTO
 app.get("/product/:id", getProduct);
-//BUSCAR PRODUCTOS
-app.get("/product", listProducts);
+//LISTAR PRODUCTOS
+app.get("/products", listProducts);
 //EDITAR PRODUCTO
 app.put("/product/:id", validAuth, canEdit, editProduct);
 //BORRAR PRODUCTO

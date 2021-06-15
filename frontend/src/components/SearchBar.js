@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 const SearchBar = (props) => {
 
@@ -14,6 +15,7 @@ const SearchBar = (props) => {
   }
 
   return(
+    
     <form className='searchBar' onSubmit={handleSubmit}>
       {props.children}
       <input 
@@ -22,8 +24,11 @@ const SearchBar = (props) => {
         name='searchInput' 
         value={value} 
         onChange={handleChange} 
-      />
-      <input type='submit' value='send' />
+        />
+
+      <Link to={`/product?search=${value}`}>
+        <input type='submit' value='send' />
+      </Link>
     </form>
   )
 }

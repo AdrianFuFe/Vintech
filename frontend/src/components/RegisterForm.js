@@ -1,5 +1,8 @@
 import { useState, useContext } from 'react';
 import { TokenContext } from './TokenContextProvider';
+import CloseButton from '../components/CloseButton';
+import { Link } from 'react-router-dom';
+import "../css/register-form.css";
 
 const RegisterForm = (props) => {
 
@@ -33,47 +36,52 @@ const RegisterForm = (props) => {
   };
 
   return (
-    <form id="register" onSubmit={register}>
+    <div id='register'>
+      <CloseButton id='closeBtn'/>
+      <h2>Registro</h2>
+      <form id="register" onSubmit={register}>
 
-      <label htmlFor="registerName"/>
-      <input 
-        type='text' 
-        id='registerName' 
-        name='name' 
-        value={name} 
-        onChange={(e)=> setName(e.target.value)} 
-        placeholder='Nombre' 
-      />
+        <label htmlFor="registerName"/>
+        <input 
+          type='text' 
+          id='registerName' 
+          name='name' 
+          value={name} 
+          onChange={(e)=> setName(e.target.value)} 
+          placeholder='Nombre' 
+        />
 
-      <label htmlFor="registerEmail"/>
-      <input 
-        type="email" 
-        id="registerEmail" 
-        name="email" 
-        value={email} 
-        onChange={(e) => setEmail(e.target.value)} 
-        placeholder='Email'
-      />
+        <label htmlFor="registerEmail"/>
+        <input 
+          type="email" 
+          id="registerEmail" 
+          name="email" 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)} 
+          placeholder='Email'
+        />
 
-      <label htmlFor="registerPwd" />
-      <input
-        type="password"
-        id="registerPassword"
-        name="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder='Contraseña'
-      />
+        <label htmlFor="registerPwd" />
+        <input
+          type="password"
+          id="registerPassword"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder='Contraseña'
+        />
 
+        <p> Ya tengo cuenta, <Link to="/login"> Entrar </Link> </p>
 
-      <label htmlFor='registerCheck'>
-        <input type='checkbox' />
-        He leidoy acepto las condiciones de uso y la politica de privacidad
-      </label>
+        <label htmlFor='registerCheck'>
+          <input type='checkbox' /> 
+          <p id='checkTxt'>He leidoy acepto las condiciones de uso y la politica de privacidad</p>
+        </label>
 
-        <input type="submit" value="Enviar" />
+        <input type="submit" value="Registrarme" />
         {error && <p style={{ color: 'red' }}>{error}</p>}
-    </form>
+      </form>
+    </div>
   );
 };
 

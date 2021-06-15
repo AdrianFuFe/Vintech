@@ -1,19 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const useRemoteProducts = () => {
   const [products, setProducts] = useState([]);
 
-  const chargeProducts = async () => {
-    const res = await fetch('http://localhost:4000/products');
-    const fetchedProducts = await res.json();
-    setProducts(fetchedProducts);
-  };
-  
-  useEffect(() => {
-    chargeProducts();
-  },[]);
+  async function loadProducts() {
+    /* const res = [
+      {
+        id: 1,
+        title: "comida",
+      },
+      {
+        id: 2,
+        title: "bebida",
+      },
+    ]; */
 
-  return products;
+    const res = await fetch("http://localhost:4000/products").then((r) =>
+      r.json()
+    );
+    setProducts(res);
+  }
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  return [products, setProducts];
 };
 
 export default useRemoteProducts;

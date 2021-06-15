@@ -15,7 +15,7 @@ const RegisterForm = (props) => {
 
   const register = async (e) => {
     e.preventDefault();
-      const res = await fetch('http://localhost:4000/user', {
+      const res = await fetch('http://localhost:3300/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,7 +23,6 @@ const RegisterForm = (props) => {
       body: JSON.stringify({ name, email, password }),
     });
     
-
     const data = await res.json();
 
     if (res.ok) {
@@ -37,7 +36,7 @@ const RegisterForm = (props) => {
 
   return (
     <div id='register'>
-      <CloseButton id='closeBtn'/>
+      <CloseButton />
       <h2>Registro</h2>
       <form id="register" onSubmit={register}>
 

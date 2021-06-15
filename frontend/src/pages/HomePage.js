@@ -9,8 +9,6 @@ const HomePage = (props) => {
   return (
     <>
       <HeaderBackSearchFavs />
-      <SearchBar />
-      <GoFavsButton />
       <LogoVintech />
       <ProductsGallery />
       <MenuBar />

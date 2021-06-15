@@ -16,6 +16,7 @@
   display: flex;
   align-items: center;
   font-family: "roboto", sans-serif;
+  max-width: fit-content;
 }
 
 #categories li {

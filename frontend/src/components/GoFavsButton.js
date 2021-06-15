@@ -1,24 +1,24 @@
-import { useContext } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { TokenContext } from './TokenContextProvider';
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { TokenContext } from "./TokenContextProvider";
+import IconButton from "@material-ui/core/IconButton";
 
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 
 const GoFavsButton = (props) => {
-
-  const [ token ] = useContext(TokenContext);
-
+  const [token] = useContext(TokenContext);
 
   return (
     <>
-      {token ? (
+      {token && (
         <Link to="/user/:id/favs">
-          <img src={'../images/icons/png/favs-line-orange.png'} alt='icono de favoritos'></img>
+          <IconButton>
+            <FavoriteBorderOutlinedIcon />
+          </IconButton>
         </Link>
-      ) : (
-        <Redirect to="/login" />
       )}
     </>
-  )
-}
+  );
+};
 
 export default GoFavsButton;

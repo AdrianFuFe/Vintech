@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+#categories h2 {
+  font-family: "roboto", sans-serif;
+  margin-top: 2rem;
+}
+
+#categories ul {
+  padding: 3rem;
+  margin-bottom: 4rem;
+}
+
+#categories a {
+  text-decoration: none;
+  color: #828282;
+  display: flex;
+  align-items: center;
+  font-family: "roboto", sans-serif;
+}
+
+#categories li {
+  list-style: none;
+}
+
+#categories span {
+  min-width: 2rem;
+  min-height: 2rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin: 0.2rem;
+}
+
+#categories #Ordenadores {
+  background-image: url("https://api.iconify.design/teenyicons:computer-outline.svg?color=%23828282");
+}
+
+#categories #Telefonía {
+  background-image: url("https://api.iconify.design/bytesize:telephone.svg?color=%23828282");
+}
+
+#categories #Audio {
+  background-image: url("https://api.iconify.design/fluent:speaker-1-28-regular.svg?color=%23828282");
+}
+
+#categories #Foto {
+  background-image: url("https://api.iconify.design/eva:camera-outline.svg?color=%23828282");
+}
+
+#categories #Vídeo {
+  background-image: url("https://api.iconify.design/bi:camera-reels.svg?color=%23828282");
+}
+
+#categories #Televisores {
+  background-image: url("https://api.iconify.design/mdi:television-classic.svg?color=%23828282");
+}
+
+#categories #Consolas {
+  background-image: url("https://api.iconify.design/ic:outline-videogame-asset.svg?color=%23828282");
+}
+
+#categories #Redes {
+  background-image: url("https://api.iconify.design/akar-icons:network.svg?color=%23828282");
+}
+
+#categories #Otros {
+  background-image: url("https://api.iconify.design/mdi:washing-machine.svg?color=%23828282");
+}

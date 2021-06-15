@@ -5,10 +5,12 @@
 }
 
 #menu-bar {
-  position: absolute;
+  position: fixed;
   min-width: 100%;
   bottom: 0;
   background: #e0e0e0;
+  z-index: 99;
+  max-height: 4rem;
 }
 
 #menu-bar ul {

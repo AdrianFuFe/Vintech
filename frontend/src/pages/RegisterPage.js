@@ -17,7 +17,7 @@ const RegisterPage = (props) => {
           <p> Ya tengo cuenta, <Link to="/login"> Entrar </Link> </p>
         </div>
       ) : (
-        <Redirect to="/home" />
+        <Redirect to="/" />
       )}
     </>
   )

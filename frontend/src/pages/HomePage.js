@@ -1,5 +1,7 @@
 import SearchBar from "../components/SearchBar";
 import GoFavsButton from "../components/GoFavsButton";
+import LogoVintech from "../components/LogoVintech";
+import ProductsGallery from "../components/ProductsGallery";
 
 const HomePage = (props) => {
   
@@ -7,7 +9,8 @@ const HomePage = (props) => {
     <>
       <SearchBar/>
       <GoFavsButton/>
-      <img className='logo' src='/images/icons/png/logo.png' alt='logo vintech'></img>
+      <LogoVintech/>
+      <ProductsGallery/>
     </>
   )
 }

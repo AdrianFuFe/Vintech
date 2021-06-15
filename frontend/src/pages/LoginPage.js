@@ -13,15 +13,10 @@ const LoginPage = (props) => {
           <CloseButton/>
           <h2> ¡Bienvenido! </h2>
           <LoginForm />
-          <p>
-            Todavía no tengo cuenta
-            <Link to="/register">
-              Crear cuenta
-            </Link>
-          </p>
+          <p>Todavía no tengo cuenta, <Link to="/register">Crear cuenta</Link></p>
         </div>
       ) : (
-        <Redirect to="/home" />
+        <Redirect to="/" />
       )}
     </>
   );

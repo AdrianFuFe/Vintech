@@ -1,5 +1,8 @@
 import { useState, useContext } from 'react';
 import { TokenContext } from './TokenContextProvider';
+import CloseButton from './CloseButton';
+import { Link } from 'react-router-dom';
+import '../css/login-form.css'
 
 const LoginForm = (props) => {
   const [email, setEmail] = useState('');
@@ -25,31 +28,36 @@ const LoginForm = (props) => {
     }
   };
   return (
-    <form id="login" onSubmit={login}>
-      <label htmlFor="loginEmail" />
-      <input 
-        type="email" 
-        id="loginEmail" 
-        name="email" 
-        value={email} 
-        onChange={(e) => setEmail(e.target.value)} 
-        placeholder='Email'
-      />
+    <div id='login'>
+      <CloseButton id='closeBtn'/>
+      <h2> ¡Bienvenido! </h2>
+      <form id="login" onSubmit={login}>
+        <label htmlFor="loginEmail" />
+        <input 
+          type="email" 
+          id="loginEmail" 
+          name="email" 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)} 
+          placeholder='Email'
+          />
 
-      <label htmlFor="loginPassword"/>
-      <input
-        type="password"
-        id="loginPassword"
-        name="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder='Contraseña'
-      />
+        <label htmlFor="loginPassword"/>
+        <input
+          type="password"
+          id="loginPassword"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder='Contraseña'
+          />
 
+        <p>Todavía no tengo cuenta, <Link to="/register">Crear cuenta</Link></p>
 
-      <input type="submit" value="Enviar" />
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-    </form>
+        <input type="submit" value="Enviar" />
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+      </form>
+    </div>
   );
 };
 

@@ -7,7 +7,7 @@
   font-family: "roboto", sans-serif;
 }
 
-div#register {
+div#login {
   background-color: rgba(255, 229, 191, 1);
   position: relative;
   width: 100vw;
@@ -17,24 +17,24 @@ div#register {
   align-items: center;
 }
 
-#register a {
+#login a {
   text-decoration: none;
   color: blue;
 }
 
-#register svg {
+#login svg {
   position: absolute;
   top: 15vh;
   right: 20vw;
 }
 
-#register h2 {
+#login h2 {
   position: absolute;
   top: 20vh;
   margin-bottom: 1rem;
 }
 
-#register form {
+#login form {
   position: absolute;
   top: 25vh;
   display: flex;
@@ -42,7 +42,7 @@ div#register {
   align-items: center;
 }
 
-#register input {
+#login input {
   margin-top: 3rem;
   height: 2rem;
   min-width: 300px;
@@ -52,23 +52,11 @@ div#register {
   border-bottom: 0.15rem solid rgba(189, 189, 189, 1);
 }
 
-#register p {
+#login p {
   margin-top: 3rem;
 }
 
-#register input[type="checkbox"] {
-  height: 2rem;
-  min-width: 20px;
-  max-width: 20px;
-}
-
-#register p#checkTxt {
-  margin-left: 1rem;
-  font-size: 0.8rem;
-  display: inline-block;
-}
-
-#register input[type="submit"] {
+#login input[type="submit"] {
   position: absolute;
   bottom: -20vh;
   min-height: 3rem;

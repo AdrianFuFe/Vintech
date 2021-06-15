@@ -4,7 +4,7 @@ import ProductSheet from './ProductSheet';
 const ProductsGallery = (props) => {
   const [products] = useRemoteProducts();
 
-  const arrayProducts = products?.map((product) => <ProductSheet key={product.id} />);
+  const arrayProducts = products.map((product) => <ProductSheet key={product.id} />);
 
   return <ul>{arrayProducts}</ul>;
 };

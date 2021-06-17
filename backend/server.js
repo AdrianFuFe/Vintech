@@ -3,6 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 
 const port = process.env.PORT;
 const app = express();
@@ -36,7 +37,6 @@ const {
 } = require("./controllers/messages/listConversations");
 const { listMessages } = require("./controllers/messages/listMessages");
 
-
 //CONTROLADORES DE RESERVAS
 const { newBooking } = require("./controllers/bookings/newBooking");
 const { listBookingsIn } = require("./controllers/bookings/listBookingsIn");
@@ -44,7 +44,6 @@ const { listBookingsOut } = require("./controllers/bookings/listBookingsOut");
 const { getBooking } = require("./controllers/bookings/getBooking");
 const { cancelBookingOut } = require("./controllers/bookings/cancelBookingOut");
 const { responseBooking } = require("./controllers/bookings/responseBooking");
-
 
 //CONTROLADORES DE FAVORITOS
 const { addFav } = require("./controllers/favs/addFav");
@@ -57,7 +56,6 @@ const { listVotes } = require("./controllers/votes/listVotes");
 const { editVote } = require("./controllers/votes/editVote");
 const { deleteVote } = require("./controllers/votes/deleteVote");
 
-
 //REQUERIMIENTO DE MIDDLEWARES FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
 const { isSameUser } = require("./middlewares/isSameUser");
@@ -66,6 +64,8 @@ const { canVote } = require("./middlewares/canVote");
 const { canEditVote } = require("./middlewares/canEditVote");
 
 //APLICACIÓN DE MIDDLEWARES GENERALES
+app.use(cors());
+app.use(express.static("static"));
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(fileUpload());
@@ -126,7 +126,12 @@ app.get("/user/:id/bookings-out", validAuth, isSameUser, listBookingsOut);
 //VER UNA RESERVA
 app.get("/user/:id/bookings/:idBooking", validAuth, isSameUser, getBooking);
 //RESPONDER UNA RESERVA RECIBIDA
-app.get("/user/:id/bookings/:idBooking/:response", validAuth, isSameUser, responseBooking);
+app.get(
+  "/user/:id/bookings/:idBooking/:response",
+  validAuth,
+  isSameUser,
+  responseBooking
+);
 
 //CONTROLADORES DE VOTOS
 app.post("/user/:id/votes", validAuth, canVote, sendVote);
@@ -138,7 +143,6 @@ app.delete("/vote/:id", validAuth, canEditVote, deleteVote);
 app.post("/product/:id/fav", validAuth, addFav);
 app.get("/user/:id/favs", validAuth, isSameUser, listFavs);
 app.delete("/product/:id/fav", validAuth, deleteFav);
-
 
 //MIDDLEWARE DE GESTIÓN DE ERRORES
 app.use((error, req, res, next) => {

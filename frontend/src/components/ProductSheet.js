@@ -1,16 +1,8 @@
-import ProductImg from "./ProductImg";
-import ProductInfo from "./ProductInfo";
-
 const ProductSheet = (props) => {
+  const { product } = props;
+  console.log(product);
 
-  const { prod } = props;
-
-  return (
-    <div className='productSheet'>
-      <ProductImg images={prod.images}/>
-      <ProductInfo content={prod.body}/>
-    </div>
-  )
-}
+  return "hola";
+};
 
 export default ProductSheet;

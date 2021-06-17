@@ -3,6 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 
 const port = process.env.PORT;
 const app = express();
@@ -66,6 +67,7 @@ const { canVote } = require("./middlewares/canVote");
 const { canEditVote } = require("./middlewares/canEditVote");
 
 //APLICACIÓN DE MIDDLEWARES GENERALES
+app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(fileUpload());
@@ -80,7 +82,7 @@ app.get("/activation/:activationCode", activateUser);
 //LOGIN USUARIO
 app.get("/login", logUser);
 //OBTENER INFORMACIÓN DE USUARIO
-app.get("/user/:id", validAuth, getUser);
+app.get("/user/:id", getUser);
 //EDITAR USUARIO
 app.put("/user/:id", validAuth, isSameUser, editUser);
 //BORRAR USUARIO

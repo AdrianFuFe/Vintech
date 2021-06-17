@@ -31,7 +31,7 @@ async function getUser(req, res, next) {
     res.send({
         status: 'OK',
         message: `Aquí está la información del usuario con id ${id} y sus productos a la venta`,
-        user: user,
+        data: user,
         products: products
     });
   } catch (error) {

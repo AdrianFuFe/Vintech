@@ -6,6 +6,7 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import HomePage from "./pages/HomePage";
+import MyUserPage from "./pages/MyUserPage";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
             </Route>
             <Route exact path="/categories">
               <CategoriesPage />
+            </Route>
+            <Route exact path="/user/:id/myProfile">
+              <MyUserPage />
             </Route>
           </Switch>
         </TokenContextProvider>

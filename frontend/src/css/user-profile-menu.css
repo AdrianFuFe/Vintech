@@ -1,0 +1,20 @@
+#menu-profile h3 {
+  margin-top: 2rem;
+}
+
+#menu-profile ul {
+  padding: 3rem;
+  margin-bottom: 4rem;
+}
+
+#menu-profile a {
+  text-decoration: none;
+  color: #828282;
+  display: flex;
+  align-items: center;
+  max-width: fit-content;
+}
+
+#menu-profile li {
+  list-style: none;
+}

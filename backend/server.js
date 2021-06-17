@@ -80,7 +80,7 @@ app.get("/activation/:activationCode", activateUser);
 //LOGIN USUARIO
 app.get("/login", logUser);
 //OBTENER INFORMACIÓN DE USUARIO
-app.get("/user/:id", validAuth, getUser);
+app.get("/user/:id", getUser);
 //EDITAR USUARIO
 app.put("/user/:id", validAuth, isSameUser, editUser);
 //BORRAR USUARIO

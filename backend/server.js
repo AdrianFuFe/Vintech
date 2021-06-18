@@ -78,7 +78,7 @@ app.post("/user", createUser);
 //ACTIVAR USUARIO
 app.get("/activation/:activationCode", activateUser);
 //LOGIN USUARIO
-app.get("/login", logUser);
+app.post("/login", logUser);
 //OBTENER INFORMACIÓN DE USUARIO
 app.get("/user/:id", getUser);
 //EDITAR USUARIO

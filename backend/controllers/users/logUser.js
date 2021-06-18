@@ -49,7 +49,7 @@ async function logUser(req, res, next) {
 
     res.send({
       status: "OK",
-      token: token,
+      authToken: token,
     });
   } catch (error) {
     next(error);

@@ -1,16 +1,16 @@
-import { useState, useContext } from 'react';
-import { TokenContext } from './TokenContextProvider';
+import { useState/* , useContext */ } from 'react';
+/* import { TokenContext } from './TokenContextProvider'; */
 import CloseButton from '../components/CloseButton';
 import { Link } from 'react-router-dom';
 import "../css/register-form.css";
 
 const RegisterForm = (props) => {
 
-  const [ fname, setFname ] = useState('');
+  const [ username, setUsername ] = useState('');
   const [ email, setEmail ] = useState('');
   const [ pwd, setPwd ] = useState('');
 
-  const [, setToken] = useContext(TokenContext);
+  /* const [, setToken] = useContext(TokenContext); */
   const [error, setError] = useState('');
 
   const register = async (e) => {
@@ -20,14 +20,14 @@ const RegisterForm = (props) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ fname, email, pwd }),
+      body: JSON.stringify({ username, email, pwd }),
     });
     
     const data = await res.json();
 
     if (res.ok) {
       setError('');
-      setToken(data.accessToken);
+      /* setToken(data.accessToken); */
     } else {
       setError(data);
     }
@@ -45,8 +45,8 @@ const RegisterForm = (props) => {
           type='text' 
           id='registerName' 
           name='name' 
-          value={fname} 
-          onChange={(e)=> setFname(e.target.value)} 
+          value={username} 
+          onChange={(e)=> setUsername(e.target.value)} 
           placeholder='Nombre' 
         />
 

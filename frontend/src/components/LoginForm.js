@@ -6,23 +6,24 @@ import '../css/login-form.css'
 
 const LoginForm = (props) => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [pwd, setPwd] = useState('');
   const [, setToken] = useContext(TokenContext);
   const [error, setError] = useState('');
 
   const login = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:4000/login', {
+    const res = await fetch('http://localhost:3300/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, pwd }),
     });
     const data = await res.json();
+    console.log(data);
     if (res.ok) {
       setError('');
-      setToken(data.accessToken);
+      setToken(data.authToken);
     } else {
       setError(data);
     }
@@ -47,8 +48,8 @@ const LoginForm = (props) => {
           type="password"
           id="loginPassword"
           name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={pwd}
+          onChange={(e) => setPwd(e.target.value)}
           placeholder='Contraseña'
           />
 

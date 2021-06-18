@@ -6,9 +6,9 @@ import "../css/register-form.css";
 
 const RegisterForm = (props) => {
 
-  const [ name, setName ] = useState('');
+  const [ fname, setFname ] = useState('');
   const [ email, setEmail ] = useState('');
-  const [ password, setPassword ] = useState('');
+  const [ pwd, setPwd ] = useState('');
 
   const [, setToken] = useContext(TokenContext);
   const [error, setError] = useState('');
@@ -20,7 +20,7 @@ const RegisterForm = (props) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ fname, email, pwd }),
     });
     
     const data = await res.json();
@@ -45,8 +45,8 @@ const RegisterForm = (props) => {
           type='text' 
           id='registerName' 
           name='name' 
-          value={name} 
-          onChange={(e)=> setName(e.target.value)} 
+          value={fname} 
+          onChange={(e)=> setFname(e.target.value)} 
           placeholder='Nombre' 
         />
 
@@ -65,8 +65,8 @@ const RegisterForm = (props) => {
           type="password"
           id="registerPassword"
           name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={pwd}
+          onChange={(e) => setPwd(e.target.value)}
           placeholder='Contraseña'
         />
 

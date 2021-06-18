@@ -1,7 +1,6 @@
-import { useState/* , useContext */ } from 'react';
-/* import { TokenContext } from './TokenContextProvider'; */
+import { useState } from 'react';
 import CloseButton from '../components/CloseButton';
-import { Link } from 'react-router-dom';
+import { Link , Redirect } from 'react-router-dom';
 import "../css/register-form.css";
 
 const RegisterForm = (props) => {
@@ -10,7 +9,6 @@ const RegisterForm = (props) => {
   const [ email, setEmail ] = useState('');
   const [ pwd, setPwd ] = useState('');
 
-  /* const [, setToken] = useContext(TokenContext); */
   const [error, setError] = useState('');
 
   const register = async (e) => {
@@ -27,11 +25,10 @@ const RegisterForm = (props) => {
 
     if (res.ok) {
       setError('');
-      /* setToken(data.accessToken); */
+      <Redirect to='/login'/>
     } else {
-      setError(data);
+      setError(data.error);
     }
-
   };
 
   return (
@@ -48,6 +45,7 @@ const RegisterForm = (props) => {
           value={username} 
           onChange={(e)=> setUsername(e.target.value)} 
           placeholder='Nombre' 
+          required
         />
 
         <label htmlFor="registerEmail"/>
@@ -58,6 +56,7 @@ const RegisterForm = (props) => {
           value={email} 
           onChange={(e) => setEmail(e.target.value)} 
           placeholder='Email'
+          required
         />
 
         <label htmlFor="registerPwd" />
@@ -68,16 +67,17 @@ const RegisterForm = (props) => {
           value={pwd}
           onChange={(e) => setPwd(e.target.value)}
           placeholder='Contraseña'
+          required
         />
 
         <p> Ya tengo cuenta, <Link to="/login"> Entrar </Link> </p>
 
         <label htmlFor='registerCheck'>
-          <input type='checkbox' /> 
+          <input type='checkbox' required/> 
           <p id='checkTxt'>He leidoy acepto las condiciones de uso y la politica de privacidad</p>
         </label>
 
-        <input type="submit" value="Registrarme" />
+        <input type="submit" value="Registrarme"/>
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
     </div>

@@ -25,7 +25,7 @@ const LoginForm = (props) => {
       setError('');
       setToken(data.authToken);
     } else {
-      setError(data);
+      setError(data.error);
     }
   };
   return (
@@ -41,6 +41,7 @@ const LoginForm = (props) => {
           value={email} 
           onChange={(e) => setEmail(e.target.value)} 
           placeholder='Email'
+          required
           />
 
         <label htmlFor="loginPassword"/>
@@ -51,6 +52,7 @@ const LoginForm = (props) => {
           value={pwd}
           onChange={(e) => setPwd(e.target.value)}
           placeholder='Contraseña'
+          required
           />
 
         <p>Todavía no tengo cuenta, <Link to="/register">Crear cuenta</Link></p>

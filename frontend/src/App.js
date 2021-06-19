@@ -8,7 +8,9 @@ import LoginPage from "./pages/LoginPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import HomePage from "./pages/HomePage";
 import MyUserPage from "./pages/MyUserPage";
+import UserPage from "./pages/UserPage";
 import MyRatingPage from "./pages/MyRatingPage";
+import NewProductPage from "./pages/NewProductPage";
 
 function App() {
   return (
@@ -34,8 +36,14 @@ function App() {
             <Route exact path="/user/:id/my-profile">
               <MyUserPage />
             </Route>
-            <Route exact path="/user/:id/my-rating">
+            <Route exact path="/user/:id">
+              <UserPage />
+            </Route>
+            <Route exact path="/user/:id/valoraciones">
               <MyRatingPage />
+            </Route>
+            <Route exact path="/new-product">
+              <NewProductPage />
             </Route>
           </Switch>
         </TokenContextProvider>

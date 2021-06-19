@@ -16,6 +16,8 @@ const HeaderBackTitle = (props) => {
     title='BUZÓN'
   } else if(location.pathname.includes('confing')){
     title='CONFIGURACIÓN'
+  } else if(location.pathname.includes('new-product')){
+    title='NUEVO PRODUCTO'
   } else {
     title='PERFIL'
   }

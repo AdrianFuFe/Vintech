@@ -13,6 +13,7 @@ const app = express();
 //CONTROLADORES DE USUARIO
 const { createUser } = require("./controllers/users/createUser");
 const { activateUser } = require("./controllers/users/activateUser");
+const { getMyUser } = require("./controllers/users/getMyUser");
 const { getUser } = require("./controllers/users/getUser");
 const { logUser } = require("./controllers/users/logUser");
 const { editUser } = require("./controllers/users/editUser");
@@ -79,7 +80,9 @@ app.post("/user", createUser);
 app.get("/activation/:activationCode", activateUser);
 //LOGIN USUARIO
 app.post("/login", logUser);
-//OBTENER INFORMACIÓN DE USUARIO
+//OBTENER INFORMACIÓN DE MI USUARIO
+app.get("/user/:id/myProfile", validAuth, isSameUser, getMyUser);
+//OBTENER INFORMACIÓN DE OTRO USUARIO
 app.get("/user/:id", getUser);
 //EDITAR USUARIO
 app.put("/user/:id", validAuth, isSameUser, editUser);
@@ -126,12 +129,7 @@ app.get("/user/:id/bookings-out", validAuth, isSameUser, listBookingsOut);
 //VER UNA RESERVA
 app.get("/user/:id/bookings/:idBooking", validAuth, isSameUser, getBooking);
 //RESPONDER UNA RESERVA RECIBIDA
-app.get(
-  "/user/:id/bookings/:idBooking/:response",
-  validAuth,
-  isSameUser,
-  responseBooking
-);
+app.get("/user/:id/bookings/:idBooking/:response", validAuth, isSameUser, responseBooking);
 
 //CONTROLADORES DE VOTOS
 app.post("/user/:id/votes", validAuth, canVote, sendVote);

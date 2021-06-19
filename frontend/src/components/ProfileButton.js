@@ -3,18 +3,16 @@ import { TokenContext } from "./TokenContextProvider";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 
+
 const ProfileButton = (props) => {
   const [token] = useContext(TokenContext);
+
   let route;
-  if (token) {
-    route = "/user";
-  } else {
-    route = "/login";
-  }
+  token ? (route = `/user/:id/my-profile`) : (route = "/login");
 
   const location = useLocation();
   let fill;
-  if (location.pathname === "/user") {
+  if (location.pathname === `/user/:id/my-profile`) {
     fill = "#d07017";
   } else {
     fill = "#828282";

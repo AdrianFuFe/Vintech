@@ -8,10 +8,12 @@ const UserProfileMenu = (props) => {
     "Historial",
     "Configuración",
   ];
+  
+  const {user} = props;
 
   const menuOptionsArray = menuOptions.map((opt, index) => (
     <li key={index}>
-      <Link to={`/user/:id/${opt}`}>
+      <Link to={`/user/${user.id}/${opt}`}>
         <h3>{opt}</h3>
       </Link>
     </li>

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import CloseButton from '../components/CloseButton';
-import { Link , Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "../css/register-form.css";
+import { useHistory } from 'react-router';
 
 const RegisterForm = (props) => {
 
@@ -10,6 +11,8 @@ const RegisterForm = (props) => {
   const [ pwd, setPwd ] = useState('');
 
   const [error, setError] = useState('');
+
+  const history = useHistory();
 
   const register = async (e) => {
     e.preventDefault();
@@ -25,7 +28,7 @@ const RegisterForm = (props) => {
 
     if (res.ok) {
       setError('');
-      <Redirect to='/login'/>
+      history.push('/welcome');
     } else {
       setError(data.error);
     }
@@ -35,7 +38,7 @@ const RegisterForm = (props) => {
     <div id='register'>
       <CloseButton />
       <h2>Registro</h2>
-      <form id="register" onSubmit={register}>
+      <form id="registerForm" onSubmit={register}>
 
         <label htmlFor="registerName"/>
         <input 

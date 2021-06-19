@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import HomePage from "./pages/HomePage";
 import MyUserPage from "./pages/MyUserPage";
+import EditUserPage from "./pages/EditUserPage";
 import UserPage from "./pages/UserPage";
 import MyRatingPage from "./pages/MyRatingPage";
 import MyProductsPage from "./pages/MyProductsPage";
@@ -39,6 +40,9 @@ function App() {
             <Route exact path="/user/:id/my-profile">
               <MyUserPage />
             </Route>
+            <Route exact path="/user/:id/edit">
+              <EditUserPage />
+            </Route>
             <Route exact path="/user/:id">
               <UserPage />
             </Route>
@@ -54,7 +58,7 @@ function App() {
             <Route exact path="/user/:id/my-profile/my-config">
               <MyConfigPage />
             </Route>
-            <Route exact path="/new-product">
+            <Route exact path="/product">
               <NewProductPage />
             </Route>
           </Switch>

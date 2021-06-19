@@ -6,7 +6,7 @@ const HeaderBackTitle = (props) => {
   const location = useLocation();
   let title;
 
-  if (location.pathname.includes('rating')) {
+  if (location.pathname.includes('ratings')) {
     title='MIS VALORACIONES'
   } else if(location.pathname.includes('products')){
     title='MIS PRODUCTOS'
@@ -14,12 +14,12 @@ const HeaderBackTitle = (props) => {
     title='HISTORIAL'
   } else if(location.pathname.includes('mailbox')){
     title='BUZÓN'
-  } else if(location.pathname.includes('confing')){
+  } else if(location.pathname.includes('config')){
     title='CONFIGURACIÓN'
   } else if(location.pathname.includes('new-product')){
     title='NUEVO PRODUCTO'
   } else {
-    title='PERFIL'
+    title='MI PERFIL'
   }
 
   return (

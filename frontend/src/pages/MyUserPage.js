@@ -7,7 +7,7 @@ import useRemoteUser from '../hooks/useRemoteUser';
 
 const MyUserPage = (props) => {
   const [user] = useRemoteUser();
-  console.log(user);
+
   const data =  user.data; 
   let userData;
 

@@ -6,6 +6,7 @@ import { useLocation } from "react-router";
 
 const ProfileButton = (props) => {
   const [token] = useContext(TokenContext);
+  
 
   let route;
   token ? (route = `/user/:id/my-profile`) : (route = "/login");

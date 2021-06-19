@@ -1,7 +1,5 @@
 import RatingTemplate from './RatingTemplate';
 
-
-
 const RatingList = () => {
 
   const ratings = [
@@ -20,7 +18,6 @@ const RatingList = () => {
       points:5,
     },
 ]
-
 
   const arrayRatings= ratings.map((rating) => <li key={rating.id}><RatingTemplate data={rating} /></li>);
 

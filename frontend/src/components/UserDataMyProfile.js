@@ -10,10 +10,10 @@ const UserDataMyProfile = (props) => {
       <UserAvatar />
       <ul>
         <li><h3> Mis Datos </h3></li>
-        <li>{user.fname}</li>
-        <li>{user.lname}</li>
-        <li>{user.last_ubication}</li>
-        <li>{user.bio}</li>
+        <li>{user.fname ? (user.fname) : ('nombre')}</li>
+        <li>{user.lname ? (user.lname) : ('apellidos')}</li>
+        <li>{user.last_ubication ? (user.last_ubication) : ('ubicación')}</li>
+        <li>{user.bio ? (user.bio) : ('Biografía')}</li>
       </ul>
     </div>
   )

@@ -10,6 +10,9 @@ import HomePage from "./pages/HomePage";
 import MyUserPage from "./pages/MyUserPage";
 import UserPage from "./pages/UserPage";
 import MyRatingPage from "./pages/MyRatingPage";
+import MyProductsPage from "./pages/MyProductsPage";
+import MyHistoryPage from "./pages/MyHistoryPage";
+import MyConfigPage from "./pages/MyConfigPage";
 import NewProductPage from "./pages/NewProductPage";
 
 function App() {
@@ -39,8 +42,17 @@ function App() {
             <Route exact path="/user/:id">
               <UserPage />
             </Route>
-            <Route exact path="/user/:id/valoraciones">
+            <Route exact path="/user/:id/my-profile/my-ratings">
               <MyRatingPage />
+            </Route>
+            <Route exact path="/user/:id/my-profile/my-products">
+              <MyProductsPage />
+            </Route>
+            <Route exact path="/user/:id/my-profile/my-history">
+              <MyHistoryPage />
+            </Route>
+            <Route exact path="/user/:id/my-profile/my-config">
+              <MyConfigPage />
             </Route>
             <Route exact path="/new-product">
               <NewProductPage />

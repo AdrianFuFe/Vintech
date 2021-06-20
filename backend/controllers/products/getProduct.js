@@ -26,7 +26,7 @@ async function getProduct(req, res, next) {
     WHERE id_product =?`,
       [id]
     );
-    console.log(result[0].user_id);
+
     const [feedback] = await connection.query(
       `
     SELECT AVG(stars) AS rating

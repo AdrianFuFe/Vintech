@@ -2,6 +2,7 @@ import HeaderBackSearchFavs from "../components/HeaderBackSearchFavs";
 import ProductInfo from "../components/ProductInfo";
 import SellerInfo from "../components/SellerInfo";
 import CarouselImagenes from "../components/CarouselImagenes";
+import "../css/product-page.css";
 
 const ProductPage = (props) => {
   return (

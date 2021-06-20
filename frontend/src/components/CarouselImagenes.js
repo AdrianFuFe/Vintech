@@ -8,7 +8,7 @@ const CarouselImagenes = () => {
   let arrayImgs;
   product.imgs
     ? (arrayImgs = product.imgs.map((img, index) => (
-        <div>
+        <div key={index}>
           <img
             alt="foto de producto"
             src={`http://localhost:3300/uploads/imgs/${img.img}`}
@@ -18,7 +18,9 @@ const CarouselImagenes = () => {
     : (arrayImgs = "No hay imágenes");
 
   return product.imgs ? (
-    <Carousel showThumbs={false}>{arrayImgs}</Carousel>
+    <Carousel showThumbs={false} infiniteLoop={true}>
+      {arrayImgs}
+    </Carousel>
   ) : (
     <h2>No hay imágenes para mostrar</h2>
   );

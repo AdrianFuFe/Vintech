@@ -1,11 +1,19 @@
+import { useContext } from "react";
+import { TokenContext } from "../components/TokenContextProvider";
+import decodeToken from "../utils/decodeToken";
 import { Link } from "react-router-dom";
 import useRemoteSingleProduct from "../hooks/useRemoteSingleProduct";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Rating from "@material-ui/lab/Rating";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import ProductOptions from "./ProductOptions";
 
 const SellerInfo = () => {
   const [product] = useRemoteSingleProduct();
+
+  const [token] = useContext(TokenContext);
+  let decodedToken;
+  if (token) decodedToken = decodeToken(token).id;
 
   return product.data ? (
     <div id="seller-info">
@@ -34,6 +42,8 @@ const SellerInfo = () => {
           {product.data[0].user_last_ubication}
         </p>
       </Link>
+
+      {decodedToken === product.data[0].user_id && <ProductOptions />}
     </div>
   ) : (
     <h2>No hay información de usuario</h2>

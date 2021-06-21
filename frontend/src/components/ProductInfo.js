@@ -4,7 +4,6 @@ import "moment-timezone";
 
 const ProductInfo = (props) => {
   const [product] = useRemoteSingleProduct();
-
   return product.data ? (
     <>
       <div className="product-sheet">

@@ -17,6 +17,7 @@ import MyConfigPage from "./pages/MyConfigPage";
 import UploadProductPage from "./pages/UploadProductPage";
 import ProductPage from "./pages/ProductPage";
 import SearchPage from "./pages/SearchPage";
+import EditProductPage from "./pages/EditProductPage";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
             </Route>
             <Route exact path="/products">
               <SearchPage />
+            </Route>
+            <Route exact path="/product/:id/edit-product">
+              <EditProductPage />
             </Route>
             <Route exact path="/register">
               <RegisterPage />

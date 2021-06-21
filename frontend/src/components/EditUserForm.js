@@ -16,7 +16,6 @@ const EditUserForm = (props) => {
     const [ fname, setFname ] = useState('');
     const [ lname, setLname ] = useState('');
     const [ email, setEmail ] = useState('');
-    const [ pwd, setPwd ] = useState('');
     const [ bio, setBio ] = useState('');
     const [ last_ubication, setLast_ubication] = useState('');
 
@@ -25,8 +24,7 @@ const EditUserForm = (props) => {
       username : username || user.username,
       fname : fname || user.fname,
       lname : lname || user.lname,
-      email : email || user.lname,
-      pwd : pwd || user.pwd,
+      email : email || user.email,
       bio : bio || user.bio, 
       last_ubication : last_ubication || user.last_ubication,
     }
@@ -99,15 +97,6 @@ const EditUserForm = (props) => {
             onChange={(e) => setEmail(e.target.value)} 
             placeholder={user.email}
           />
-  
-          <label htmlFor="registerPwd" />
-          <input
-            type="password"
-            id="registerPassword"
-            name="password"
-            value={pwd}
-            onChange={(e) => setPwd(e.target.value)}
-          />
 
           <label htmlFor="editFname"/>
           <input 
@@ -116,7 +105,7 @@ const EditUserForm = (props) => {
             name='editBio' 
             value={bio} 
             onChange={(e)=> setBio(e.target.value)} 
-            placeholder={ user.bio ? (user.bio) : ('Biografía')}
+            placeholder={user.bio || 'Biografía'}
           />
 
           <label htmlFor="editUbication"/>
@@ -126,7 +115,7 @@ const EditUserForm = (props) => {
             name='editUbication' 
             value={last_ubication} 
             onChange={(e)=> setLast_ubication(e.target.value)} 
-            placeholder={ user.last_ubication ? (user.last_ubication) : ('Ubicación')}
+            placeholder={user.last_ubication || 'Ubicación'}
           />
 
           <input type="submit" value="Actualizar mis datos"/>

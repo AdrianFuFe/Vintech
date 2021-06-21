@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
-import { useParams, useHistory } from "react-router";
 /* import "../css/user-profile-menu.css"; */
 
 const MyConfigMenu = (props) => {
-
-  let {id} = useParams();
 
   const menuOptions = [
     "edit",

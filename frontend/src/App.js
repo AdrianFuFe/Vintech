@@ -14,6 +14,7 @@ import MyProductsPage from "./pages/MyProductsPage";
 import MyHistoryPage from "./pages/MyHistoryPage";
 import MyConfigPage from "./pages/MyConfigPage";
 import ChangePwdPage from "./pages/ChangePwdPage";
+import UserProductsPage from "./pages/UserProductsPage"
 import UploadProductPage from "./pages/UploadProductPage";
 import ProductPage from "./pages/ProductPage";
 import SearchPage from "./pages/SearchPage";
@@ -48,6 +49,9 @@ function App() {
             </Route>
             <Route exact path="/user/:id">
               <UserPage />
+            </Route>
+            <Route exact path="/user/:id/onsale-products">
+              <UserProductsPage />
             </Route>
             <Route exact path="/user/:id/edit-profile">
               <EditUserPage />

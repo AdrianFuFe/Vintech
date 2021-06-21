@@ -7,7 +7,7 @@ const UserMenu = (props) => {
   
   const menuOptions = [
     "ratings",
-    "products",
+    "onsale-products",
   ];
   
   const menuOptionsArray = menuOptions.map((opt, index) => {
@@ -15,7 +15,7 @@ const UserMenu = (props) => {
     
     if (opt === 'ratings') {
       title='VALORACIONES';
-    }else if (opt === 'products'){
+    }else if (opt === 'onsale-products'){
       title='OTROS PRODUCTOS';
     }else {
       title='OPCION';

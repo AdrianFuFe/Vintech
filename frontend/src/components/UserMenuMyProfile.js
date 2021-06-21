@@ -4,8 +4,6 @@ import "../css/user-profile-menu.css";
 
 const UserMenuMyProfile = (props) => {
   const location = useLocation();
-
-  console.log(props.products);
   
   const menuOptions = [
     "my-ratings",

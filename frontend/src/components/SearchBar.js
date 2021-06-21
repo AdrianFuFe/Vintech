@@ -11,7 +11,7 @@ const SearchBar = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push(`/product?search=${value}`);
+    history.push(`/products?search=${value}`);
   };
 
   const handleChange = (e) => {

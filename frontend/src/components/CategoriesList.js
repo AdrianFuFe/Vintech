@@ -16,7 +16,7 @@ const CategoriesList = (props) => {
 
   const categoriesArray = categories.map((cat, index) => (
     <li key={index}>
-      <Link to={`/product?search=${cat}`}>
+      <Link to={`/products?search=${cat}`}>
         <span id={cat} />
         <h3>{cat}</h3>
       </Link>

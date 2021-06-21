@@ -5,8 +5,12 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 const GoBackButton = (props) => {
   const history = useHistory();
 
+  const atras = () => {
+    history.goBack();
+  };
+
   return (
-    <IconButton onClick={() => history.goBack()}>
+    <IconButton onClick={atras}>
       <ArrowBackIcon />
     </IconButton>
   );

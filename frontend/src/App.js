@@ -16,6 +16,7 @@ import MyHistoryPage from "./pages/MyHistoryPage";
 import MyConfigPage from "./pages/MyConfigPage";
 import UploadProductPage from "./pages/UploadProductPage";
 import ProductPage from "./pages/ProductPage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <HomePage />
+            </Route>
+            <Route exact path="/products">
+              <SearchPage />
             </Route>
             <Route exact path="/register">
               <RegisterPage />

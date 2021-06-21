@@ -34,7 +34,7 @@ const ChangePwdForm = (props) =>{
 
     if (res.ok) {
       setError('');
-      history.push(`/user/${user.id}/my-profile`);
+      history.push(`/user/${user.id}`);
     } else {
       setError(data.error);
     }

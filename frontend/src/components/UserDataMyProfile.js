@@ -5,6 +5,7 @@ import "../css/user-data-myprofile.css";
 
 const UserDataMyProfile = (props) => {
   const {user} = props;
+  console.log(user);
   
   return(
     <div id='user-data'>

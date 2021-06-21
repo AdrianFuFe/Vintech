@@ -10,7 +10,7 @@ const {id} = useParams();
 
   const [token] = useContext(TokenContext);
   const decodedToken = decodeToken(token);
-  const idToken = decodedToken.id;
+  const idToken = `${decodedToken.id}`;
   
   useEffect(() => {
     if ( id === idToken ) {

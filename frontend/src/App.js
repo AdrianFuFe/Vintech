@@ -49,7 +49,7 @@ function App() {
             <Route exact path="/user/:id">
               <UserPage />
             </Route>
-            <Route exact path="/user/:id/edit">
+            <Route exact path="/user/:id/edit-profile">
               <EditUserPage />
             </Route>
             <Route exact path="/user/:id/my-ratings">

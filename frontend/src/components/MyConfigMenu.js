@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const MyConfigMenu = (props) => {
 
   const menuOptions = [
-    "edit",
+    "edit-profile",
     'pwd',
   ];
 
@@ -12,7 +12,7 @@ const MyConfigMenu = (props) => {
     let title;
     
     switch (opt){
-      case 'edit':
+      case 'edit-profile':
         title='EDITAR MIS DATOS';
         break
       case 'pwd':

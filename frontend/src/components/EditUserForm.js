@@ -91,10 +91,10 @@ const EditUserForm = (props) => {
           <input 
             type="email" 
             id="editEmail" 
-            name="email" 
+            name="editEmail" 
             value={email} 
             onChange={(e) => setEmail(e.target.value)} 
-            placeholder={user.email}
+            placeholder={ user.email || 'email' }
           />
 
           <label htmlFor="editFname"/>

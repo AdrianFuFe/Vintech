@@ -4,6 +4,8 @@ import "../css/user-profile-menu.css";
 
 const UserMenuMyProfile = (props) => {
   const location = useLocation();
+
+  console.log(props.products);
   
   const menuOptions = [
     "my-ratings",
@@ -30,9 +32,9 @@ const UserMenuMyProfile = (props) => {
     let url = `${location.pathname}/${opt}`;
     
     return(
-    <li key={index} >
+    <li key={index} products={props.products}>
       <Link to={url}>
-        <h3 user={props.user}>{title}</h3>
+        <h3 user={props.user} products={props.products}>{title}</h3>
       </Link>
     </li>
     )

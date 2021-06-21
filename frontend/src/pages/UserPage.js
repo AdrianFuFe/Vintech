@@ -17,7 +17,7 @@ const UserPage = (props) => {
   const [user] = useRemoteUser();
 
   let userData;
-  user.data ? (userData = user.data[0]) : (userData='cargando datos de usuario')
+  user.data ? (userData = user.data[0]) : (userData='cargando datos de usuario');
 
   return(
     <>
@@ -25,7 +25,7 @@ const UserPage = (props) => {
         <>
           <HeaderBackTitle />
           <UserDataMyProfile user={userData}/>
-          <UserMenuMyProfile user={userData}/>
+          <UserMenuMyProfile user={userData} />
           <MenuBar />
         </>
       ) : (

@@ -10,10 +10,10 @@ async function getMyUser(req, res, next) {
     //obtenemos datos de user
     const [user] = await connection.query(
       `
-                SELECT U.id, U.img, U.username, U.fname, U.lname, U.bio, U.last_ubication, U.creation_date
-                FROM users U
-                WHERE U.id=?
-            `,
+      SELECT *
+      FROM users U
+      WHERE U.id=?
+      `,
       [id]
     );
 

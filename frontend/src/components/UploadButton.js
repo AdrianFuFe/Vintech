@@ -7,14 +7,14 @@ const UploadButton = (props) => {
   const [token] = useContext(TokenContext);
   let route;
   if (token) {
-    route = "/product";
+    route = "/upload-product";
   } else {
     route = "/login";
   }
 
   const location = useLocation();
   let fill;
-  if (location.pathname === "/product") {
+  if (location.pathname === "/upload-product") {
     fill = "#d07017";
   } else {
     fill = "#828282";

@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { TokenContext } from './TokenContextProvider';
 import { useHistory } from 'react-router';
 import "../css/register-form.css";
 
@@ -6,36 +7,47 @@ import "../css/register-form.css";
 const EditUserForm = (props) => {
 
     const { user } = props;
+    const [token] = useContext(TokenContext);
+
+    const history = useHistory();
+    const id = user.id;
   
     const [ username, setUsername ] = useState('');
     const [ fname, setFname ] = useState('');
     const [ lname, setLname ] = useState('');
     const [ email, setEmail ] = useState('');
-    const [ pwd, setPwd ] = useState('');
     const [ bio, setBio ] = useState('');
     const [ last_ubication, setLast_ubication] = useState('');
 
+    
+    const info = {
+      username : username || user.username,
+      fname : fname || user.fname,
+      lname : lname || user.lname,
+      email : email || user.email,
+      bio : bio || user.bio, 
+      last_ubication : last_ubication || user.last_ubication,
+    }
+    
     const [error, setError] = useState('');
-  
-    const history = useHistory();
-  
+    
     const editUser = async (e) => {
       e.preventDefault();
-
-      const res = await fetch('http://localhost:3300/user/:id', {
+      
+      const res = await fetch(`http://localhost:3300/user/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          authorization: `${token}`,
         },
-        body: JSON.stringify({ username, fname, lname, email, pwd, bio, last_ubication}),
+        body: JSON.stringify(info),
       });
       
       const data = await res.json();
   
       if (res.ok) {
         setError('');
-
-        history.push('/welcome');
+        history.push(`/user/${user.id}/my-profile`);
       } else {
         setError(data.error);
       }
@@ -53,7 +65,7 @@ const EditUserForm = (props) => {
             name='editUsername' 
             value={username} 
             onChange={(e)=> setUsername(e.target.value)} 
-            placeholder={ user.username ? (user.username) : ('Alias')} 
+            placeholder={ user.username } 
           />
 
           <label htmlFor="editFname"/>
@@ -63,7 +75,7 @@ const EditUserForm = (props) => {
             name='editFname' 
             value={fname} 
             onChange={(e)=> setFname(e.target.value)} 
-            placeholder={ user.fname ? (user.fname) : ('Nombre' )} 
+            placeholder={ user.fname || 'Nombre' } 
           />
 
           <label htmlFor="editLname"/>
@@ -71,9 +83,9 @@ const EditUserForm = (props) => {
             type='text' 
             id='editLname' 
             name='editLname' 
-            value={fname} 
+            value={lname} 
             onChange={(e)=> setLname(e.target.value)} 
-            placeholder={ user.lname ? (user.lname) : ('Apellidos')} 
+            placeholder={ user.lname || 'Apellidos'} 
           />
   
           <label htmlFor="editEmail"/>
@@ -83,17 +95,7 @@ const EditUserForm = (props) => {
             name="email" 
             value={email} 
             onChange={(e) => setEmail(e.target.value)} 
-            placeholder={ user.email ? (user.email) : ('Email')}
-          />
-  
-          <label htmlFor="registerPwd" />
-          <input
-            type="password"
-            id="registerPassword"
-            name="password"
-            value={pwd}
-            onChange={(e) => setPwd(e.target.value)}
-            placeholder={ user.pwd ? (user.pwd) : ('Contraseña')}
+            placeholder={user.email}
           />
 
           <label htmlFor="editFname"/>
@@ -103,7 +105,7 @@ const EditUserForm = (props) => {
             name='editBio' 
             value={bio} 
             onChange={(e)=> setBio(e.target.value)} 
-            placeholder={ user.bio ? (user.bio) : ('Biografía')}
+            placeholder={user.bio || 'Biografía'}
           />
 
           <label htmlFor="editUbication"/>
@@ -113,9 +115,9 @@ const EditUserForm = (props) => {
             name='editUbication' 
             value={last_ubication} 
             onChange={(e)=> setLast_ubication(e.target.value)} 
-            placeholder={ user.last_ubication ? (user.last_ubication) : ('Ubicación')}
+            placeholder={user.last_ubication || 'Ubicación'}
           />
-  
+
           <input type="submit" value="Actualizar mis datos"/>
           {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>

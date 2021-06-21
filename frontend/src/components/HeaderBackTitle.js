@@ -1,5 +1,6 @@
 import GoBackButton from "./GoBackButton";
 import { useLocation } from 'react-router';
+
 import "../css/header-title.css";
 
 const HeaderBackTitle = (props) => {
@@ -16,7 +17,7 @@ const HeaderBackTitle = (props) => {
     title='BUZÓN'
   } else if(location.pathname.includes('config')){
     title='CONFIGURACIÓN'
-  } else if(location.pathname.includes('new-product')){
+  } else if(location.pathname.includes('upload-product')){
     title='NUEVO PRODUCTO'
   } else {
     title='MI PERFIL'

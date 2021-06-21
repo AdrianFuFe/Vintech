@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
 import { TokenContext } from './TokenContextProvider';
 import { useHistory } from 'react-router';
-import "../css/register-form.css";
 
 
 const EditUserForm = (props) => {

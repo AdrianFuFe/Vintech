@@ -1,24 +1,18 @@
 import UserAvatar from './UserAvatar';
-import useRemoteUser from '../hooks/useRemoteUser';
-import "../css/user-data-myprofile.css";
 
 
 const UserData = (props) => {
-  const [user] = useRemoteUser();
-  const data=  user.data;
-  let userData;
-
-  data ? (userData = data[0]) : (userData='cargando datos de usuario')
+  const {user} = props;
   
   return(
     <div id='user-data'>
       <UserAvatar />
       <ul>
-        <li><h3> {userData.username} </h3></li>
-        <li>{userData.fname}</li>
-        <li>{userData.lname}</li>
-        <li>{userData.last_ubication}</li>
-        <li>{userData.bio}</li>
+        <li><h3> Datos de {user.username} </h3></li>
+        <li>{user.fname}</li>
+        <li>{user.lname}</li>
+        <li>{user.last_ubication}</li>
+        <li>{user.bio}</li>
       </ul>
     </div>
   )

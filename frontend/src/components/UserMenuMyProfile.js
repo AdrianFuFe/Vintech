@@ -2,8 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import "../css/user-profile-menu.css";
 
 
-const UserProfileMenu = (props) => {
-  
+const UserMenuMyProfile = (props) => {
   const location = useLocation();
   
   const menuOptions = [
@@ -31,9 +30,9 @@ const UserProfileMenu = (props) => {
     let url = `${location.pathname}/${opt}`;
     
     return(
-    <li key={index}>
+    <li key={index} >
       <Link to={url}>
-        <h3>{title}</h3>
+        <h3 user={props.user}>{title}</h3>
       </Link>
     </li>
     )
@@ -47,4 +46,4 @@ const UserProfileMenu = (props) => {
   )
 }
 
-export default UserProfileMenu;
+export default UserMenuMyProfile;

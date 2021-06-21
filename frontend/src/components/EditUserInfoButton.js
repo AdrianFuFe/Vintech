@@ -4,7 +4,7 @@ const EditUserInfoButton = (props) => {
   const { id }= useParams();
 
   return(
-    <Link to={`/user/${id}/my-profile/edit`}>
+    <Link to={`/user/${id}/edit`}>
       <svg 
         width="30" 
         height="30" 

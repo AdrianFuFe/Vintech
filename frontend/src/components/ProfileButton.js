@@ -12,7 +12,7 @@ const ProfileButton = (props) => {
   decodedToken ? (id = decodedToken.id) : (id = null);
 
   let route;
-  token ? (route = `/user/${id}/my-profile`) : (route = "/login");
+  token ? (route = `/user/${id}`) : (route = "/login");
 
   const location = useLocation();
   let fill;

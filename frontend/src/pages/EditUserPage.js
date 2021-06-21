@@ -1,11 +1,11 @@
 import EditUserForm from "../components/EditUserForm";
 import HeaderBackTitle from "../components/HeaderBackTitle";
 import MenuBar from "../components/MenuBar";
-import useRemoteMyUser from "../hooks/useRemoteMyUser";
+import useRemoteUser from "../hooks/useRemoteUser";
 
 
 const EditUserPage = (props) => {
-  const [user ] = useRemoteMyUser();
+  const [user ] = useRemoteUser();
 
   const data =  user.data; 
   let userData;

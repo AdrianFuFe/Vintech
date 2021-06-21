@@ -7,9 +7,8 @@ import WelcomePage from "./pages/WelcomePage";
 import LoginPage from "./pages/LoginPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import HomePage from "./pages/HomePage";
-import MyUserPage from "./pages/MyUserPage";
-import EditUserPage from "./pages/EditUserPage";
 import UserPage from "./pages/UserPage";
+import EditUserPage from "./pages/EditUserPage";
 import MyRatingPage from "./pages/MyRatingPage";
 import MyProductsPage from "./pages/MyProductsPage";
 import MyHistoryPage from "./pages/MyHistoryPage";
@@ -43,28 +42,25 @@ function App() {
             <Route exact path="/categories">
               <CategoriesPage />
             </Route>
-            <Route exact path="/user/:id/my-profile">
-              <MyUserPage />
-            </Route>
-            <Route exact path="/user/:id/my-profile/edit">
-              <EditUserPage />
-            </Route>
             <Route exact path="/user/:id">
               <UserPage />
             </Route>
-            <Route exact path="/user/:id/my-profile/my-ratings">
+            <Route exact path="/user/:id/edit">
+              <EditUserPage />
+            </Route>
+            <Route exact path="/user/:id/my-ratings">
               <MyRatingPage />
             </Route>
-            <Route exact path="/user/:id/my-profile/my-products">
+            <Route exact path="/user/:id/my-products">
               <MyProductsPage />
             </Route>
-            <Route exact path="/user/:id/my-profile/my-history">
+            <Route exact path="/user/:id/my-history">
               <MyHistoryPage />
             </Route>
-            <Route exact path="/user/:id/my-profile/my-config">
+            <Route exact path="/user/:id/my-config">
               <MyConfigPage />
             </Route>
-            <Route exact path="/user/:id/my-profile/pwd">
+            <Route exact path="/user/:id/pwd">
               <ChangePwdPage />
             </Route>
             <Route exact path="/upload-product">

@@ -1,17 +1,42 @@
-import HeaderBackTitle from '../components/HeaderBackTitle';
-import UserData from '../components/UserDataMyProfile';
-import UserProfileMenu from '../components/UserProfileMenu';
-import MenuBar from '../components/MenuBar';
+import { useContext } from 'react';
+import { TokenContext } from '../components/TokenContextProvider';
+import decodeToken from '../utils/decodeToken';
+import useRemoteUser from '../hooks/useRemoteUser';
 
+import HeaderBackTitle from '../components/HeaderBackTitle';
+import MenuBar from '../components/MenuBar';
+import UserDataMyProfile from '../components/UserDataMyProfile';
+import UserMenuMyProfile from '../components/UserMenuMyProfile';
+import UserData from '../components/UserData';
+import UserMenu from '../components/UserMenu';
 
 const UserPage = (props) => {
+  const [token] = useContext(TokenContext);
+  const decodedToken = decodeToken(token);
+  
+  const [user] = useRemoteUser();
+
+  let userData;
+  user.data ? (userData = user.data[0]) : (userData='cargando datos de usuario')
 
   return(
     <>
-      <HeaderBackTitle />
-      <UserData />
-      <UserProfileMenu />
-      <MenuBar />
+      {(decodedToken.id === userData.id) ? (
+        <>
+          <HeaderBackTitle />
+          <UserDataMyProfile user={userData}/>
+          <UserMenuMyProfile user={userData}/>
+          <MenuBar />
+        </>
+      ) : (
+        <>
+          <HeaderBackTitle />
+          <UserData user={userData}/>
+          <UserMenu />
+          <MenuBar />
+        </>
+      )
+    }
     </>
   )
 }

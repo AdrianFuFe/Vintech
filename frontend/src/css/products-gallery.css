@@ -1,11 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
 #products li a {
   display: grid;
   width: 100%;
   grid-template-areas: "img center1 right" "img center2 right" "img center3 right";
   grid-template-columns: 100px 1fr 3rem;
-  font-family: "robot" sans-serif;
   border-bottom: 1px solid gray;
   margin-bottom: 1rem;
   justify-items: start;

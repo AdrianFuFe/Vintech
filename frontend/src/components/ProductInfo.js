@@ -10,8 +10,8 @@ const ProductInfo = (props) => {
       <div className="product-sheet">
         <h2 id="price">{product.data[0].price}</h2>
         <h2 id="title">{product.data[0].title}</h2>
-        <p>{product.data[0].description}</p>
-        <p>
+        <p id="description">{product.data[0].description}</p>
+        <p id="date">
           <Moment format="DD/MM/YYYY">
             {product.data[0].modification_date}
           </Moment>

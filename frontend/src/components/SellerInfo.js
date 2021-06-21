@@ -10,17 +10,20 @@ const SellerInfo = () => {
   return product.data ? (
     <div id="seller-info">
       <Link to={`/user/${product.data[0].user_id}`}>
-        {product.data[0].user_img ? (
-          <img
-            src={`http://localhost:3300/uploads/avatars/${product.data[0].user_img}`}
-            alt="avatar de usuario"
-          />
-        ) : (
-          <AccountCircleOutlinedIcon />
-        )}
+        <div id="seller-avatar">
+          {product.data[0].user_img ? (
+            <img
+              src={`http://localhost:3300/uploads/avatars/${product.data[0].user_img}`}
+              alt="avatar de usuario"
+            />
+          ) : (
+            <AccountCircleOutlinedIcon />
+          )}
+        </div>
         <h3>{product.data[0].user_username}</h3>
         <Rating
           name="user-rating"
+          id="user-rating"
           defaultValue={product.feedback[0].rating}
           precision={0.25}
           readOnly

@@ -1,16 +1,17 @@
 import { useContext } from "react";
 import { TokenContext } from "./TokenContextProvider";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
+import decodeToken from '../utils/decodeToken';
 
 
 const ProfileButton = (props) => {
   const [token] = useContext(TokenContext);
-
-  const { id }= useParams();
+  const decodedToken = decodeToken(token);
+  const id = decodedToken.id;
 
   let route;
-  token ? (route = `/user/:id/my-profile`) : (route = "/login");
+  token ? (route = `/user/${id}/my-profile`) : (route = "/login");
 
   const location = useLocation();
   let fill;

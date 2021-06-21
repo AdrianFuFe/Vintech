@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 /* import "../css/user-profile-menu.css"; */
 
 const MyConfigMenu = (props) => {
@@ -8,16 +8,24 @@ const MyConfigMenu = (props) => {
 
   const menuOptions = [
     "edit",
+    'pwd',
   ];
 
   const menuOptionsArray = menuOptions.map((opt, index) => {
     let title;
     
-    if (opt === 'edit') {
-      title='EDITAR MI PERFIL';
+    switch (opt){
+      case 'edit':
+        title='EDITAR MIS DATOS';
+        break
+      case 'pwd':
+        title='CAMBIAR CONTRASEÑA'
+        break;
+      default:
+        title='OPCION'
     }
 
-    let url = `http://localhost:3000/user/${id}/my-profile/${opt}`;
+    let url = `${opt}`;
 
     return(
       <li key={index}>

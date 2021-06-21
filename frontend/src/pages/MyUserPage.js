@@ -2,11 +2,11 @@ import HeaderBackTitle from '../components/HeaderBackTitle';
 import UserDataMyProfile from '../components/UserDataMyProfile';
 import UserProfileMenu from '../components/UserProfileMenu';
 import MenuBar from '../components/MenuBar';
-import useRemoteUser from '../hooks/useRemoteUser';
+import useRemoteMyUser from '../hooks/useRemoteMyUser';
 
 
 const MyUserPage = (props) => {
-  const [user] = useRemoteUser();
+  const [user] = useRemoteMyUser();
 
   const data =  user.data; 
   let userData;

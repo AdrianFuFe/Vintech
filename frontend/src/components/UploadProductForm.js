@@ -5,7 +5,7 @@ import { TokenContext } from './TokenContextProvider';
 
 
 
-const NewProductForm = (props) => {
+const UploadProductForm = (props) => {
   const [ title, setTitle ] = useState('');
   const [ price, setPrice ] = useState('');
   const [ description, setDescription ] = useState('');
@@ -24,7 +24,7 @@ const NewProductForm = (props) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        authorization: `Bearer ${token}`,
+        authorization: `${token}`,
       },
       body: JSON.stringify({ title, price, description, category, ubication }),
     });
@@ -83,7 +83,7 @@ const NewProductForm = (props) => {
 
         <section id='category'>
           <label htmlFor='category'><h4>Categorías</h4></label>
-          <input type='radio' id='ordenadores' name='category' value='ordenadores' onChange={(e) => setCategory(e.target.value)}/>
+          <input type='radio' id='ordenadores' name='category' value='ordenadores' onChange={(e) => setCategory(e.target.value)} required/>
           <label htmlFor='ordenadores'>Ordenadores</label>
           <input type='radio' id='telefonia' name='category' value='telefonia' onChange={(e) => setCategory(e.target.value)}/>
           <label htmlFor='telefonia'>Telefonía</label>
@@ -122,4 +122,4 @@ const NewProductForm = (props) => {
     </div>
 )
 }
-export default NewProductForm;
+export default UploadProductForm;

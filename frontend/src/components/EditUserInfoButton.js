@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const EditUserInfoButton = (props) => {
+  const { id }= useParams();
+
   return(
-    <Link to='/'>
+    <Link to={`/user/${id}/my-profile/edit`}>
       <svg 
         width="30" 
         height="30" 

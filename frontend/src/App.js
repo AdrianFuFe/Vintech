@@ -14,7 +14,7 @@ import MyRatingPage from "./pages/MyRatingPage";
 import MyProductsPage from "./pages/MyProductsPage";
 import MyHistoryPage from "./pages/MyHistoryPage";
 import MyConfigPage from "./pages/MyConfigPage";
-import NewProductPage from "./pages/NewProductPage";
+import UploadProductPage from "./pages/UploadProductPage";
 
 function App() {
   return (
@@ -40,7 +40,7 @@ function App() {
             <Route exact path="/user/:id/my-profile">
               <MyUserPage />
             </Route>
-            <Route exact path="/user/:id/edit">
+            <Route exact path="/user/:id/my-profile/edit">
               <EditUserPage />
             </Route>
             <Route exact path="/user/:id">
@@ -58,8 +58,8 @@ function App() {
             <Route exact path="/user/:id/my-profile/my-config">
               <MyConfigPage />
             </Route>
-            <Route exact path="/product">
-              <NewProductPage />
+            <Route exact path="/upload-product">
+              <UploadProductPage />
             </Route>
           </Switch>
         </TokenContextProvider>

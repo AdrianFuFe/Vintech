@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const useRemoteUser = () => {
   const [user, setUser] = useState([]);
 
-  let {id} = useParams();
+  let { id } = useParams();
 
   const chargeUser = async () => {
     const res = await fetch(`http://localhost:3300/user/${id}`, {
@@ -19,8 +19,8 @@ const useRemoteUser = () => {
 
   useEffect(() => {
     chargeUser();
-  },[]);
-  
+  }, []);
+
   return [user, setUser];
 };
 

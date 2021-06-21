@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import useRemoteProducts from "../hooks/useRemoteProducts";
-import IconButton from "@material-ui/core/IconButton";
 import PhotoIcon from "@material-ui/icons/Photo";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import ReactTimeAgo from "react-time-ago";
+import "../css/products-gallery.css";
 
 const ProductsGallery = (props) => {
   const [products] = useRemoteProducts();
@@ -11,32 +12,32 @@ const ProductsGallery = (props) => {
   data
     ? (arrayData = data.map((product) => (
         <li key={product.id} className="product">
-          <div className="div-img">
-            {product.img ? (
-              <img
-                src={`http://localhost:3300/uploads/imgs/${product.img.img}`}
-                alt="foto de producto"
-              />
-            ) : (
-              <IconButton>
+          <Link to={`/product/${product.id}`}>
+            <div className="div-img">
+              {product.img ? (
+                <img
+                  src={`http://localhost:3300/uploads/imgs/${product.img.img}`}
+                  alt="foto de producto"
+                />
+              ) : (
                 <PhotoIcon />
-              </IconButton>
-            )}
-          </div>
-          <h2>{product.price}</h2>
-          <p>
-            <ReactTimeAgo date={product.modification_date} locale="es-ES" />
-          </p>
-          <p>{product.title}</p>
-          <p>
-            <LocationOnOutlinedIcon />
-            {product.ubication}
-          </p>
+              )}
+            </div>
+            <h2>{product.price}</h2>
+            <p className="time-ago">
+              <ReactTimeAgo date={product.modification_date} locale="es-ES" />
+            </p>
+            <p className="product-title">{product.title}</p>
+            <p className="product-ubication">
+              <LocationOnOutlinedIcon />
+              {product.ubication}
+            </p>
+          </Link>
         </li>
       )))
     : (arrayData = "No hay productos");
 
-  return <ul>{arrayData}</ul>;
+  return <ul id="products">{arrayData}</ul>;
 };
 
 export default ProductsGallery;

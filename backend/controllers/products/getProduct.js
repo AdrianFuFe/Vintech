@@ -27,11 +27,20 @@ async function getProduct(req, res, next) {
       [id]
     );
 
+    const [feedback] = await connection.query(
+      `
+    SELECT AVG(stars) AS rating
+    FROM feedbacks
+    WHERE id_user_B = ?`,
+      [result[0].user_id]
+    );
+
     res.send({
       status: "OK",
       message: `Estos son los datos del producto con id ${id}`,
       data: result,
       imgs: imgs,
+      feedback: feedback,
     });
   } catch (error) {
     next(error);

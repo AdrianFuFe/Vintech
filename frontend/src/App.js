@@ -15,6 +15,8 @@ import MyProductsPage from "./pages/MyProductsPage";
 import MyHistoryPage from "./pages/MyHistoryPage";
 import MyConfigPage from "./pages/MyConfigPage";
 import UploadProductPage from "./pages/UploadProductPage";
+import NewProductPage from "./pages/NewProductPage";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   return (
@@ -60,6 +62,9 @@ function App() {
             </Route>
             <Route exact path="/upload-product">
               <UploadProductPage />
+            </Route>
+            <Route exact path="/product/:id">
+              <ProductPage />
             </Route>
           </Switch>
         </TokenContextProvider>

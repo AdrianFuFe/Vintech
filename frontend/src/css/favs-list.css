@@ -1,0 +1,57 @@
+#favoritos li a {
+  display: grid;
+  width: 100%;
+  grid-template-areas: "img center1 right" "img center2 right" "img center3 right";
+  grid-template-columns: 100px 1fr 3rem;
+  border-bottom: 1px solid gray;
+  margin-bottom: 1rem;
+  justify-items: start;
+  text-decoration: none;
+  color: gray;
+}
+
+.fav .div-img {
+  grid-area: img;
+  padding: 1rem;
+}
+
+.fav h2 {
+  grid-area: center1;
+  color: #d07017;
+  font-size: 1rem;
+}
+
+.fav h2:after {
+  content: "€";
+}
+
+.fav .time-ago {
+  grid-area: right;
+  color: gray;
+  font-size: 0.5rem;
+}
+
+.fav .fav-title {
+  grid-area: center2;
+  text-align: left;
+  color: black;
+  font-size: 0.8rem;
+}
+
+.fav .fav-ubication {
+  grid-area: center3;
+  color: gray;
+  font-size: 0.8rem;
+}
+
+.div-img img {
+  max-width: 100%;
+}
+
+#favs {
+  margin-bottom: 5rem;
+}
+.fav-ubication svg {
+  max-height: 0.8rem;
+  margin: 0;
+}

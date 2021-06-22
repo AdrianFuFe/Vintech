@@ -1,4 +1,4 @@
-div#rating-template {
+div#vote-template {
   min-width: 100vw;
   display: grid;
   grid-template-columns: 1fr repeat(3, 2fr);
@@ -8,7 +8,7 @@ div#rating-template {
   padding: 0 1rem 0 1rem;
 }
 
-#rating-template p {
+#vote-template p {
   display: flex;
 }
 
@@ -19,26 +19,26 @@ div.MuiAvatar-root {
   height: 80px;
 }
 
-#rating-template p#date {
+#vote-template p#date {
   grid-column: 1;
   grid-row: 3;
   justify-self: center;
   align-self: flex-end;
 }
 
-#rating-template p#username {
+#vote-template p#buyer {
   grid-column: 2/4;
   grid-row: 1;
   margin-left: 1rem;
 }
 
-#rating-template p#points {
+#vote-template p#stars {
   grid-column: 4;
   grid-row: 1;
   justify-self: right;
 }
 
-#rating-template p#coment {
+#vote-template p#comment {
   grid-column: 2 / 5;
   grid-row: 2 / 4;
   text-align: left;

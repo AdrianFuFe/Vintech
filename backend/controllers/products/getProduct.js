@@ -9,7 +9,21 @@ async function getProduct(req, res, next) {
 
     const [result] = await connection.query(
       `
-        SELECT P.title, P.price, P.description, P.ubication, P.modification_date, P.category, P.status, U.id AS user_id, U.img AS user_img, U.username AS user_username, U.fname AS user_username, U.lname AS user_lastname, U.bio AS user_bio, U.last_ubication AS user_last_ubication
+        SELECT 
+          P.title, 
+          P.price, 
+          P.description, 
+          P.ubication, 
+          P.modification_date, 
+          P.category, 
+          P.status, 
+          U.id AS user_id, 
+          U.img AS user_img, 
+          U.username AS user_username, 
+          U.fname AS user_username, 
+          U.lname AS user_lastname, 
+          U.bio AS user_bio, 
+          U.last_ubication AS user_last_ubication
         FROM products P
         LEFT JOIN users U ON P.id_seller = U.id
         WHERE P.id =?

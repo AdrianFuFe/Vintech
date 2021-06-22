@@ -1,12 +1,15 @@
 import HeaderBackTitle from '../components/HeaderBackTitle';
-import RatingList from '../components/RatingList';
+import VotesList from '../components/VotesList';
 import MenuBar from '../components/MenuBar';
+import useRemoteVotes from '../hooks/useRemoteVotes';
 
 const MyRatingPage = (props) => {
+  const [votes] = useRemoteVotes();
+
   return (
     <>
       <HeaderBackTitle />
-      <RatingList />
+      <VotesList votes={votes.data} buyer={votes.buyer}/>
       <MenuBar />
     </>
   )

@@ -21,6 +21,8 @@ const HeaderBackTitle = (props) => {
     title = "EDITAR MI PERFIL";
   } else if (location.pathname.includes("pwd")) {
     title = "CAMBIO DE CONTRASEÑA";
+  } else if (location.pathname.includes("favs")) {
+    title = "MIS FAVORITOS";
   } else if (location.pathname.includes("upload-product")) {
     title = "NUEVO PRODUCTO";
   } else if (location.pathname.includes("edit-product")) {

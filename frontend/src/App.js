@@ -14,6 +14,7 @@ import MyProductsPage from "./pages/MyProductsPage";
 import MyHistoryPage from "./pages/MyHistoryPage";
 import MyConfigPage from "./pages/MyConfigPage";
 import ChangePwdPage from "./pages/ChangePwdPage";
+import FavsPage from "./pages/FavsPage";
 import UserProductsPage from "./pages/UserProductsPage"
 import UploadProductPage from "./pages/UploadProductPage";
 import ProductPage from "./pages/ProductPage";
@@ -70,6 +71,9 @@ function App() {
             </Route>
             <Route exact path="/user/:id/pwd">
               <ChangePwdPage />
+            </Route>
+            <Route exact path="/user/:id/favs">
+              <FavsPage />
             </Route>
             <Route exact path="/upload-product">
               <UploadProductPage />

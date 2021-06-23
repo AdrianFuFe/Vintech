@@ -1,10 +1,22 @@
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from "@material-ui/core/Avatar";
 
 const UserAvatar = (props) => {
+  const { user } = props;
 
   return (
     <div>
-      <Avatar alt="Avatar del usuario" src="/images/png/.png" width='500px'/>
+      {user ? (
+        user.img ? (
+          <Avatar
+            alt="Avatar del usuario"
+            src={`http://localhost:3300/uploads/avatars/${user.img}`}
+          />
+        ) : (
+          <Avatar alt="Avatar del usuario" />
+        )
+      ) : (
+        <Avatar alt="Avatar del usuario" />
+      )}
     </div>
   );
 };

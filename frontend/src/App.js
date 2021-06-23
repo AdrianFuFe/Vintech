@@ -11,6 +11,7 @@ import UserPage from "./pages/UserPage";
 import EditUserPage from "./pages/EditUserPage";
 import MyRatingPage from "./pages/MyRatingPage";
 import MyProductsPage from "./pages/MyProductsPage";
+import MyBookingsPage from "./pages/MyBookingsPage";
 import MyHistoryPage from "./pages/MyHistoryPage";
 import MyConfigPage from "./pages/MyConfigPage";
 import ChangePwdPage from "./pages/ChangePwdPage";
@@ -62,6 +63,9 @@ function App() {
             </Route>
             <Route exact path="/user/:id/my-products">
               <MyProductsPage />
+            </Route>
+            <Route exact path="/user/:id/my-bookings">
+              <MyBookingsPage />
             </Route>
             <Route exact path="/user/:id/my-history">
               <MyHistoryPage />

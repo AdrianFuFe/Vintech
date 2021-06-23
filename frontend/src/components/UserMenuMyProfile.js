@@ -8,6 +8,7 @@ const UserMenuMyProfile = (props) => {
   const menuOptions = [
     "my-ratings",
     "my-products",
+    "my-bookings",
     "my-history",
     "my-config",
   ];
@@ -19,12 +20,14 @@ const UserMenuMyProfile = (props) => {
       title='MIS VALORACIONES';
     }else if (opt === 'my-products'){
       title='MIS PRODUCTOS';
+    }else if (opt === 'my-bookings'){
+      title='MIS RESERVAS';
     }else if (opt ==='my-history'){
       title='MI HISTORIAL';
     }else if (opt ==='my-config'){
       title='MI CONFIGURACION';
     }else {
-      title='MI PERFIL';
+      title='OPCION';
     }
     
     let url = `${location.pathname}/${opt}`;

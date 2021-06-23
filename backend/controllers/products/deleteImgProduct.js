@@ -35,7 +35,7 @@ async function deleteImgProduct(req, res, next) {
 
     res.send({
       status: "OK",
-      message: `La imagen con id ${id} ha sido eliminada con éxito`,
+      message: `La imagen con id ${imgId} ha sido eliminada con éxito`,
     });
   } catch (error) {
     next(error);

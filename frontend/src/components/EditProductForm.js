@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import useRemoteSingleProduct from "../hooks/useRemoteSingleProduct";
 import { TokenContext } from "./TokenContextProvider";
 import { useHistory, useParams } from "react-router";
 

@@ -35,7 +35,7 @@ async function getProduct(req, res, next) {
 
     const [imgs] = await connection.query(
       `
-    SELECT img
+    SELECT id, img
     FROM product_imgs
     WHERE id_product =?`,
       [id]

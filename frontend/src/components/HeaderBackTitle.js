@@ -11,6 +11,8 @@ const HeaderBackTitle = (props) => {
     title = "MIS VALORACIONES";
   } else if (location.pathname.includes("my-products")) {
     title = "MIS PRODUCTOS";
+  } else if (location.pathname.includes("my-bookings")) {
+    title = "MIS RESERVAS";
   } else if (location.pathname.includes("my-history")) {
     title = "MI HISTORIAL";
   } else if (location.pathname.includes("mailbox")) {

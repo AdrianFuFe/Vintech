@@ -2,6 +2,7 @@ import HeaderBackSearchFavs from "../components/HeaderBackSearchFavs";
 import ProductInfo from "../components/ProductInfo";
 import SellerInfo from "../components/SellerInfo";
 import CarouselImagenes from "../components/CarouselImagenes";
+import BuyButton from "../components/BuyButton";
 import "../css/product-page.css";
 
 const ProductPage = (props) => {
@@ -11,7 +12,7 @@ const ProductPage = (props) => {
       <CarouselImagenes />
       <ProductInfo />
       <SellerInfo />
-      <button>Comprar</button>
+      <BuyButton />
       <button>Chatear</button>
     </>
   );

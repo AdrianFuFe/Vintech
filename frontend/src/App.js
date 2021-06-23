@@ -1,6 +1,6 @@
 import { React } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { TokenContextProvider } from "./components/TokenContextProvider";
 import RegisterPage from "./pages/RegisterPage";
 import WelcomePage from "./pages/WelcomePage";
@@ -11,6 +11,7 @@ import UserPage from "./pages/UserPage";
 import EditUserPage from "./pages/EditUserPage";
 import MyRatingPage from "./pages/MyRatingPage";
 import MyProductsPage from "./pages/MyProductsPage";
+import MyBookingsPage from "./pages/MyBookingsPage";
 import MyHistoryPage from "./pages/MyHistoryPage";
 import MyConfigPage from "./pages/MyConfigPage";
 import ChangePwdPage from "./pages/ChangePwdPage";
@@ -20,6 +21,9 @@ import UploadProductPage from "./pages/UploadProductPage";
 import ProductPage from "./pages/ProductPage";
 import SearchPage from "./pages/SearchPage";
 import EditProductPage from "./pages/EditProductPage";
+import BookingPage from "./pages/BookingPage";
+
+
 
 function App() {
   return (
@@ -63,6 +67,9 @@ function App() {
             <Route exact path="/user/:id/my-products">
               <MyProductsPage />
             </Route>
+            <Route exact path="/user/:id/my-bookings">
+              <MyBookingsPage />
+            </Route>
             <Route exact path="/user/:id/my-history">
               <MyHistoryPage />
             </Route>
@@ -80,6 +87,9 @@ function App() {
             </Route>
             <Route exact path="/product/:id">
               <ProductPage />
+            </Route>
+            <Route exact path="/user/:id/my-bookings/:idBooking">
+              <BookingPage />
             </Route>
           </Switch>
         </TokenContextProvider>

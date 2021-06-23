@@ -17,6 +17,7 @@ const ProductOptions = (props) => {
         authorization: token,
       },
     });
+    history.push("/");
   }
 
   function editProduct() {

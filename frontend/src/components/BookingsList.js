@@ -1,15 +1,17 @@
 import BookingTemplate from './BookingTemplate';
 
 const BookingsList = (props) => {
-  const {bookings, bkInfo} = props;
+  const {bookings, bkInfo, img} = props;
 
   let arrayBookings;
   bookings
   ?(arrayBookings = bookings.map((booking,index) => {
     const bookingInfo = bkInfo[index];
+    const imgInfo = img[0];
+
     return (
       <li key={booking.id} className="booking">
-        <BookingTemplate data={booking} bkInfo={bookingInfo}/>
+        <BookingTemplate data={booking} bkInfo={bookingInfo} img={imgInfo}/>
       </li>
     );
   })) 

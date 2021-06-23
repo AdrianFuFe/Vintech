@@ -22,7 +22,7 @@ async function listBookingsIn (req,res,next){
         if(result == false) throw new Error (`El usuario con ID ${req.auth.id} no ha recibido ninguna reserva`);
         
         //sacamos datos de usuarios comprador y vendedor y el producto
-        const moreInfo = await connection.query(
+        const [moreInfo] = await connection.query(
             `
             SELECT 
                 U.id AS id_seller,
@@ -44,11 +44,19 @@ async function listBookingsIn (req,res,next){
             `,[req.auth.id]
         );
 
+        const [imgs] = await connection.query(
+            `
+            SELECT PI.img AS img_product
+            FROM bookings B
+            LEFT JOIN product_imgs PI ON B.id_product = PI.id_product
+            `
+            ,);
 
         res.send({
             status:"OK",
             bookings:result,
             bkInfo:moreInfo,
+            img:imgs,
         });
 
     } catch (error) {

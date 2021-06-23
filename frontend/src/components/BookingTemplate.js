@@ -1,8 +1,11 @@
 import ReactTimeAgo from "react-time-ago/commonjs/ReactTimeAgo";
 import { Link, useLocation } from "react-router-dom";
+import PhotoIcon from "@material-ui/icons/Photo";
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import "../css/booking-list.css";
 
 const BookingTemplate = (props) => {
-  const {data, bkInfo} = props;
+  const {data, bkInfo, img} = props;
 
   const route = useLocation(); 
 
@@ -13,22 +16,37 @@ const BookingTemplate = (props) => {
     date : data.date,
     meeting_date : data.meeting_date || 'No hay fecha de entrega todavía',
     ubication : data.ubication || 'No hay lugar de entrega todavía',
-    seller : ` id: ${bkInfo[0].id_seller} alias: ${bkInfo[0].username_seller}`,
-    buyer : ` id: ${bkInfo[0].id_buyer} alias: ${bkInfo[0].username_buyer}`,
-    product : ` id: ${bkInfo[0].id_product} producto: ${bkInfo[0].title_product} precio: ${bkInfo[0].price_product}€`,
+    seller : bkInfo.username_seller,
+    buyer : bkInfo.username_buyer,
+    product : bkInfo.title_product,
+    price : `${bkInfo.price_product} €`,
+    img: img.img_product,
     status : data.status,
     })
   : (bk = 'cargando datos de reservas')
 
   return(
-    <div id='booking-template'>
+    <div id='booking-template' className="booking-list">
       <Link to={`${route.pathname}/${data.id}`}>
-        <ReactTimeAgo date={bk.date} locale="es-ES" />
-        <p id='meeting-date'>{bk.meeting_date}</p>
-        <p id='ubication'>{bk.ubication}</p>
-        <p id='seller'>vendedor - {bk.seller}</p>
-        <p id='buyer'>comprador - {bk.buyer}</p>
-        <p id='product'>producto - {bk.product}</p>
+        <div className="div-img">
+          {bk.img ? (
+            <img
+              src={`http://localhost:3300/uploads/imgs/${bk.img.img}`}
+              alt="foto de producto"
+            />
+          ) : (
+            <PhotoIcon />
+          )}
+        </div>
+        <h2 id='product'>{bk.product} - {bk.price}</h2>
+        <p className="time-ago">
+          <ReactTimeAgo date={bk.date} locale="es-ES" />
+        </p>
+        <span className='users'>
+          <p id='buyer'>{bk.buyer}</p>
+          <KeyboardArrowRightIcon />
+          <p id='seller' >{bk.seller}</p>
+        </span>
         <p id='status'>estado de la reserva - {bk.status}</p>
       </Link>
     </div>

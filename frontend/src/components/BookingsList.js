@@ -8,7 +8,7 @@ const BookingsList = (props) => {
   ?(arrayBookings = bookings.map((booking,index) => {
     const bookingInfo = bkInfo[index];
     return (
-      <li key={bookings.id} className="booking">
+      <li key={booking.id} className="booking">
         <BookingTemplate data={booking} bkInfo={bookingInfo}/>
       </li>
     );

@@ -1,9 +1,10 @@
 import ReactTimeAgo from "react-time-ago/commonjs/ReactTimeAgo";
+import { Link, useLocation } from "react-router-dom";
 
 const BookingTemplate = (props) => {
   const {data, bkInfo} = props;
 
-  console.log(bkInfo);
+  const route = useLocation(); 
 
   let bk;
   data && bkInfo
@@ -19,16 +20,17 @@ const BookingTemplate = (props) => {
     })
   : (bk = 'cargando datos de reservas')
 
-
   return(
     <div id='booking-template'>
-      <ReactTimeAgo date={bk.date} locale="es-ES" />
-      <p id='meeting-date'>{bk.meeting_date}</p>
-      <p id='ubication'>{bk.ubication}</p>
-      <p id='seller'>vendedor : {bk.seller}</p>
-      <p id='buyer'>comprador : {bk.buyer}</p>
-      <p id='product'>producto : {bk.product}</p>
-      <p id='status'>estado de la reserva : {bk.status}</p>
+      <Link to={`${route.pathname}/${data.id}`}>
+        <ReactTimeAgo date={bk.date} locale="es-ES" />
+        <p id='meeting-date'>{bk.meeting_date}</p>
+        <p id='ubication'>{bk.ubication}</p>
+        <p id='seller'>vendedor - {bk.seller}</p>
+        <p id='buyer'>comprador - {bk.buyer}</p>
+        <p id='product'>producto - {bk.product}</p>
+        <p id='status'>estado de la reserva - {bk.status}</p>
+      </Link>
     </div>
   )
 }

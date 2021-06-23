@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { TokenContext } from "../components/TokenContextProvider";
 import { Link, useLocation } from "react-router-dom";
 import "../css/user-profile-menu.css";
 
@@ -33,18 +35,32 @@ const UserMenuMyProfile = (props) => {
     let url = `${location.pathname}/${opt}`;
     
     return(
-    <li key={index} products={props.products}>
+    <li key={index} >
       <Link to={url}>
-        <h3 user={props.user} products={props.products}>{title}</h3>
+        <h3 user={props.user}>{title}</h3>
       </Link>
     </li>
     )
   });
+
+
+  // eslint-disable-next-line no-unused-vars
+  const [token, setToken] = useContext(TokenContext);
+  const logOut = () => {
+    setToken('');
+  }
   
 
   return(
     <div id="menu-profile">
-      <ul>{menuOptionsArray}</ul>
+      <ul>
+        {menuOptionsArray}
+        <li onClick={logOut}>
+          <Link to='/login'>
+            <h3 user={props.user}>SALIR</h3>
+          </Link>
+        </li>
+      </ul>
     </div>
   )
 }

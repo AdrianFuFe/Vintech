@@ -24,8 +24,6 @@ const MyBookingsPage = (props) => {
 
   const [bookingsIn] = useRemoteBookingsIn();
   const [bookingsOut] = useRemoteBookingsOut();
-
-  console.log(bookingsIn);
   
   const [value, setValue] = useState(0);
   const handleTabs = (e,val) => {
@@ -39,7 +37,7 @@ const MyBookingsPage = (props) => {
       <AppBar position='static' color='transparent'>
         <Tabs value={value} variant='fullWidth' onChange={handleTabs} centered> 
           <Tab label='RECIBIDAS'/>
-          <Tab label='ENVIADAS'/>
+          <Tab label='REALIZADAS'/>
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

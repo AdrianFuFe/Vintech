@@ -1,6 +1,6 @@
 import { React } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { TokenContextProvider } from "./components/TokenContextProvider";
 import RegisterPage from "./pages/RegisterPage";
 import WelcomePage from "./pages/WelcomePage";
@@ -21,6 +21,9 @@ import UploadProductPage from "./pages/UploadProductPage";
 import ProductPage from "./pages/ProductPage";
 import SearchPage from "./pages/SearchPage";
 import EditProductPage from "./pages/EditProductPage";
+import BookingPage from "./pages/BookingPage";
+
+
 
 function App() {
   return (
@@ -84,6 +87,9 @@ function App() {
             </Route>
             <Route exact path="/product/:id">
               <ProductPage />
+            </Route>
+            <Route exact path="/user/:id/my-bookings/:idBooking">
+              <BookingPage />
             </Route>
           </Switch>
         </TokenContextProvider>

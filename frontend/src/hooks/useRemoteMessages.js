@@ -7,9 +7,8 @@ const useRemoteMessages = () => {
   const [messages, setMessages] = useState([]);
   const { id, idProduct } = useParams();
   const [token] = useContext(TokenContext);
-
   const loadMessages = async () => {
-    const res = await fetch(`http://localhost:3300/user/${id}/product/${idProduct}`, {
+    const res = await fetch(`http://localhost:3300/product/${idProduct}/messages/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

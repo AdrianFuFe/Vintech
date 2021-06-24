@@ -1,27 +1,25 @@
 import { useState, useContext } from 'react';
 import { TokenContext } from './TokenContextProvider';
-import decodeToken from '../utils/decodeToken';
+import { useParams } from 'react-router-dom';
 
 const ChatRoomInput = (props) => {
   const [inputValue, setInputValue] = useState('');
   const [token] = useContext(TokenContext);
-  const decodedToken = decodeToken(token);
-
-  let idProduct = 'lo sacamos por props'
+  const idParams = useParams();
 
   const sendMsg = async (e) => {
     e.preventDefault();
-    const newMessage = { author: decodedToken.id, body: inputValue, date: new Date().toISOString() };
+    const newMessage = { author: idParams.id, text: inputValue, date: new Date().toISOString() };
     // console.log('mensaje', e.target.elements.msginput.value);
-    await fetch(`http://localhost:3050/product/${idProduct}/messages/${decodedToken.id}`, {
+    await fetch(`http://localhost:3300/product/${idParams.idProduct}/messages/${idParams.id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         authorization:token,
       },
-      body: JSON.stringify(newMessage),
+      body: JSON.stringify(newMessage.text),
     });
-
+    
     setInputValue('');
   };
 
@@ -35,7 +33,7 @@ const ChatRoomInput = (props) => {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       ></input>
-      <input type="submit" value="" />
+      <input type="submit" value="Enviar" />
     </form>
   );
 };

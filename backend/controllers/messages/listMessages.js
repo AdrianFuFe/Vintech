@@ -15,7 +15,15 @@ async function listMessages(req, res, next) {
 
     const [result] = await connection.query(
       `
-    SELECT M.id, M.text, M.status, M.date, M.id_user_A, M.id_product, U.img AS user_img, U.username AS user_username
+    SELECT 
+      M.id, 
+      M.text, 
+      M.status, 
+      M.date, 
+      M.id_user_A, 
+      M.id_product, 
+      U.img AS user_img, 
+      U.username AS user_username
     FROM messages M
     LEFT JOIN users U ON M.id_user_A = U.id
     WHERE M.id_product = ? AND (M.id_user_A = ? OR M.id_user_B = ?) AND (M.id_user_A = ? OR M.id_user_B = ?)

@@ -95,7 +95,7 @@ function App() {
             <Route exact path="/user/:id/messages">
               <ChatListPage />
             </Route>
-            <Route exact path="/user/:id/messages/:idChat">
+            <Route exact path="/product/:idProduct/user/:id/messages">
               <ChatRoomPage />
             </Route>
           </Switch>

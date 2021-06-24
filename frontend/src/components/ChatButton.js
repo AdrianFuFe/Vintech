@@ -1,10 +1,10 @@
-import { /* Link, */ Redirect, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { useContext, useState } from "react";
 import { TokenContext } from "./TokenContextProvider";
 import decodeToken from "../utils/decodeToken";
 import useRemoteSingleProduct from "../hooks/useRemoteSingleProduct";
 
-const BuyButton = (props) => {
+const ChatButton = (props) => {
   const idProduct = useParams();
   // console.log('id del producto: ' + idProduct.id);
   const [token] = useContext(TokenContext);
@@ -14,11 +14,18 @@ const BuyButton = (props) => {
   // console.log('id del vendedor: ' + product.data[0].user_id);
   
   const [error, setError] = useState('');
+
   
-  const makeBooking = async (e) => {
+  let route;
+  token && product ? (route=`${idProduct.id}/user/${decodedToken.id}/messages`) : (route='/') 
+  const history = useHistory('');
+
+  const goChat = async (e) => {
+    history.push(route);
+
     // e.preventDefault();
 
-    const info = {
+    /* const info = {
       id_user_A : product.data[0].user_id,
       id_user_B : decodedToken.id,
       id_product : idProduct.id,
@@ -37,17 +44,18 @@ const BuyButton = (props) => {
     console.log(data);
     if (res.ok) {
       setError('');
-      <Redirect to='/'></Redirect>
     } else {
       setError(data.error);
+    }; */
     }
-  };
 
   return(
     <>
-      <button onClick={(e) => makeBooking(e.target.value)}>Reservar</button>
+      {/* <Link to={route}> */}
+        <button onClick={(e) => goChat(e.target.value)}>Ir al chat</button>
+      {/* </Link> */}
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </>
   )
 }
-export default BuyButton;
+export default ChatButton;

@@ -21,7 +21,11 @@ const ProfileButton = (props) => {
   } else {
     fill = "#828282";
   }
+  if (location.pathname.includes('messages')) {
+  fill = "#828282";  
+  }
 
+  
   return (
     <Link to={route}>
       <svg

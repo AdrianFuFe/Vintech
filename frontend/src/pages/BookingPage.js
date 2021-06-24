@@ -1,16 +1,15 @@
-import { useContext } from 'react';
+
 import { Link } from "react-router-dom";
-import { TokenContext } from '../components/TokenContextProvider';
-import decodeToken from '../utils/decodeToken';
+
 import useRemoteSingleBooking from '../hooks/useRemoteSingleBooking';
 import CloseButton from '../components/CloseButton';
 import PhotoIcon from '@material-ui/icons/Photo';
+import BookingOptions from '../components/BookingOptions';
 
 
 const BookingPage = (props) => {
   const [booking] = useRemoteSingleBooking();
-  const [token] = useContext(TokenContext);
-  const decodedToken = decodeToken(token);
+
 
   let bk;
   booking.booking && booking.moreInfo && booking.imgs
@@ -64,7 +63,7 @@ const BookingPage = (props) => {
             <p>{bk.buyer}</p>
           </Link>
         <section>
-          <p></p>
+          <BookingOptions info={booking.booking}/>
         </section>
     </>
   )

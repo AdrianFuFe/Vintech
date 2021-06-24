@@ -30,7 +30,9 @@ const HeaderBackTitle = (props) => {
   } else if (location.pathname.includes("edit-product")) {
     title = "EDITAR PRODUCTO";
   } else if (location.pathname.includes("onsale-product")) {
-    title = "OTROS PRODUCTOS";
+    title = "SUS PRODUCTOS";
+  } else if (location.pathname.includes("messages")) {
+    title = "MENSAJES";
   } else {
     title = "PERFIL DE USUARIO";
   }

@@ -24,8 +24,6 @@ const MyBookingsPage = (props) => {
 
   const [bookingsIn] = useRemoteBookingsIn();
   const [bookingsOut] = useRemoteBookingsOut();
-
-  console.log(bookingsOut);
   
   const [value, setValue] = useState(0);
   const handleTabs = (e,val) => {

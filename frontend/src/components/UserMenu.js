@@ -16,7 +16,7 @@ const UserMenu = (props) => {
     if (opt === 'ratings') {
       title='VALORACIONES';
     }else if (opt === 'onsale-products'){
-      title='OTROS PRODUCTOS';
+      title='SUS PRODUCTOS';
     }else {
       title='OPCION';
     }

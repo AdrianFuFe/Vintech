@@ -1,4 +1,5 @@
 import { Avatar } from "@material-ui/core";
+import ReactTimeAgo from "react-time-ago";
 import "../css/vote-template.css";
 
 
@@ -8,7 +9,9 @@ const VoteTemplate = (props) => {
   return (
     <div id='vote-template'>
       <Avatar/>
-      <p id='date'>{data.creation_date}</p>
+      <p className="time-ago">
+        <ReactTimeAgo date={data.creation_date} locale="es-ES" />
+      </p>
       <p id='buyer'>{ `${buyer.fname_buyer} ${buyer.lname_buyer}` || buyer.username_buyer }</p>
       <p id='comment'>{data.comment}</p>
       <p id='stars'>{data.stars}</p>

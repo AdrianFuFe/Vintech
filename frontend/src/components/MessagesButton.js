@@ -2,19 +2,21 @@ import { useContext } from "react";
 import { TokenContext } from "./TokenContextProvider";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
+import decodeToken from "../utils/decodeToken";
 
 const MessagesButton = (props) => {
   const [token] = useContext(TokenContext);
+  const decodedToken = decodeToken(token);
+
+  let id;
+  decodedToken ? (id = decodedToken.id) : (id = null);
+
   let route;
-  if (token) {
-    route = "/messages";
-  } else {
-    route = "/login";
-  }
+  token ? (route = `/user/${id}/messages`) : (route = "/login");
 
   const location = useLocation();
   let fill;
-  if (location.pathname === "/messages") {
+  if (location.pathname.includes("messages")) {
     fill = "#d07017";
   } else {
     fill = "#828282";

@@ -4,7 +4,7 @@ div#vote-template {
   grid-template-columns: 1fr repeat(3, 2fr);
   grid-template-rows: 30px 40px 40px;
   border-bottom: 0.1rem solid grey;
-  margin-bottom: 1rem;
+  margin-top: 0.5rem;
   padding: 0 1rem 0 1rem;
 }
 
@@ -19,7 +19,8 @@ div.MuiAvatar-root {
   height: 80px;
 }
 
-#vote-template p#date {
+#vote-template p.time-ago {
+  font-size: 0.8rem;
   grid-column: 1;
   grid-row: 3;
   justify-self: center;

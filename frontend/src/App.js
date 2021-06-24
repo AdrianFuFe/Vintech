@@ -22,7 +22,8 @@ import ProductPage from "./pages/ProductPage";
 import SearchPage from "./pages/SearchPage";
 import EditProductPage from "./pages/EditProductPage";
 import BookingPage from "./pages/BookingPage";
-
+import ChatListPage from "./pages/ChatListPage";
+import ChatRoomPage from "./pages/ChatRoomPage";
 
 
 function App() {
@@ -90,6 +91,12 @@ function App() {
             </Route>
             <Route exact path="/user/:id/my-bookings/:idBooking">
               <BookingPage />
+            </Route>
+            <Route exact path="/user/:id/messages">
+              <ChatListPage />
+            </Route>
+            <Route exact path="/user/:id/messages/:idChat">
+              <ChatRoomPage />
             </Route>
           </Switch>
         </TokenContextProvider>

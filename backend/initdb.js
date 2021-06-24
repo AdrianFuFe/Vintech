@@ -97,7 +97,7 @@ function createBookings(connection) {
         date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         meeting_date TIMESTAMP,
         ubication VARCHAR(60),
-        status ENUM('sent', 'read', 'rejected', 'accepted'),
+        status ENUM('sent', 'read', 'rejected', 'accepted', 'cancelled'),
         id_user_A INT UNSIGNED,
         FOREIGN KEY (id_user_A) REFERENCES users(id),
         id_user_B INT UNSIGNED,

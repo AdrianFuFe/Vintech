@@ -44,6 +44,7 @@ const { listBookingsIn } = require("./controllers/bookings/listBookingsIn");
 const { listBookingsOut } = require("./controllers/bookings/listBookingsOut");
 const { getBooking } = require("./controllers/bookings/getBooking");
 const { cancelBookingOut } = require("./controllers/bookings/cancelBookingOut");
+const { cancelBooking } = require("./controllers/bookings/cancelBooking");
 const { responseBooking } = require("./controllers/bookings/responseBooking");
 
 //CONTROLADORES DE FAVORITOS
@@ -129,7 +130,9 @@ app.get("/user/:id/bookings-out", validAuth, isSameUser, listBookingsOut);
 //VER UNA RESERVA
 app.get("/user/:id/bookings/:idBooking", validAuth, isSameUser, getBooking);
 //RESPONDER UNA RESERVA RECIBIDA
-app.get("/user/:id/bookings/:idBooking/:response", validAuth, isSameUser, responseBooking);
+app.put("/user/:id/bookings/:idBooking/:response", validAuth, isSameUser, responseBooking);
+//CANCELAR UNA RESERVA
+app.put("/user/:id/bookings/:idBooking/cancel", validAuth, isSameUser, cancelBooking);
 
 //CONTROLADORES DE VOTOS
 app.post("/user/:id/votes", validAuth, canVote, sendVote);

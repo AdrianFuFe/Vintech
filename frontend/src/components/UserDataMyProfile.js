@@ -8,17 +8,15 @@ const UserDataMyProfile = (props) => {
   return (
     <div id="user-data">
       <UserAvatar user={user} />
+      <h3> Mis Datos </h3>
+      <EditUserInfoButton> <p>EDITAR</p> </EditUserInfoButton>
       <ul>
-        <li>
-          <h3> Mis Datos </h3>
-        </li>
         <li>{user.username ? user.username : "alias"}</li>
         <li>{user.fname ? user.fname : "nombre"}</li>
         <li>{user.lname ? user.lname : "apellidos"}</li>
         <li>{user.last_ubication ? user.last_ubication : "ubicación"}</li>
-        <li>{user.bio ? user.bio : "Biografía"}</li>
       </ul>
-      <EditUserInfoButton />
+      <p id='bio'>{user.bio ? user.bio : "Biografía"}</p>
     </div>
   );
 };

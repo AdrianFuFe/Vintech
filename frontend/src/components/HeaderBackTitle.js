@@ -20,9 +20,9 @@ const HeaderBackTitle = (props) => {
   } else if (location.pathname.includes("my-config")) {
     title = "MI CONFIGURACIÓN";
   } else if (location.pathname.includes("edit-profile")) {
-    title = "EDITAR MI PERFIL";
+    title = "MI CONFIGURACIÓN";
   } else if (location.pathname.includes("pwd")) {
-    title = "CAMBIO DE CONTRASEÑA";
+    title = "MI CONFIGURACIÓN";
   } else if (location.pathname.includes("favs")) {
     title = "MIS FAVORITOS";
   } else if (location.pathname.includes("upload-product")) {

@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { TokenContext } from './TokenContextProvider';
 import { useHistory } from 'react-router';
+import '../css/changePwd-form.css'
 
 const ChangePwdForm = (props) =>{
 
@@ -42,7 +43,7 @@ const ChangePwdForm = (props) =>{
 
   return (
     <div id='changePwdWrapper'>
-      <h2>Cambiar mi Contraseña</h2>
+      <h2>CAMBIAR MI CONTRASEÑA</h2>
         <form id="changePwdForm" onSubmit={changePwd}>
   
           <label htmlFor="oldPwd"/>
@@ -53,6 +54,7 @@ const ChangePwdForm = (props) =>{
             value={oldPwd} 
             onChange={(e)=> setOldPwd(e.target.value)}
             placeholder='contraseña antigua'
+            required
           />
 
           <label htmlFor="newPwd"/>
@@ -63,6 +65,7 @@ const ChangePwdForm = (props) =>{
             value={newPwd} 
             onChange={(e)=> setNewPwd(e.target.value)}
             placeholder='nueva contraseña' 
+            required
           />
 
           <label htmlFor="confirmPwd"/>
@@ -73,6 +76,7 @@ const ChangePwdForm = (props) =>{
             value={newPwdConfirm} 
             onChange={(e)=> setNewPwdConfirm(e.target.value)}
             placeholder='confirma la nueva contraseña'
+            required
           />
 
           <input type="submit" value="Cambiar contraseña"/>

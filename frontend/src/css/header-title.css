@@ -13,11 +13,12 @@ header#header-title {
 
 #header-title button {
   position: absolute;
-  left: 10%;
+  left: 0.5rem;
 }
 
 #header-title h2 {
   position: absolute;
   margin: 0 auto;
+  font-size: 1.5rem;
   color: rgb(80, 80, 80);
 }

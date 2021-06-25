@@ -1,6 +1,7 @@
 import { useState, useContext, useRef } from "react";
 import { TokenContext } from "./TokenContextProvider";
 import { useHistory } from "react-router";
+import '../css/editUser-form.css'
 
 const EditUserForm = (props) => {
   const { user } = props;
@@ -53,7 +54,7 @@ const EditUserForm = (props) => {
 
   return (
     <div id="editUserWrapper">
-      <h2>Mis datos de perfil</h2>
+      <h2>DATOS DE PERFIL</h2>
       <form id="editUserForm" onSubmit={editUser}>
         <label htmlFor="editUsername" />
         <input

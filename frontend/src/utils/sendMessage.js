@@ -1,13 +1,13 @@
-async function sendMessage (token, product, sender,receiver,text){
-  const newMessage = { author: sender, text: text, date: new Date().toISOString() };
+async function sendMessage(token, product, sender, text) {
+  const formData = new FormData();
+  formData.append("text", text);
 
   await fetch(`http://localhost:3300/product/${product}/messages/${sender}`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      authorization:token,
+      authorization: token,
     },
-    body: JSON.stringify(newMessage.text),
+    body: formData,
   });
 }
 

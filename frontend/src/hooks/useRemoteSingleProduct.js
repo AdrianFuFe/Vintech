@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const useRemoteSingleProduct = () => {
+const useRemoteSingleProduct = (props) => {
   const [product, setProduct] = useState([]);
 
-  const { id } = useParams();
+  let { id } = useParams();
+  if (props) {
+    id = props;
+  }
 
   const loadProduct = async () => {
     const res = await fetch(`http://localhost:3300/product/${id}`, {

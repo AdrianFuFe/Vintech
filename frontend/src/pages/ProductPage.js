@@ -13,12 +13,14 @@ const ProductPage = (props) => {
 
   return (
     <>
-      <HeaderBackSearchFavs />
-      <CarouselImagenes />
-      <ProductInfo />
-      <SellerInfo />
-      <ProductBuyerOptions productData={product.data} />
-      <MenuBar />
+      <div id="product-page">
+        <HeaderBackSearchFavs />
+        <CarouselImagenes />
+        <ProductInfo />
+        <SellerInfo />
+        <ProductBuyerOptions productData={product.data} />
+        <MenuBar />
+      </div>
     </>
   );
 };

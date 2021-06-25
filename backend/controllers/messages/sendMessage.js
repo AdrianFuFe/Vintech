@@ -9,10 +9,6 @@ async function sendMessage(req, res, next) {
     const { text } = req.body;
     const { id, userId } = req.params;
 
-    console.log(text);
-    console.log(id);
-    console.log(userId);
-
     if (!text) throw new Error("El campo texto no puede estar vacío");
 
     if ((await entryExists("products", id)) === false)

@@ -90,6 +90,7 @@ const EditUserForm = (props) => {
           type="email"
           id="editEmail"
           name="editEmail"
+          required={true}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder={user.email || "Email"}

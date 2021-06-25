@@ -99,11 +99,11 @@ function createBookings(connection) {
         ubication VARCHAR(60),
         status ENUM('sent', 'read', 'rejected', 'accepted', 'cancelled'),
         id_user_A INT UNSIGNED,
-        FOREIGN KEY (id_user_A) REFERENCES users(id),
+        FOREIGN KEY (id_user_A) REFERENCES users(id) ON DELETE CASCADE,
         id_user_B INT UNSIGNED,
-        FOREIGN KEY (id_user_B) REFERENCES users(id),
+        FOREIGN KEY (id_user_B) REFERENCES users(id) ON DELETE CASCADE,
         id_product INT UNSIGNED,
-        FOREIGN KEY (id_product) REFERENCES products(id)
+        FOREIGN KEY (id_product) REFERENCES products(id) ON DELETE CASCADE
         );`,
     (error) => {
       if (error) console.error(error.sqlMessage);
@@ -119,11 +119,11 @@ function createMessages(connection) {
         status ENUM('sent', 'read'),
         date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         id_user_A INT UNSIGNED,
-        FOREIGN KEY (id_user_A) REFERENCES users(id),
+        FOREIGN KEY (id_user_A) REFERENCES users(id) ON DELETE CASCADE,
         id_user_B INT UNSIGNED,
-        FOREIGN KEY (id_user_B) REFERENCES users(id),
+        FOREIGN KEY (id_user_B) REFERENCES users(id) ON DELETE CASCADE,
         id_product INT UNSIGNED,
-        FOREIGN KEY (id_product) REFERENCES products(id)
+        FOREIGN KEY (id_product) REFERENCES products(id) ON DELETE CASCADE
         );`,
     (error) => {
       if (error) console.error(error.sqlMessage);
@@ -139,9 +139,9 @@ function createFeedbacks(connection) {
         comment TINYTEXT,
         creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         id_user_A INT UNSIGNED,
-        FOREIGN KEY (id_user_A) REFERENCES users(id),
+        FOREIGN KEY (id_user_A) REFERENCES users(id) ON DELETE CASCADE,
         id_user_B INT UNSIGNED,
-        FOREIGN KEY (id_user_B) REFERENCES users(id)
+        FOREIGN KEY (id_user_B) REFERENCES users(id) ON DELETE CASCADE
         );`,
     (error) => {
       if (error) console.error(error.sqlMessage);
@@ -168,11 +168,11 @@ function createBuyedList(connection) {
     `CREATE TABLE buyed_list(
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         id_user_A INT UNSIGNED,
-        FOREIGN KEY (id_user_A) REFERENCES users(id),
+        FOREIGN KEY (id_user_A) REFERENCES users(id) ON DELETE CASCADE,
         id_user_B INT UNSIGNED,
-        FOREIGN KEY (id_user_B) REFERENCES users(id),
+        FOREIGN KEY (id_user_B) REFERENCES users(id) ON DELETE CASCADE,
         id_product INT UNSIGNED,
-        FOREIGN KEY (id_product) REFERENCES products(id)
+        FOREIGN KEY (id_product) REFERENCES products(id) ON DELETE CASCADE
         );`,
     (error) => {
       if (error) console.error(error.sqlMessage);
@@ -185,9 +185,9 @@ function createFavList(connection) {
     `CREATE TABLE fav_list(
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         id_user INT UNSIGNED,
-        FOREIGN KEY (id_user) REFERENCES users(id),
+        FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE,
         id_product INT UNSIGNED,
-        FOREIGN KEY (id_product) REFERENCES products(id)
+        FOREIGN KEY (id_product) REFERENCES products(id) ON DELETE CASCADE
         );`,
     (error) => {
       if (error) console.error(error.sqlMessage);

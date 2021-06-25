@@ -10,13 +10,16 @@ const ProductOptions = (props) => {
   const history = useHistory();
 
   async function deleteProduct() {
-    await fetch(`http://localhost:3300/product/${id}`, {
+    const res = await fetch(`http://localhost:3300/product/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         authorization: token,
       },
     });
+    const data = await res.json();
+    console.log(data);
+
     history.push("/");
   }
 

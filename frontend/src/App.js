@@ -16,7 +16,7 @@ import MyHistoryPage from "./pages/MyHistoryPage";
 import MyConfigPage from "./pages/MyConfigPage";
 import ChangePwdPage from "./pages/ChangePwdPage";
 import FavsPage from "./pages/FavsPage";
-import UserProductsPage from "./pages/UserProductsPage"
+import UserProductsPage from "./pages/UserProductsPage";
 import UploadProductPage from "./pages/UploadProductPage";
 import ProductPage from "./pages/ProductPage";
 import SearchPage from "./pages/SearchPage";
@@ -24,7 +24,6 @@ import EditProductPage from "./pages/EditProductPage";
 import BookingPage from "./pages/BookingPage";
 import ChatListPage from "./pages/ChatListPage";
 import ChatRoomPage from "./pages/ChatRoomPage";
-
 
 function App() {
   return (
@@ -95,7 +94,7 @@ function App() {
             <Route exact path="/user/:id/messages">
               <ChatListPage />
             </Route>
-            <Route exact path="/product/:idProduct/user/:id/messages/:id_user_B">
+            <Route exact path="/product/:idProduct/user/:id/messages/">
               <ChatRoomPage />
             </Route>
           </Switch>

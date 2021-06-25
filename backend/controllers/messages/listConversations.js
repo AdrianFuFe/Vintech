@@ -9,7 +9,7 @@ async function listConversations(req, res, next) {
 
     const [results] = await connection.query(
       `
-      SELECT c.*, U.username FROM (SELECT M.id, M.text, M.date, M.id_user_A, M.id_user_B, M.id_product
+      SELECT c.* FROM (SELECT M.id, M.text, M.date, M.id_user_A, M.id_user_B, M.id_product
       FROM messages M
       LEFT JOIN messages b ON (M.id_user_A = b.id_user_B AND M.date < b.date)
       WHERE b.id IS NULL
@@ -20,7 +20,6 @@ async function listConversations(req, res, next) {
     );
 
     if (results.length < 1) throw new Error(`No hay ninguna conversación`);
-
     res.send({
       status: "OK",
       message: "Éstas son tus conversaciones",

@@ -23,7 +23,7 @@ async function responseBooking (req,res,next){
         let product = await getDbInfo("products",booking.id_product);
         if(product == false) throw new Error (`El producto con ID ${product.id} no existe`);
         //comprobamos que el producto no este ya reservado
-        if (product.status != "active") throw new Error (`El producto con ID ${product.id} ya esta reservado`);
+        if (response === 'accept' && product.status === "reserved") throw new Error (`El producto con ID ${product.id} ya esta reservado`);
         
         
 

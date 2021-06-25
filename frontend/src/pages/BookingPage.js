@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 
 import useRemoteSingleBooking from '../hooks/useRemoteSingleBooking';
-import CloseButton from '../components/CloseButton';
+import HeaderBackTitle from '../components/HeaderBackTitle';
 import PhotoIcon from '@material-ui/icons/Photo';
 import BookingOptions from '../components/BookingOptions';
 
@@ -32,10 +32,7 @@ const BookingPage = (props) => {
 
   return(
     <>
-      <header>
-        <h1>reserva</h1>
-        <CloseButton />
-      </header>
+      <HeaderBackTitle />
       <section className='bkProduct'>
         <h3>PRODUCTO</h3>
         <Link to={`/product/${bk.product_id}`}>

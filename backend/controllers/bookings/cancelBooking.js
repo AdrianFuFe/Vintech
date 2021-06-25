@@ -22,7 +22,7 @@ async function cancelBooking (req,res,next){
         SELECT *
         FROM bookings
         WHERE id=?
-        `,[idProduct]);
+        `,[idBooking]);
         if(result.length < 1) throw new Error (`No existe la reserva con ID ${idBooking} del usuario con ID ${id}`);
         
         let idBk = result[0].id;
@@ -30,10 +30,10 @@ async function cancelBooking (req,res,next){
         //cambiar estado de la reserva
         await connection.query(`
         UPDATE bookings
-        SET status='cancelled'
+        SET status = ?
         FROM bookings
         WHERE id=?
-        `,[idBk]); 
+        `,['rejected',idBk]); 
 
 
         res.send({

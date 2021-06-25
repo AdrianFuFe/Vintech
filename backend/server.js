@@ -132,7 +132,7 @@ app.get("/user/:id/bookings/:idBooking", validAuth, isSameUser, getBooking);
 //RESPONDER UNA RESERVA RECIBIDA
 app.put("/user/:id/bookings/:idBooking/:response", validAuth, isSameUser, responseBooking);
 //CANCELAR UNA RESERVA
-app.put("/user/:id/bookings/:idBooking/cancel", validAuth, isSameUser, cancelBooking);
+app.put("/user/:id/bookings/:idBooking/response/cancel", validAuth, isSameUser, cancelBooking);
 
 //CONTROLADORES DE VOTOS
 app.post("/user/:id/votes", validAuth, canVote, sendVote);

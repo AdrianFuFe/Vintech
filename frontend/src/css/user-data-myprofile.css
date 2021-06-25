@@ -17,7 +17,7 @@ div#user-data div {
   grid-area: img;
   width: 100px;
   height: 100px;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
 }
 
 #user-data h3 {
@@ -47,7 +47,7 @@ div#user-data div {
 }
 #user-data #editSvg {
   width: 20px;
-  height: 20px;
+  height: 15px;
 }
 
 #user-data li {

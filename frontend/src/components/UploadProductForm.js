@@ -1,7 +1,7 @@
 import { useRef, useState, useContext } from 'react';
 import { useHistory } from 'react-router';
 import { TokenContext } from './TokenContextProvider';
-/* import "../css/new-product.css"; */
+import "../css/new-product.css";
 
 
 
@@ -82,25 +82,45 @@ const UploadProductForm = (props) => {
         />
 
         <section id='category'>
-          <label htmlFor='category'><h4>Categorías</h4></label>
-          <input type='radio' id='ordenadores' name='category' value='ordenadores' onChange={(e) => setCategory(e.target.value)} required/>
-          <label htmlFor='ordenadores'>Ordenadores</label>
-          <input type='radio' id='telefonia' name='category' value='telefonia' onChange={(e) => setCategory(e.target.value)}/>
-          <label htmlFor='telefonia'>Telefonía</label>
-          <input type='radio' id='audio' name='category' value='audio' onChange={(e) => setCategory(e.target.value)}/>
-          <label htmlFor='audio'>Audio</label>
-          <input type='radio' id='foto' name='category' value='foto' onChange={(e) => setCategory(e.target.value)}/>
-          <label htmlFor='foto'>Foto</label>
-          <input type='radio' id='video' name='category' value='video' onChange={(e) => setCategory(e.target.value)}/>
-          <label htmlFor='video'>Video</label>
-          <input type='radio' id='televisores' name='category' value='televisores' onChange={(e) => setCategory(e.target.value)}/>
-          <label htmlFor='televisores'>Televisores</label>
-          <input type='radio' id='consolas' name='category' value='consolas' onChange={(e) => setCategory(e.target.value)}/>
-          <label htmlFor='consolas'>Consolas</label>
-          <input type='radio' id='redes' name='category' value='redes' onChange={(e) => setCategory(e.target.value)}/>
-          <label htmlFor='redes'>Redes</label>
-          <input type='radio' id='otros' name='category' value='otros' onChange={(e) => setCategory(e.target.value)}/>
-          <label htmlFor='otros'>Otros</label>
+          <label id='category-header' htmlFor='category'>
+            <h4 id='category-header'>Categorías</h4>
+          </label>
+          <label className='catRadios' htmlFor='ordenadores'>
+            Ordenadores
+            <input type='radio' id='ordenadores' name='category' value='ordenadores' onChange={(e) => setCategory(e.target.value)} required/>
+          </label>
+          <label className='catRadios' htmlFor='telefonia'>
+            Telefonía
+            <input type='radio' id='telefonia' name='category' value='telefonia' onChange={(e) => setCategory(e.target.value)}/>
+          </label>
+          <label className='catRadios' htmlFor='audio'>
+            Audio
+            <input type='radio' id='audio' name='category' value='audio' onChange={(e) => setCategory(e.target.value)}/>
+          </label>
+          <label className='catRadios' htmlFor='foto'>
+            Foto
+            <input type='radio' id='foto' name='category' value='foto' onChange={(e) => setCategory(e.target.value)}/>
+          </label>
+          <label className='catRadios' htmlFor='video'>
+            Video
+            <input type='radio' id='video' name='category' value='video' onChange={(e) => setCategory(e.target.value)}/>
+          </label>
+          <label className='catRadios' htmlFor='televisores'>
+            Televisores
+            <input type='radio' id='televisores' name='category' value='televisores' onChange={(e) => setCategory(e.target.value)}/>
+          </label>
+          <label className='catRadios' htmlFor='consolas'>
+            Consolas
+            <input type='radio' id='consolas' name='category' value='consolas' onChange={(e) => setCategory(e.target.value)}/>
+          </label>
+          <label className='catRadios' htmlFor='redes'>
+            Redes
+            <input type='radio' id='redes' name='category' value='redes' onChange={(e) => setCategory(e.target.value)}/>
+          </label>
+          <label className='catRadios' htmlFor='otros'>
+            Otros
+            <input type='radio' id='otros' name='category' value='otros' onChange={(e) => setCategory(e.target.value)}/>
+          </label>
         </section>
 
 

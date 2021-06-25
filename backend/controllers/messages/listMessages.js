@@ -21,6 +21,7 @@ async function listMessages(req, res, next) {
       M.status, 
       M.date, 
       M.id_user_A, 
+      M.id_user_B,
       M.id_product, 
       U.img AS user_img, 
       U.username AS user_username

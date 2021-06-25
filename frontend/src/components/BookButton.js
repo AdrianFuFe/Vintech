@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { TokenContext } from "./TokenContextProvider";
 import decodeToken from "../utils/decodeToken";
 import useRemoteSingleProduct from "../hooks/useRemoteSingleProduct";
+import sendMessage from "../utils/sendMessage";
 
 const BookButton = (props) => {
   const idProduct = useParams();
@@ -23,7 +24,6 @@ const BookButton = (props) => {
       id_user_B : decodedToken.id,
       id_product : idProduct.id,
     }
-    console.log(info);
 
     const res = await fetch(`http://localhost:3300/product/${idProduct.id}`, {
       method: 'POST',
@@ -34,9 +34,16 @@ const BookButton = (props) => {
       body: JSON.stringify(info),
     });
     const data = await res.json();
-    console.log(data);
+
     if (res.ok) {
       setError('');
+      sendMessage(
+        token,
+        info.id_product,
+        info.id_user_B,
+        info.id_user_A,
+        'Has recibido una reserva para este producto'
+      );
       <Redirect to='/'></Redirect>
     } else {
       setError(data.error);

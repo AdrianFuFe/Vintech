@@ -1,9 +1,8 @@
 import ChatListTemplate from './ChatListTemplate';
+import { Link } from 'react-router-dom';
 
 const ChatList = (props) => {
   const {info} = props;
-
-  console.log(info);
   
   let arrayConversations;
   info
@@ -11,7 +10,9 @@ const ChatList = (props) => {
     /* const buyerInfo = buyer[index]; */
     return (
       <li key={info.id} className="conversations">
-        <ChatListTemplate />
+        <Link to={`/product/${info.id_product}/user/${info.id_user_A}/messages/${info.id_user_B}`}>
+          <ChatListTemplate text={info.text} date={info.date} /* userRoute={info.id_user_A} productRoute={info.id_product} buyerRoute={info.id_user_B} *//>
+        </Link>
       </li>
     );
   })) 

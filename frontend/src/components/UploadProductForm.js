@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useRef, useState, useContext } from 'react';
 import { useHistory } from 'react-router';
 import { TokenContext } from './TokenContextProvider';
 /* import "../css/new-product.css"; */
@@ -44,7 +44,7 @@ const UploadProductForm = (props) => {
 
   return (
   <div id='upload-product'>
-      
+
       <form id="NewProductForm" onSubmit={uploadProd}>
 
         <label htmlFor="title"><h4>Nombre del producto</h4></label>

@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { TokenContext } from "../components/TokenContextProvider";
 import decodeToken from "../utils/decodeToken";
-
 import BookButton from "../components/BookButton";
 import ChatButton from "../components/ChatButton";
 
@@ -12,7 +11,6 @@ const ProductBuyerOptions = (props) => {
   const {productData} = props;
   let data
   productData ? (data = productData[0]):(data='error')
-
 
 
   return(

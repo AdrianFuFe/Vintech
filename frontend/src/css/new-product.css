@@ -15,9 +15,8 @@
   height: 2rem;
   min-width: 250px;
   max-width: 500px;
-  border: 0rem;
-  background-color: rgb(245, 245, 245);
-  border-bottom: 0.15rem solid rgba(189, 189, 189, 1);
+  border: 0;
+  border-bottom: 0.15rem solid rgba(200, 200, 200, 1);
   border-radius: 5px;
   padding: 0.2rem 1rem;
 }

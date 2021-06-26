@@ -17,14 +17,14 @@ async function createUser(req, res, next) {
 
     //comprobar si usuario ya existe
     let user;
-      [user] = await connection.query(
-        `
+    [user] = await connection.query(
+      `
                 SELECT *
                 FROM users
                 WHERE email=?
             `,
-        [email]
-      );
+      [email]
+    );
 
     if (user.length > 0) {
       throw new Error("Ya existe un usuario con ese email");
@@ -37,7 +37,7 @@ async function createUser(req, res, next) {
     const activationCode = crypto.randomBytes(20).toString("hex").slice(0, 20);
 
     //enviamos email de confirmacion
-    const validationLink = `${process.env.DOMINIO}/activation/${activationCode}`;
+    const validationLink = `${process.env.DOMINIO_FRONT}/activation/${activationCode}`;
     await sendMail({
       to: email,
       subject: "Registro Vintech Place",
@@ -47,17 +47,18 @@ async function createUser(req, res, next) {
     });
 
     //introducir datos en db
-      await connection.query(
-        `
+    await connection.query(
+      `
             INSERT INTO users(username, email, pwd, activation_code, status)
             VALUES(?, ?, ?, ?, 'inactive')
             `,
-        [username, email, pwdDb, activationCode]
-      );
+      [username, email, pwdDb, activationCode]
+    );
 
     res.send({
       status: "OK",
-      message: "Usuario creado correctamente. Se ha enviado un mail de confirmación",
+      message:
+        "Usuario creado correctamente. Se ha enviado un mail de confirmación",
     });
   } catch (error) {
     next(error);

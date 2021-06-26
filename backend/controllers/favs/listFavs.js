@@ -13,20 +13,22 @@ async function listFavs(req, res, next) {
     `,
       [req.auth.id]
     );
-
-    if (result.length < 1)
+    if (result.length < 1) {
       throw new Error(`No hay ningún producto en favoritos`);
+    }
 
-      const[products] = await connection.query(
-        `
-        SELECT P.*
-        FROM fav_list FL
-        LEFT JOIN products P 
-          ON FL.id_product = P.id
-        WHERE id_user = ?
-        `,
-        [req.auth.id]
-      );
+    const [products] = await connection.query(
+      `
+      SELECT P.*
+      FROM fav_list FL
+      LEFT JOIN products P 
+        ON FL.id_product = P.id
+      WHERE id_user = ?
+      `,
+      [req.auth.id]
+    );
+    if (products.length < 1)
+      throw new Error(`No hay ningún producto en favoritos`);
 
     res.send({
       status: "OK",

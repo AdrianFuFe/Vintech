@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { TokenContextProvider } from "./components/TokenContextProvider";
 import RegisterPage from "./pages/RegisterPage";
 import WelcomePage from "./pages/WelcomePage";
+import ActivationPage from "./pages/ActivationPage";
 import LoginPage from "./pages/LoginPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import HomePage from "./pages/HomePage";
@@ -45,6 +46,9 @@ function App() {
             </Route>
             <Route exact path="/welcome">
               <WelcomePage />
+            </Route>
+            <Route exact path="/activation/:activationCode">
+              <ActivationPage />
             </Route>
             <Route exact path="/login">
               <LoginPage />

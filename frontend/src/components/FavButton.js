@@ -26,12 +26,14 @@ const FavButton = (props) => {
     });
     const data = await res.json();
     const products = await data.products;
-    const arrayProductIds = [];
-    for (let i = 0; i < products.length; i++) {
-      const productIds = await products[i].id;
-      arrayProductIds.push(productIds);
+    if (products) {
+      const arrayProductIds = [];
+      for (let i = 0; i < products.length; i++) {
+        const productIds = await products[i].id;
+        arrayProductIds.push(productIds);
+      }
+      arrayProductIds.includes(idProduct) ? setFav(true) : setFav(false);
     }
-    arrayProductIds.includes(idProduct) ? setFav(true) : setFav(false);
   };
   checkFavs();
 
@@ -61,9 +63,9 @@ const FavButton = (props) => {
   };
 
   return token ? (
-    <div div id="fav-btn">
-      {fav === false && <FavoriteBorderIcon onClick={addFav} />}
+    <div id="fav-btn">
       {fav === true && <FavoriteIcon onClick={deleteFav} />}
+      {!fav && <FavoriteBorderIcon onClick={addFav} />}
     </div>
   ) : (
     <Link to="/login" />

@@ -42,7 +42,7 @@ const BookButton = (props) => {
       setError("");
       sendMessage({
         token,
-        to: info.id_user_B,
+        to: info.id_user_A,
         text: "Has recibido una reserva para este producto",
       });
       history.goBack();

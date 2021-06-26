@@ -25,7 +25,7 @@ async function listMessages(req, res, next) {
     FROM messages M
     LEFT JOIN users U ON M.id_user_A = U.id
     WHERE (M.id_user_A = ? OR M.id_user_B = ?) AND (M.id_user_A = ? OR M.id_user_B = ?)
-    ORDER BY date DESC
+    ORDER BY date ASC
     `,
       [id, id, userId, userId]
     );

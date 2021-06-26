@@ -4,9 +4,9 @@ import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router";
 import sendMessage from "../utils/sendMessage";
+import useRemoteSingleBooking from "../hooks/useRemoteSingleBooking";
 
 const BookingOptionsSeller = (props) => {
-  const { product } = props;
   const infoParams = useParams();
   const [meetDate, setMeetDate] = useState();
   const [ubication, setUbication] = useState();
@@ -15,6 +15,8 @@ const BookingOptionsSeller = (props) => {
   const [error, setError] = useState();
 
   const history = useHistory();
+
+  const [booking] = useRemoteSingleBooking();
 
   const acceptHandler = async (e) => {
     e.preventDefault();
@@ -33,12 +35,11 @@ const BookingOptionsSeller = (props) => {
     const data = await res.json();
     console.log(data);
 
-    sendMessage(
+    sendMessage({
       token,
-      product,
-      decodedToken.id,
-      `El usuario ha aceptado tu reserva para el día ${meetDate} en ${ubication}`
-    );
+      to: booking.booking.id_user_B,
+      text: `El usuario ha aceptado tu reserva para el día ${meetDate} en ${ubication}`,
+    });
 
     if (res.ok) {
       setError("");
@@ -64,12 +65,11 @@ const BookingOptionsSeller = (props) => {
     const data = await res.json();
     console.log(data);
 
-    sendMessage(
+    sendMessage({
       token,
-      product,
-      decodedToken.id,
-      `El usuario ha cancelado tu reserva`
-    );
+      to: booking.booking.id_user_B,
+      text: `El usuario ha cancelado tu reserva`,
+    });
 
     if (res.ok) {
       history.goBack();

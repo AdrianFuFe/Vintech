@@ -5,7 +5,6 @@ import ChatList from "../components/ChatList";
 
 const ChatListPage = (props) => {
   const [conversations] = useRemoteConversations();
-  console.log(conversations);
 
   return (
     <>

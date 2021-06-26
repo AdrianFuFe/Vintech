@@ -6,12 +6,17 @@ import sendMessage from "../utils/sendMessage";
 const ChatRoomInput = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [token] = useContext(TokenContext);
-  const { id, idProduct } = useParams();
+  const { idB } = useParams();
 
   const sendMsg = async (e) => {
     e.preventDefault();
-    sendMessage(token, idProduct, id, inputValue);
+    sendMessage({
+      token,
+      to: idB,
+      text: inputValue,
+    });
     setInputValue("");
+    window.location.reload();
   };
 
   return (

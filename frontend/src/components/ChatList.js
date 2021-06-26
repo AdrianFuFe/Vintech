@@ -9,14 +9,17 @@ const ChatList = (props) => {
 
   const decodedToken = decodeToken(token);
   const { info } = props;
+
   let arrayConversations;
   info
     ? (arrayConversations = info.map((info, index) => {
+        let route = `/user/${decodedToken.id}/messages/${info.id_user_A}`;
+        if (decodedToken.id === info.id_user_A) {
+          route = `/user/${decodedToken.id}/messages/${info.id_user_B}`;
+        }
         return (
           <li key={index} className="conversations">
-            <Link
-              to={`/product/${info.id_product}/user/${decodedToken.id}/messages/`}
-            >
+            <Link to={route}>
               <ChatListTemplate info={info} />
             </Link>
           </li>

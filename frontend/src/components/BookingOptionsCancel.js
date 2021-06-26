@@ -3,6 +3,8 @@ import decodeToken from "../utils/decodeToken";
 import { useContext, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router";
+import sendMessage from "../utils/sendMessage";
+import useRemoteSingleBooking from "../hooks/useRemoteSingleBooking";
 
 const BookingOptionscancel = (props) => {
   const infoParams = useParams();
@@ -11,6 +13,8 @@ const BookingOptionscancel = (props) => {
   const [error, setError] = useState();
 
   const history = useHistory();
+
+  const [booking] = useRemoteSingleBooking();
 
   const cancelHandler = async (e) => {
     e.preventDefault();
@@ -26,6 +30,12 @@ const BookingOptionscancel = (props) => {
     );
     const data = await res.json();
     console.log(data);
+
+    sendMessage({
+      token,
+      to: booking.booking.id_user_B,
+      text: `El usuario ha cancelado tu reserva`,
+    });
 
     if (res.ok) {
       setError("");

@@ -1,8 +1,8 @@
-async function sendMessage(token, product, sender, text) {
+async function sendMessage(token, to, text) {
   const formData = new FormData();
   formData.append("text", text);
 
-  await fetch(`http://localhost:3300/product/${product}/messages/${sender}`, {
+  await fetch(`http://localhost:3300/user/${to}/messages/`, {
     method: "POST",
     headers: {
       authorization: token,

@@ -114,11 +114,11 @@ app.delete("/product/:id/images/:imgId", validAuth, canEdit, deleteImgProduct);
 
 //CONTROLADORES DE MENSAJES
 //ENVIAR MENSAJE
-app.post("/product/:id/messages/:userId", validAuth, sendMessage);
+app.post("/user/:id/messages", validAuth, sendMessage);
 //LISTAR CONVERSACIONES
 app.get("/user/:id/messages", validAuth, isSameUser, listConversations);
 //LISTAR MENSAJES
-app.get("/product/:id/messages/:userId", validAuth, listMessages);
+app.get("/user/:id/messages/:userId", validAuth, isSameUser, listMessages);
 
 //CONTROLADORES DE RESERVAS
 //CREAR RESERVA
@@ -130,9 +130,19 @@ app.get("/user/:id/bookings-out", validAuth, isSameUser, listBookingsOut);
 //VER UNA RESERVA
 app.get("/user/:id/bookings/:idBooking", validAuth, isSameUser, getBooking);
 //RESPONDER UNA RESERVA RECIBIDA
-app.put("/user/:id/bookings/:idBooking/:response", validAuth, isSameUser, responseBooking);
+app.put(
+  "/user/:id/bookings/:idBooking/:response",
+  validAuth,
+  isSameUser,
+  responseBooking
+);
 //CANCELAR UNA RESERVA
-app.put("/user/:id/bookings/:idBooking/response/cancel", validAuth, isSameUser, cancelBooking);
+app.put(
+  "/user/:id/bookings/:idBooking/response/cancel",
+  validAuth,
+  isSameUser,
+  cancelBooking
+);
 
 //CONTROLADORES DE VOTOS
 app.post("/user/:id/votes", validAuth, canVote, sendVote);

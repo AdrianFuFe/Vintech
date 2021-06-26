@@ -12,10 +12,10 @@ const ProductBuyerOptions = (props) => {
   productData ? (data = productData[0]) : (data = "error");
 
   return (
-    <>
+    <div id="product-options">
       {decodedToken && decodedToken.id !== data.user_id && <BookButton />}
       {decodedToken && decodedToken.id !== data.user_id && <ChatButton />}
-    </>
+    </div>
   );
 };
 export default ProductBuyerOptions;

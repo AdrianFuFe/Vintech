@@ -10,6 +10,7 @@ async function getProduct(req, res, next) {
     const [result] = await connection.query(
       `
         SELECT 
+          P.id,
           P.title, 
           P.price, 
           P.description, 

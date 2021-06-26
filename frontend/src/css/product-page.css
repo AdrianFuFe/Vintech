@@ -2,6 +2,11 @@
   margin-bottom: 8rem;
 }
 
+#fav-btn {
+  margin: 0 1rem 0 auto;
+  justify-self: right;
+}
+
 .product-sheet {
   text-align: left;
   padding: 1rem;
@@ -63,4 +68,25 @@
 #seller-info p {
   grid-area: foot;
   font-size: 0.8rem;
+}
+
+div#product-options {
+  display: flex;
+}
+
+#product-page #product-options button {
+  padding: 0.2rem 0.3rem;
+  margin: 2rem auto;
+  min-height: 3rem;
+  min-width: 5rem;
+  border-radius: 0.8rem;
+  border: 0rem;
+  box-shadow: 0rem 0.2rem 0.5rem rgb(100, 100, 100);
+  color: #8b8b8b;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#product-page #product-options button:hover {
+  background-color: rgba(255, 229, 191, 1);
 }

@@ -53,7 +53,7 @@ npm init --> instalar dependencias de proyecto
 
 
 -ejecutar en consola
-	node initDb.js  -->  crear la base de datos
+	node initdb.js  -->  crear la base de datos
 	npm run dev --> iniciar servidor utilizando nodemon a través de npm
 	
 

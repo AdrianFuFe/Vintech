@@ -54,10 +54,12 @@ async function listBookingsIn(req, res, next) {
 
     const [imgs] = await connection.query(
       `
-            SELECT PI.img AS img_product
-            FROM bookings B
-            LEFT JOIN product_imgs PI ON B.id_product = PI.id_product
-            `
+      SELECT PI.img AS img_product
+      FROM bookings B
+      LEFT JOIN product_imgs PI ON B.id_product = PI.id_product
+      WHERE id_user_A = ?
+      `,
+      [req.auth.id]
     );
 
     res.send({

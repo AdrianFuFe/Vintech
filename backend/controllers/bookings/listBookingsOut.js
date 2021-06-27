@@ -57,7 +57,9 @@ async function listBookingsOut(req, res, next) {
             SELECT PI.img AS img_product
             FROM bookings B
             LEFT JOIN product_imgs PI ON B.id_product = PI.id_product
-            `
+            WHERE id_user_B = ?
+            `,
+      [req.auth.id]
     );
 
     res.send({

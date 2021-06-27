@@ -31,14 +31,13 @@ const BookingOptionscancel = (props) => {
     const data = await res.json();
     console.log(data);
 
-    sendMessage({
-      token,
-      to: booking.booking.id_user_B,
-      text: `El usuario ha cancelado tu reserva`,
-    });
-
     if (res.ok) {
       setError("");
+      sendMessage({
+        token,
+        to: booking.booking.id_user_B,
+        text: `El usuario ha cancelado tu reserva`,
+      });
       history.goBack();
     } else {
       setError(data.error);

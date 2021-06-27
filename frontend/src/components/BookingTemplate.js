@@ -6,7 +6,6 @@ import "../css/booking-list.css";
 
 const BookingTemplate = (props) => {
   const { data, bkInfo, img } = props;
-
   const route = useLocation();
 
   let bk;
@@ -27,7 +26,7 @@ const BookingTemplate = (props) => {
   return (
     <div id="booking-template" className="booking-list">
       <Link to={`${route.pathname}/${data.id}`}>
-        <div className="div-img">
+        {/* <div className="div-img">
           {bk.img ? (
             <img
               src={`http://localhost:3300/uploads/imgs/${bk.img}`}
@@ -36,7 +35,7 @@ const BookingTemplate = (props) => {
           ) : (
             <PhotoIcon />
           )}
-        </div>
+        </div> */}
         <h2 id="product">
           {bk.product} - {bk.price}
         </h2>

@@ -17,6 +17,7 @@ const useRemoteSingleProduct = (props) => {
       },
     });
     const data = await res.json();
+    console.log(data);
     setProduct(data);
   };
 

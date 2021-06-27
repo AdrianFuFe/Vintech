@@ -24,6 +24,7 @@ async function listConversations(req, res, next) {
         ) s ON LEAST(id_user_A, id_user_B)=user_1
                AND GREATEST(id_user_A, id_user_B)=user_2
                AND m.id = s.last_id
+               ORDER BY id DESC
        `,
       [req.auth.id]
     );

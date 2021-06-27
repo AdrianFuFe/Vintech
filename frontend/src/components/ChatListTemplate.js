@@ -14,13 +14,10 @@ const ChatListTemplate = (props) => {
 
   const [user] = useWhoAmI(info, decodedToken);
 
-  const [product] = useRemoteSingleProduct(info.id_product);
-
-  return user.data && product.data ? (
+  return user.data ? (
     <>
       <UserAvatar user={user.data[0]} />
       <h3>{user.data[0].username}</h3>
-      <h3>{product.data[0].title}</h3>
       <p>{info.text}</p>
       <p className="time-ago">
         <ReactTimeAgo date={info.date} locale="es-ES" />

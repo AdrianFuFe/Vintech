@@ -121,9 +121,7 @@ function createMessages(connection) {
         id_user_A INT UNSIGNED,
         FOREIGN KEY (id_user_A) REFERENCES users(id) ON DELETE CASCADE,
         id_user_B INT UNSIGNED,
-        FOREIGN KEY (id_user_B) REFERENCES users(id) ON DELETE CASCADE,
-        id_product INT UNSIGNED,
-        FOREIGN KEY (id_product) REFERENCES products(id) ON DELETE CASCADE
+        FOREIGN KEY (id_user_B) REFERENCES users(id) ON DELETE CASCADE
         );`,
     (error) => {
       if (error) console.error(error.sqlMessage);

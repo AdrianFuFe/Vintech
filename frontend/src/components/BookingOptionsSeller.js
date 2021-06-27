@@ -35,14 +35,13 @@ const BookingOptionsSeller = (props) => {
     const data = await res.json();
     console.log(data);
 
-    sendMessage({
-      token,
-      to: booking.booking.id_user_B,
-      text: `El usuario ha aceptado tu reserva para el día ${meetDate} en ${ubication}`,
-    });
-
     if (res.ok) {
       setError("");
+      sendMessage({
+        token,
+        to: booking.booking.id_user_B,
+        text: `El usuario ha aceptado tu reserva para el día ${meetDate} en ${ubication}`,
+      });
       history.goBack();
     } else {
       setError(data.error);
@@ -65,15 +64,14 @@ const BookingOptionsSeller = (props) => {
     const data = await res.json();
     console.log(data);
 
-    sendMessage({
-      token,
-      to: booking.booking.id_user_B,
-      text: `El usuario ha cancelado tu reserva`,
-    });
-
     if (res.ok) {
-      history.goBack();
       setError("");
+      sendMessage({
+        token,
+        to: booking.booking.id_user_B,
+        text: `El usuario ha cancelado tu reserva`,
+      });
+      history.goBack();
     } else {
       setError(data.error);
     }

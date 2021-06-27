@@ -11,10 +11,9 @@ import UserData from "../components/UserData";
 import UserMenu from "../components/UserMenu";
 
 const UserPage = (props) => {
+  const [user] = useRemoteUser();
   const [token] = useContext(TokenContext);
   const decodedToken = decodeToken(token);
-
-  const [user] = useRemoteUser();
 
   let userData;
   user.data

@@ -4,22 +4,18 @@ import decodeToken from "../utils/decodeToken";
 import { useParams } from "react-router";
 
 const useRemoteUser = () => {
-  const { id } = useParams();
-
   const [user, setUser] = useState([]);
-
+  const { id } = useParams();
   const [token] = useContext(TokenContext);
   const decodedToken = decodeToken(token);
 
-  let idToken;
-
-  decodedToken ? (idToken = decodedToken.id) : (idToken = null);
-
   useEffect(() => {
-    if (id === idToken) {
+    //comparamos el id de la url con el del token del usuario que accede para diferenciar la peticion a la api entre buscar mis datos y los de otro usuario
+    if (Number(id) === decodedToken.id) {
+      console.log("saco mis datos");
       const chargeUser = async () => {
         const res = await fetch(
-          `http://localhost:3300/user/${idToken}/myProfile`,
+          `http://localhost:3300/user/${decodedToken.id}/myProfile`,
           {
             method: "GET",
             headers: {
@@ -34,6 +30,7 @@ const useRemoteUser = () => {
       chargeUser();
     } else {
       const chargeUser = async () => {
+        console.log("saco los datos de otro");
         const res = await fetch(`http://localhost:3300/user/${id}`, {
           method: "GET",
           headers: {

@@ -10,22 +10,23 @@ const ChatButton = (props) => {
   const decodedToken = decodeToken(token);
   const [product] = useRemoteSingleProduct();
 
-  
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   let route;
-  token && product ? (route=`/product/${idProduct.id}/user/${decodedToken.id}/messages/:id_user_B`) : (route='/') 
-  const history = useHistory('');
+  token && product && product.data
+    ? (route = `/user/${decodedToken.id}/messages/${product.data[0].user_id}`)
+    : (route = "/");
+  const history = useHistory("");
 
   const goChat = async (e) => {
     history.push(route);
-  }
+  };
 
-  return(
+  return (
     <>
       <button onClick={(e) => goChat(e.target.value)}>Ir al chat</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </>
-  )
-}
+  );
+};
 export default ChatButton;

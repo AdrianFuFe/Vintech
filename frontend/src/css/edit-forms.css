@@ -92,7 +92,6 @@ section#category {
 .form-wrapper img {
   display: flex;
   max-width: 100%;
-  max-height: auto;
 }
 
 p#delete-img {

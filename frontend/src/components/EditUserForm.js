@@ -1,7 +1,7 @@
 import { useState, useContext, useRef } from "react";
 import { TokenContext } from "./TokenContextProvider";
 import { useHistory } from "react-router";
-import '../css/editUser-form.css'
+import "../css/edit-forms.css";
 
 const EditUserForm = (props) => {
   const { user } = props;
@@ -53,71 +53,91 @@ const EditUserForm = (props) => {
   };
 
   return (
-    <div id="editUserWrapper">
+    <div className="form-wrapper">
       <h2>DATOS DE PERFIL</h2>
-      <form id="editUserForm" onSubmit={editUser}>
-        <label htmlFor="editUsername" />
-        <input
-          type="text"
-          id="editUsername"
-          name="editUsername"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder={user.username}
-        />
+      <form onSubmit={editUser}>
+        <label htmlFor="editUsername">
+          <p>Alias:</p>
+          <input
+            type="text"
+            id="editUsername"
+            name="editUsername"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder={user.username}
+          />
+        </label>
 
-        <label htmlFor="editFname" />
-        <input
-          type="text"
-          id="editFname"
-          name="editFname"
-          value={fname}
-          onChange={(e) => setFname(e.target.value)}
-          placeholder={user.fname || "Nombre"}
-        />
+        <label htmlFor="editFname">
+          <p>Nombre:</p>
+          <input
+            type="text"
+            id="editFname"
+            name="editFname"
+            value={fname}
+            onChange={(e) => setFname(e.target.value)}
+            placeholder={user.fname || "Nombre"}
+          />
+        </label>
 
-        <label htmlFor="editLname" />
-        <input
-          type="text"
-          id="editLname"
-          name="editLname"
-          value={lname}
-          onChange={(e) => setLname(e.target.value)}
-          placeholder={user.lname || "Apellidos"}
-        />
+        <label htmlFor="editLname">
+          <p>Apellidos:</p>
+          <input
+            type="text"
+            id="editLname"
+            name="editLname"
+            value={lname}
+            onChange={(e) => setLname(e.target.value)}
+            placeholder={user.lname || "Apellidos"}
+          />
+        </label>
 
-        <label htmlFor="editEmail" />
-        <input
-          type="email"
-          id="editEmail"
-          name="editEmail"
-          required={true}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder={user.email || "Email"}
-        />
+        <label htmlFor="editEmail">
+          <p>Email:</p>
+          <input
+            type="email"
+            id="editEmail"
+            name="editEmail"
+            required={true}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder={user.email || "Email"}
+          />
+        </label>
 
-        <label htmlFor="editFname" />
-        <input
-          type="textarea"
-          id="editBio"
-          name="editBio"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-          placeholder={user.bio || "Biografía"}
-        />
+        <label htmlFor="editBio">
+          <p>Biografía:</p>
+          <input
+            type="textarea"
+            id="editBio"
+            name="editBio"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            placeholder={user.bio || "Biografía"}
+          />
+        </label>
 
-        <label htmlFor="editUbication" />
-        <input
-          type="text"
-          id="editUbication"
-          name="editUbication"
-          value={last_ubication}
-          onChange={(e) => setLast_ubication(e.target.value)}
-          placeholder={user.last_ubication || "Ubicación"}
-        />
+        <label htmlFor="editUbication">
+          <p>Ubicación:</p>
+          <input
+            type="text"
+            id="editUbication"
+            name="editUbication"
+            value={last_ubication}
+            onChange={(e) => setLast_ubication(e.target.value)}
+            placeholder={user.last_ubication || "Ubicación"}
+          />
+        </label>
 
-        <input type="file" ref={fileInput} accept="image/*" />
+        <label htmlFor="editImg">
+          <input
+            type="file"
+            id="editImg"
+            name="editImg"
+            ref={fileInput}
+            accept="image/*"
+          />
+        </label>
 
         <input type="submit" value="Actualizar mis datos" />
         {error && <p style={{ color: "red" }}>{error}</p>}

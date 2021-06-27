@@ -12,9 +12,9 @@ const EditProductPage = () => {
       <HeaderBackTitle />
       {product.data ? (
         <>
-          <EditProductForm product={product.data[0]} />
           <AddProductImgs />
           <DeleteProductImgs imgs={product.imgs} />
+          <EditProductForm product={product.data[0]} />
         </>
       ) : (
         <h3>Cargando datos de producto</h3>

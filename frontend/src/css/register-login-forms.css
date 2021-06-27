@@ -1,6 +1,6 @@
-div#login {
+/* COMMON */
+div.r-l-forms {
   background-color: rgba(255, 229, 191, 1);
-  position: relative;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -8,24 +8,25 @@ div#login {
   align-items: center;
 }
 
-#login a {
+.r-l-forms a {
   text-decoration: none;
   color: blue;
 }
 
-#login svg {
+.r-l-forms svg {
   position: absolute;
+  width: 1rem;
   top: 15vh;
   right: 20vw;
 }
 
-#login h2 {
+.r-l-forms h2 {
   position: absolute;
   top: 20vh;
   margin-bottom: 1rem;
 }
 
-#login form {
+.r-l-forms form {
   position: absolute;
   top: 25vh;
   display: flex;
@@ -33,23 +34,25 @@ div#login {
   align-items: center;
 }
 
-#login input {
-  margin-top: 3rem;
-  height: 2rem;
-  min-width: 300px;
-  max-width: 500px;
+.r-l-forms input {
+  margin-top: 1.5rem;
+  height: 1.5rem;
+  max-width: 250px;
+  padding: 0 0.5rem;
   background-color: rgba(255, 229, 191, 1);
-  border: 0rem;
+  border: 0;
   border-bottom: 0.15rem solid rgba(189, 189, 189, 1);
+  border-radius: 5px;
 }
 
-#login p {
-  margin-top: 3rem;
+.r-l-forms p {
+  margin-top: 2rem;
+  font-size: 0.8rem;
 }
 
-#login input[type="submit"] {
+.r-l-forms input[type="submit"] {
   position: absolute;
-  bottom: -20vh;
+  top: 45vh;
   min-height: 3rem;
   min-width: 10rem;
   border-radius: 0.8rem;
@@ -59,4 +62,21 @@ div#login {
   color: #8b8b8b;
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+.r-l-forms input[type="submit"]:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+/* REGISTER */
+.r-l-forms input[type="checkbox"] {
+  min-width: 15px;
+}
+
+.r-l-forms p#checkTxt {
+  max-width: 200px;
+  text-align: left;
+  font-size: 0.6rem;
+  margin-left: 1rem;
+  display: inline-block;
 }

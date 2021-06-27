@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { TokenContext } from "./TokenContextProvider";
 import CloseButton from "./CloseButton";
 import { Link } from "react-router-dom";
-import "../css/login-form.css";
+import "../css/register-login-forms.css";
 
 const LoginForm = (props) => {
   const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ const LoginForm = (props) => {
     }
   };
   return (
-    <div id="login">
+    <div className="r-l-forms">
       <CloseButton id="closeBtn" />
       <h2> ¡Bienvenido! </h2>
       <form id="login" onSubmit={login}>

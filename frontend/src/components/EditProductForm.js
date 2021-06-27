@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { TokenContext } from "./TokenContextProvider";
 import { useHistory, useParams } from "react-router";
+import "../css/edit-forms.css";
 
 const EditProductForm = (props) => {
   const { product } = props;
@@ -47,59 +48,61 @@ const EditProductForm = (props) => {
   }
 
   return (
-    <form id="edit-product" onSubmit={editProduct}>
-      <label htmlFor="edit-title">
-        Título:
-        <input
-          type="text"
-          id="edit-title"
-          name="edit-title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder={product.title}
-        />
-      </label>
+    <div className="form-wrapper">
+      <form id="edit-product" onSubmit={editProduct}>
+        <label htmlFor="edit-title">
+          <p>Título:</p>
+          <input
+            type="text"
+            id="edit-title"
+            name="edit-title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder={product.title}
+          />
+        </label>
 
-      <label htmlFor="edit-price">
-        Precio:
-        <input
-          type="number"
-          id="edit-price"
-          name="edit-price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          placeholder={product.price}
-        />
-      </label>
+        <label htmlFor="edit-price">
+          <p>Precio:</p>
+          <input
+            type="number"
+            id="edit-price"
+            name="edit-price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            placeholder={product.price}
+          />
+        </label>
 
-      <label htmlFor="edit-description">
-        Descripción:
-        <input
-          type="text"
-          id="edit-description"
-          name="edit-description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder={product.description}
-        />
-      </label>
+        <label htmlFor="edit-description">
+          <p>Descripción:</p>
+          <input
+            type="text"
+            id="edit-description"
+            name="edit-description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder={product.description}
+          />
+        </label>
 
-      <label htmlFor="edit-ubication">
-        Ubicación:
-        <input
-          type="text"
-          id="edit-ubication"
-          name="edit-ubication"
-          value={ubication}
-          onChange={(e) => setUbication(e.target.value)}
-          placeholder={product.ubication}
-        />
-      </label>
+        <label htmlFor="edit-ubication">
+          <p>Ubicación:</p>
+          <input
+            type="text"
+            id="edit-ubication"
+            name="edit-ubication"
+            value={ubication}
+            onChange={(e) => setUbication(e.target.value)}
+            placeholder={product.ubication}
+          />
+        </label>
 
-      <input type="submit" value="Editar datos de producto" />
+        <input type="submit" value="Editar producto" />
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </form>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </form>
+    </div>
   );
 };
 

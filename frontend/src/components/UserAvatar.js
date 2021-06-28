@@ -4,7 +4,7 @@ const UserAvatar = (props) => {
   const { user } = props;
 
   return (
-    <div>
+    <div id="user-avatar">
       {user ? (
         user.img ? (
           <Avatar

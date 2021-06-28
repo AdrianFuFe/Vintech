@@ -1,0 +1,51 @@
+ul#chatlist a {
+  margin-top: 1rem;
+  display: grid;
+  width: 100%;
+  grid-template-areas: "img center1 right1" "img center2 right2" "img center3 right3";
+  grid-template-columns: 80px 1fr 3rem;
+  border-bottom: 1px solid gray;
+  margin-top: 1rem;
+  padding: 0.5rem 0;
+  justify-items: start;
+  text-align: left;
+  text-decoration: none;
+  color: gray;
+}
+
+#chatlist div#user-avatar {
+  grid-area: img;
+  padding: 0.2rem;
+  justify-self: center;
+}
+#chatlist div.MuiAvatar-root {
+  max-height: 4rem;
+  max-width: 4rem;
+  margin: 0 auto;
+  display: flex;
+}
+
+#chatlist h3 {
+  color: #d07017;
+  font-size: 1rem;
+}
+#chatlist h3#chatlist-user {
+  grid-area: center1;
+}
+#chatlist h4#chatlist-product {
+  grid-area: center2;
+}
+#chatlist p {
+  grid-area: center3;
+  font-size: 0.8rem;
+}
+
+#chatlist #chatlist-time-ago {
+  grid-area: right1;
+  color: gray;
+  font-size: 0.7rem;
+}
+
+#chatlist {
+  margin-bottom: 5rem;
+}

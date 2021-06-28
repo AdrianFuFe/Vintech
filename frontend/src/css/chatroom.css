@@ -1,0 +1,9 @@
+#chatroom-header div#user-avatar {
+  padding: 0.2rem;
+  width: fit-content;
+  display: inline-flex;
+}
+#chatroom-header h3 {
+  display: block;
+  float: left;
+}

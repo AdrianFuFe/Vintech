@@ -32,7 +32,7 @@ const AddProductImgs = (props) => {
   return (
     <section className="form-wrapper">
       <form id="upload-img" onSubmit={uploadImage}>
-        <input type="file" ref={fileInput} accept="image/*" />
+        <input id="select-img" type="file" ref={fileInput} accept="image/*" />
         <input id="upload-img" type="submit" value="Subir Imagen" />
       </form>
     </section>

@@ -36,8 +36,8 @@ const DeleteProductImgs = (props) => {
   });
   return (
     <div className="form-wrapper" id="delete-images">
-      <p id="delete-img"> *Haz click una imagen para borrarla</p>
       <ul>{arrayImages}</ul>
+      <p id="delete-img"> *Haz click una imagen para borrarla</p>
     </div>
   );
 };

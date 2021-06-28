@@ -2,7 +2,6 @@ import ReactTimeAgo from "react-time-ago/commonjs/ReactTimeAgo";
 import { Link, useLocation } from "react-router-dom";
 import PhotoIcon from "@material-ui/icons/Photo";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
-import "../css/booking-list.css";
 
 const BookingTemplate = (props) => {
   const { data, bkInfo, img } = props;
@@ -27,7 +26,7 @@ const BookingTemplate = (props) => {
   return (
     <div id="booking-template" className="booking-list">
       <Link to={`${route.pathname}/${data.id}`}>
-        <div className="div-img">
+        <div className="bk-img">
           {bk.img ? (
             <img
               src={`http://localhost:3300/uploads/imgs/${bk.img}`}
@@ -37,18 +36,17 @@ const BookingTemplate = (props) => {
             <PhotoIcon />
           )}
         </div>
-        <h2 id="product">
-          {bk.product} - {bk.price}
-        </h2>
-        <p className="time-ago">
+        <h2 id="bk-product">{bk.product}</h2>
+        <h3 id="bk-price">{bk.price}€</h3>
+        <p className="bk-time-ago">
           <ReactTimeAgo date={bk.date} locale="es-ES" />
         </p>
-        <span className="users">
+        <span className="bk-users">
           <p id="buyer">{bk.buyer}</p>
           <KeyboardArrowRightIcon />
           <p id="seller">{bk.seller}</p>
         </span>
-        <p id="status">estado de la reserva - {bk.status}</p>
+        <p id="bk-status">estado de la reserva - {bk.status}</p>
       </Link>
     </div>
   );

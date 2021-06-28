@@ -95,7 +95,11 @@ section#category {
 }
 
 p#delete-img {
-  margin: 0 0 0.5rem 1rem;
+  margin: 0.5rem 0 0 1rem;
+}
+
+input#select-img {
+  margin-top: 0;
 }
 
 input#upload-img {

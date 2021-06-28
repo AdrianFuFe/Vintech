@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { TokenContext } from "./TokenContextProvider";
 import decodeToken from "../utils/decodeToken";
+import "../css/chat-list.css";
 
 const ChatList = (props) => {
   const [token] = useContext(TokenContext);
@@ -27,6 +28,6 @@ const ChatList = (props) => {
       }))
     : (arrayConversations = "Todavía no hay conversaciones");
 
-  return <ul>{arrayConversations}</ul>;
+  return <ul id="chatlist">{arrayConversations}</ul>;
 };
 export default ChatList;

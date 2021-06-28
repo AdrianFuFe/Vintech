@@ -19,10 +19,10 @@ const ChatListTemplate = (props) => {
   return user.data && product.data ? (
     <>
       <UserAvatar user={user.data[0]} />
-      <h3>{user.data[0].username}</h3>
-      <h3>{product.data[0].title}</h3>
+      <h3 id="chatlist-user">{user.data[0].username}</h3>
+      <h4 id="chatlist-product">{product.data[0].title}</h4>
       <p>{info.text}</p>
-      <p className="time-ago">
+      <p id="chatlist-time-ago">
         <ReactTimeAgo date={info.date} locale="es-ES" />
       </p>
     </>

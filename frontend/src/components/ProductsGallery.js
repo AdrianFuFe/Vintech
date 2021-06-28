@@ -7,6 +7,7 @@ import "../css/products-gallery.css";
 
 const ProductsGallery = (props) => {
   const [products] = useRemoteProducts();
+  console.log(products);
   const data = products.data;
   let arrayData;
   data

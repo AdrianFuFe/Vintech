@@ -9,7 +9,10 @@ const MyProductsPage = (props) => {
   return (
     <>
       <HeaderBackTitle />
-      <UserProductsList products={user.products} />
+      <UserProductsList
+        products={user.products}
+        productsImg={user.productsImg}
+      />
       <MenuBar />
     </>
   );

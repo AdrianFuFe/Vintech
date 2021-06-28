@@ -9,7 +9,7 @@ const BookingTemplate = (props) => {
   const route = useLocation();
 
   let bk;
-  data && bkInfo
+  data && bkInfo && img
     ? (bk = {
         date: data.date,
         meeting_date: data.meeting_date || "No hay fecha de entrega todavía",
@@ -17,8 +17,8 @@ const BookingTemplate = (props) => {
         seller: bkInfo.username_seller,
         buyer: bkInfo.username_buyer,
         product: bkInfo.title_product,
-        price: `${bkInfo.price_product}€`,
-        img: img.img_product,
+        price: `${bkInfo.price_product}`,
+        img: img.img.img,
         status: data.status,
       })
     : (bk = "cargando datos de reservas");

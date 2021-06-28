@@ -30,11 +30,24 @@ async function getMyUser(req, res, next) {
       [id]
     );
 
+    const ids = products.map((item) => item.id);
+
+    const [imgs] = await connection.query(`
+      SELECT img, id_product
+      FROM product_imgs
+      WHERE id_product IN (${ids.join(",")})`);
+
+    const resultImgs = products.map((item) => {
+      item.img = imgs.filter((img) => img.id_product === item.id)[0];
+      return item;
+    });
+
     res.send({
       status: "OK",
       message: `Aquí está la información del usuario con id ${id} y sus productos a la venta`,
       data: user,
       products: products,
+      productsImg: resultImgs,
     });
   } catch (error) {
     next(error);

@@ -32,15 +32,15 @@ const MyBookingsPage = (props) => {
       <TabPanel value={value} index={0}>
         <BookingsList
           bookings={bookingsIn.bookings}
-          bkInfo={bookingsIn.bkInfo}
-          img={bookingsIn.img}
+          usersInfo={bookingsIn.usersInfo}
+          imgInfo={bookingsIn.imgInfo}
         />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <BookingsList
           bookings={bookingsOut.bookings}
-          bkInfo={bookingsOut.bkInfo}
-          img={bookingsOut.img}
+          usersInfo={bookingsOut.usersInfo}
+          imgInfo={bookingsOut.imgInfo}
         />
       </TabPanel>
       <MenuBar />

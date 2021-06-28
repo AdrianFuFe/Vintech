@@ -4,8 +4,7 @@
 }
 
 #menu-profile ul {
-  padding: 0 1.5rem 1rem 1.5rem;
-  margin-bottom: 4rem;
+  padding: 0 1.5rem 2rem 1.5rem;
 }
 
 #menu-profile a {
@@ -18,4 +17,15 @@
 
 #menu-profile li {
   list-style: none;
+}
+
+/* MY USER */
+#menu-profile ul#my-user-menu {
+  max-height: 15rem;
+  overflow-y: scroll;
+}
+
+/* OTHER USERS */
+#menu-profile ul#user-profile-menu {
+  margin: 5rem 0 4rem 0.5rem;
 }

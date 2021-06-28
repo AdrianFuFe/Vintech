@@ -26,7 +26,7 @@ const ChatRoomHeader = (props) => {
   return data ? (
     <div id="chatroom-header">
       <UserAvatar user={data.data[0]} />
-      <h3>Conversación con el usuario: {data.data[0].username}</h3>
+      <h3>{data.data[0].username}</h3>
     </div>
   ) : (
     <h3>Cargando</h3>

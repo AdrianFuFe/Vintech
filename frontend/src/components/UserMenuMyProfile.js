@@ -50,7 +50,7 @@ const UserMenuMyProfile = (props) => {
 
   return (
     <div id="menu-profile">
-      <ul>
+      <ul id="my-user-menu">
         {menuOptionsArray}
         <li onClick={logOut}>
           <Link to="/login">

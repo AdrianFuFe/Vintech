@@ -1,4 +1,9 @@
 /* COMMON */
+div.form-wrapper {
+  margin-top: 5rem;
+  overflow-y: scroll;
+}
+
 .form-wrapper h2 {
   margin: 1rem;
   font-size: 1.2rem;

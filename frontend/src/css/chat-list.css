@@ -1,3 +1,7 @@
+ul#chatlist {
+  margin-top: 5rem;
+}
+
 ul#chatlist a {
   margin-top: 1rem;
   display: grid;
@@ -38,6 +42,8 @@ ul#chatlist a {
 #chatlist p {
   grid-area: center3;
   font-size: 0.8rem;
+  max-height: 3rem;
+  overflow-y: hidden;
 }
 
 #chatlist #chatlist-time-ago {

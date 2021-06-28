@@ -1,9 +1,81 @@
+div#chatroom-header {
+  position: fixed;
+  min-width: 100%;
+  top: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  padding: 0.5rem;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  background-color: white;
+}
+
 #chatroom-header div#user-avatar {
   padding: 0.2rem;
   width: fit-content;
-  display: inline-flex;
+  display: flex;
 }
+
+#chatroom-header div.MuiAvatar-root {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 #chatroom-header h3 {
-  display: block;
-  float: left;
+  display: flex;
+  margin-left: 1rem;
+  box-sizing: content-box;
+}
+
+.chatroom-input {
+  position: fixed;
+  min-width: 100%;
+  height: 2rem;
+  bottom: 4rem;
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+}
+.chatroom-input input {
+  height: 2rem;
+  padding: 0.2rem;
+}
+
+.chatroom-input #msginput {
+  min-width: 100%;
+}
+
+ul#messages-list {
+  position: absolute;
+  top: 9rem;
+  height: 19.5rem;
+  overflow-y: scroll;
+  margin: 0.1rem 0.5rem;
+}
+
+li.message {
+  display: grid;
+  grid-template-areas: "user time" "text text";
+  grid-template-columns: 1fr 3rem;
+}
+
+.chatroom-time-ago {
+  color: gray;
+  font-size: 0.7rem;
+  text-align: right;
+  align-self: center;
+  margin-right: 0.5rem;
+}
+
+p.message-user {
+  grid-area: user;
+  color: #d07017;
+  font-size: 1rem;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+p.message-text {
+  font-size: 0.9rem;
+  text-align: left;
+  margin-left: 1rem;
 }

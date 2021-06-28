@@ -1,3 +1,9 @@
+/* MENU */
+#bookings-menu {
+  margin-top: 3.5rem;
+}
+
+/* LIST */
 div#booking-template a {
   margin-top: 1rem;
   display: grid;

@@ -1,5 +1,5 @@
 div#user-data {
-  margin-top: 0.5rem;
+  margin-top: 5rem;
   display: grid;
   grid-template-areas: "title1 title2" "img data" "edit bio";
   grid-template-columns: 1fr 1fr;

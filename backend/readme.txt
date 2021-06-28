@@ -46,7 +46,8 @@ npm init --> instalar dependencias de proyecto
 	MYSQL_DATABASE = (nombre de nuestra base de datos /ej: vintechDB)
 	APIKEY = (clave proporcionada por SENDGRID para utilizar su API)
 	SEND_FROM = (email configurado en SENDGRID para el envio de emails)
-	DOMINIO = (ruta en la que el navegador mostrará nuestra aplicación /ej: http://localhost:3000) 
+	DOMINIO = (ruta en la que ejecutamos nuestro servidor de back /ej: http://localhost:3000) 
+	DOMINIO_FRONT = (ruta en la que ejecutamos nuestro servidor de front /ej: http://localhost:3300)
 	SECRET = (clave que proporcionamos a OOOOOOO para realizar encriptado y desencriptado /ej:claveInventada1234) 
 	UPLOADS_DIR = (ruta para la carpeta donde guardaremos las imagenes /ej: static/uploads)
 

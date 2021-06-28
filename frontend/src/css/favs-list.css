@@ -1,3 +1,7 @@
+ul#favoritos {
+  margin-top: 4rem;
+}
+
 #favoritos li a {
   display: grid;
   width: 100%;

@@ -30,6 +30,7 @@ const { editProduct } = require("./controllers/products/editProduct");
 const { deleteProduct } = require("./controllers/products/deleteProduct");
 const { addImgProduct } = require("./controllers/products/addImgProduct");
 const { deleteImgProduct } = require("./controllers/products/deleteImgProduct");
+const { sellProduct } = require("./controllers/products/sellProduct");
 
 //CONTROLADORES DE MENSAJE
 const { sendMessage } = require("./controllers/messages/sendMessage");
@@ -111,6 +112,8 @@ app.delete("/product/:id", validAuth, canEdit, deleteProduct);
 app.post("/product/:id/images", validAuth, canEdit, addImgProduct);
 //BORRAR FOTO DE PRODUCTO
 app.delete("/product/:id/images/:imgId", validAuth, canEdit, deleteImgProduct);
+//VENDER PRODUCTO
+app.put("/product/:id/sell", validAuth, sellProduct);
 
 //CONTROLADORES DE MENSAJES
 //ENVIAR MENSAJE

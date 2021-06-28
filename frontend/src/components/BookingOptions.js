@@ -3,6 +3,8 @@ import { TokenContext } from "../components/TokenContextProvider";
 import decodeToken from "../utils/decodeToken";
 import BookingOptionsSeller from "./BookingOptionsSeller";
 import BookingOptionsCancel from "./BookingOptionsCancel";
+import ConfirmButton from "./ConfirmButton";
+import VoteUser from "./VoteUser";
 
 const BookingOptions = (props) => {
   const { info } = props;
@@ -32,6 +34,12 @@ const BookingOptions = (props) => {
       {((decodedToken.id === userSeller && state === "accepted") ||
         (decodedToken.id === userBuyer &&
           (state === "sent" || state === "read"))) && <BookingOptionsCancel />}
+      {decodedToken.id === userBuyer && state === "accepted" && (
+        <>
+          <ConfirmButton token={token} id={info.id_product} />
+          <VoteUser id={info.id_product} />
+        </>
+      )}
     </>
   );
 };

@@ -12,11 +12,12 @@ async function listProducts(req, res, next) {
         `
       SELECT *
       FROM products
-      WHERE products.id_seller LIKE CONCAT("%", ? , "%") 
+      WHERE (products.id_seller LIKE CONCAT("%", ? , "%") 
         OR products.title LIKE CONCAT("%", ? , "%") 
         OR products.description LIKE CONCAT("%", ? , "%") 
         OR products.ubication LIKE CONCAT("%", ? , "%") 
-        OR products.category LIKE CONCAT("%", ? , "%")
+        OR products.category LIKE CONCAT("%", ? , "%"))
+        AND status NOT IN ('selled')
       GROUP BY products.id
       ORDER BY modification_date DESC`,
         [search, search, search, search, search]
@@ -25,6 +26,7 @@ async function listProducts(req, res, next) {
       [result] = await connection.query(`
             SELECT *
             FROM products
+            WHERE status NOT IN ('selled')
             GROUP BY products.id
             ORDER BY modification_date DESC
             `);

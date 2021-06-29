@@ -1,3 +1,6 @@
+#products {
+  margin-top: 1rem;
+}
 #products li a {
   display: grid;
   width: 100%;

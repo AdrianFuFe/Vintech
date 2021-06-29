@@ -21,6 +21,7 @@ const { deleteUser } = require("./controllers/users/deleteUser");
 const { recoverPwd } = require("./controllers/users/recoverPwd");
 const { resetPwd } = require("./controllers/users/resetPwd");
 const { changePwd } = require("./controllers/users/changePwd");
+const { historyProducts } = require("./controllers/products/historyProducts");
 
 //CONTROLADORES DE PRODUCTO
 const { newProduct } = require("./controllers/products/newProduct");
@@ -96,6 +97,8 @@ app.put("/recoverPwd", recoverPwd);
 app.put("/reset/:code", resetPwd);
 //EDITAR PASSWORD
 app.put("/user/:id/changePwd", validAuth, isSameUser, changePwd);
+//HISTORIAL DE PRODUCTOS
+app.get("/user/:id/history", validAuth, isSameUser, historyProducts);
 
 //CONTROLADORES DE PRODUCTO
 //CREAR PRODUCTO

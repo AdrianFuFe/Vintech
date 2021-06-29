@@ -53,6 +53,9 @@
 .div-img img {
   max-width: 100%;
 }
+div.div-img {
+  justify-self: center;
+}
 
 #products {
   margin-bottom: 5rem;

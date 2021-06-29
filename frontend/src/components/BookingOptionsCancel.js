@@ -5,8 +5,10 @@ import { useParams } from "react-router";
 import { useHistory } from "react-router";
 import sendMessage from "../utils/sendMessage";
 import useRemoteSingleBooking from "../hooks/useRemoteSingleBooking";
+import useRemoteSingleProduct from "../hooks/useRemoteSingleProduct";
 
 const BookingOptionscancel = (props) => {
+  const { id } = props;
   const infoParams = useParams();
   const [token] = useContext(TokenContext);
   const decodedToken = decodeToken(token);
@@ -44,11 +46,20 @@ const BookingOptionscancel = (props) => {
     }
   };
 
+  const [product] = useRemoteSingleProduct(id);
+
+  let display;
+  product.data && product.data[0].status === "selled"
+    ? (display = false)
+    : (display = true);
+
   return (
     <>
-      <button id="cancel-option" onClick={cancelHandler}>
-        CANCELAR
-      </button>
+      {display && (
+        <button id="cancel-option" onClick={cancelHandler}>
+          CANCELAR
+        </button>
+      )}
       {error && <p style={{ color: "red" }}>{error}</p>}
     </>
   );

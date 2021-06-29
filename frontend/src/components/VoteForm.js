@@ -7,6 +7,8 @@ import { TokenContext } from "./TokenContextProvider";
 const VoteForm = (props) => {
   const { product } = props;
 
+  const [error, setError] = useState();
+
   const [value, setValue] = useState();
   const [comment, setComment] = useState();
 
@@ -33,6 +35,12 @@ const VoteForm = (props) => {
 
     const data = await res.json();
     console.log(data);
+
+    if (res.ok) {
+      setError("");
+    } else {
+      setError(data.error);
+    }
   }
 
   return (
@@ -60,6 +68,7 @@ const VoteForm = (props) => {
             />
           </label>
           <input type="submit" />
+          {error && <p style={{ color: "red" }}>{error}</p>}
         </form>
       </div>
     </>

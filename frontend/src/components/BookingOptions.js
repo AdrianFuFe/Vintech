@@ -33,7 +33,9 @@ const BookingOptions = (props) => {
       )}
       {((decodedToken.id === userSeller && state === "accepted") ||
         (decodedToken.id === userBuyer &&
-          (state === "sent" || state === "read"))) && <BookingOptionsCancel />}
+          (state === "sent" || state === "read"))) && (
+        <BookingOptionsCancel id={info.id_product} />
+      )}
       {decodedToken.id === userBuyer && state === "accepted" && (
         <>
           <ConfirmButton token={token} id={info.id_product} />

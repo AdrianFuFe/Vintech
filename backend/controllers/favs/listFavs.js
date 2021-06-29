@@ -27,14 +27,28 @@ async function listFavs(req, res, next) {
       `,
       [req.auth.id]
     );
-    if (products.length < 1)
+    if (products.length < 1) {
       throw new Error(`No hay ningún producto en favoritos`);
+    }
+
+    const ids = products.map((item) => item.id);
+
+    const [imgs] = await connection.query(`
+      SELECT img, id_product
+      FROM product_imgs
+      WHERE id_product IN (${ids.join(",")})`);
+
+    const resultImgs = products.map((item) => {
+      item.img = imgs.filter((img) => img.id_product === item.id)[0];
+      return item;
+    });
 
     res.send({
       status: "OK",
       message: `A continuación se muestran los productos favoritos del usuario con id ${req.auth.id}`,
       data: result,
       products: products,
+      productsImg: resultImgs,
     });
   } catch (error) {
     next(error);

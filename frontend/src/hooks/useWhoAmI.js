@@ -18,6 +18,7 @@ const useWhoAmI = (info, decodedToken) => {
       });
       const data = await res.json();
       setUser(data);
+      console.log(data);
     };
     chargeUser();
   }, []);

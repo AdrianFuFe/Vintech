@@ -1,12 +1,7 @@
-import { useHistory } from "react-router-dom";
-import decodeToken from "../utils/decodeToken";
 import useRemoteSingleProduct from "../hooks/useRemoteSingleProduct";
 
 const ConfirmButton = (props) => {
   const { token, id } = props;
-  const decodedToken = decodeToken(token);
-
-  const history = useHistory();
 
   async function confirmSell() {
     const res = await fetch(`http://localhost:3300/product/${id}/sell`, {
@@ -19,7 +14,7 @@ const ConfirmButton = (props) => {
     const data = await res.json();
 
     console.log(data);
-    history.push(`/user/${decodedToken.id}/my-bookings`);
+    window.location.reload();
   }
 
   const [product] = useRemoteSingleProduct(id);

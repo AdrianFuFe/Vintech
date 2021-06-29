@@ -5,9 +5,7 @@ import ReactTimeAgo from "react-time-ago";
 import "../css/my-products-list.css";
 
 const UserProductsList = (props) => {
-  const { products, productsImg } = props;
-
-  console.log(productsImg);
+  const { products } = props;
 
   let arrayProducts;
   products

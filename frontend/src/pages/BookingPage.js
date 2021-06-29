@@ -28,7 +28,7 @@ const BookingPage = (props) => {
         status: booking.booking.status,
       })
     : (bk = "cargando datos de reservas");
-  console.log(bk.img);
+
   return (
     <div id="bk-page">
       <HeaderBackTitle />

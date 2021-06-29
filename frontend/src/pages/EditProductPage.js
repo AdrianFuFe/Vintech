@@ -12,8 +12,8 @@ const EditProductPage = () => {
       <HeaderBackTitle />
       {product.data ? (
         <>
-          <AddProductImgs />
           <DeleteProductImgs imgs={product.imgs} />
+          <AddProductImgs />
           <EditProductForm product={product.data[0]} />
         </>
       ) : (

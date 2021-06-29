@@ -1,7 +1,7 @@
-import HeaderBackTitle from '../components/HeaderBackTitle';
-import UserProductsList from '../components/UserProductsList';
-import MenuBar from '../components/MenuBar';
-import useRemoteUser from '../hooks/useRemoteUser';
+import HeaderBackTitle from "../components/HeaderBackTitle";
+import UserProductsList from "../components/UserProductsList";
+import MenuBar from "../components/MenuBar";
+import useRemoteUser from "../hooks/useRemoteUser";
 
 const MyProductsPage = (props) => {
   const [user] = useRemoteUser();
@@ -9,9 +9,12 @@ const MyProductsPage = (props) => {
   return (
     <>
       <HeaderBackTitle />
-      <UserProductsList products={user.products}/>
+      <UserProductsList
+        products={user.products}
+        productsImg={user.productsImg}
+      />
       <MenuBar />
     </>
-  )
-}
+  );
+};
 export default MyProductsPage;

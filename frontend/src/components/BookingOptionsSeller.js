@@ -81,6 +81,7 @@ const BookingOptionsSeller = (props) => {
     <>
       <form id="meeting" onSubmit={acceptHandler}>
         <label htmlFor="meeting-date" />
+        <p>Fecha</p>
         <input
           type="datetime-local"
           id="meeting-date"
@@ -92,6 +93,7 @@ const BookingOptionsSeller = (props) => {
         />
 
         <label htmlFor="meeting-ubication" />
+        <p>Ubicación</p>
         <input
           type="text"
           id="meeting-ubication"
@@ -101,8 +103,10 @@ const BookingOptionsSeller = (props) => {
           placeholder="Lugar propuesta para la venta"
           required
         />
-        <input type="submit" value="ACEPTAR" />
-        <button onClick={rejectHandler}>RECHAZAR</button>
+        <section id="meeting-buttons">
+          <input type="submit" value="ACEPTAR" />
+          <button onClick={rejectHandler}>RECHAZAR</button>
+        </section>
       </form>
       {error && <p style={{ color: "red" }}>{error}</p>}
     </>

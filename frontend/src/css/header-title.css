@@ -1,4 +1,11 @@
 header#header-title {
+  position: fixed;
+  top: 0;
+  min-width: 100%;
+  z-index: 99;
+  min-height: 3.5rem;
+  margin-top: 0;
+  background-color: white;
   border-bottom: 0.2rem solid rgb(229, 229, 229);
 }
 

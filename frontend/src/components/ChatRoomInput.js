@@ -20,7 +20,7 @@ const ChatRoomInput = (props) => {
   };
 
   return (
-    <form className="chatRoomInput" onSubmit={sendMsg}>
+    <form className="chatroom-input" onSubmit={sendMsg}>
       {props.children}
       <input
         type="text"

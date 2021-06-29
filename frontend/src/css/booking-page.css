@@ -1,0 +1,117 @@
+/* GENERAL */
+div#bk-page {
+  margin-top: 3.5rem;
+  margin-bottom: 4rem;
+  height: 100%;
+  overflow-y: scroll;
+}
+#bk-page a {
+  text-decoration: none;
+  color: black;
+}
+
+/* PRODUCT SECTION */
+.bk-product h2 {
+  font-size: 1.5rem;
+  text-align: left;
+  margin: 0.5rem auto 0 2rem;
+  color: #d07017;
+}
+
+.bk-product h3 {
+  font-size: 1rem;
+  text-align: left;
+  margin: 0.5rem 2rem 1rem 2rem;
+}
+
+/* USERS SECTION */
+section.bk-users {
+  margin: 0 3rem 0 3rem;
+  display: grid;
+  grid-template-areas:
+    "vendedor1 vendedor2"
+    "comprador1 comprador2";
+  grid-template-columns: 1fr 1fr;
+}
+.bk-users h3 {
+  font-size: 1rem;
+  text-align: right;
+  margin-right: 0.5rem;
+  color: #828282;
+}
+.bk-users a {
+  margin-left: 0.5rem;
+  text-align: left;
+}
+h3#bk-users-seller-title {
+  grid: vendedor1;
+}
+h3#bk-users-buyer-title {
+  grid: comprador1;
+}
+a#bk-users-seller-data {
+  grid: vendedor2;
+}
+a#bk-users-buyer-data {
+  grid: comprador2;
+}
+
+/* OPTIONS SECTION */
+/* SELLER */
+.bk-options form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem auto;
+}
+
+.bk-options #meeting p {
+  margin: 0.5rem auto -2px auto;
+  text-align: left;
+  font-size: 0.8rem;
+  color: #828282;
+}
+
+.bk-options input {
+  height: 2rem;
+  max-width: 250px;
+  border: 0rem;
+  border-bottom: 0.15rem solid rgba(200, 200, 200, 1);
+  border-radius: 5px;
+  padding: 0.2rem 1rem;
+}
+
+.bk-options input[type="submit"] {
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  min-height: 2rem;
+  min-width: 6rem;
+  border-radius: 0.8rem;
+  border: 0rem;
+  box-shadow: 0rem 0.2rem 0.5rem rgb(100, 100, 100);
+  color: #8b8b8b;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.bk-options input[type="submit"]:hover {
+  background-color: rgb(255, 229, 191);
+}
+
+.bk-options button {
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  min-height: 2rem;
+  min-width: 6rem;
+  border-radius: 0.8rem;
+  border: 0rem;
+  box-shadow: 0rem 0.2rem 0.5rem rgb(100, 100, 100);
+  color: #8b8b8b;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.bk-options button:hover {
+  background-color: rgb(255, 229, 191);
+}
+
+/* CANCEL */
+button#cancel-option {
+  margin-top: 2rem;
+}

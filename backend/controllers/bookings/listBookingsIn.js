@@ -52,21 +52,23 @@ async function listBookingsIn(req, res, next) {
       [req.auth.id]
     );
 
-    const [imgs] = await connection.query(
-      `
-      SELECT PI.img AS img_product
-      FROM bookings B
-      LEFT JOIN product_imgs PI ON B.id_product = PI.id_product
-      WHERE id_user_A = ?
-      `,
-      [req.auth.id]
-    );
+    const ids = result.map((item) => item.id_product);
+
+    const [imgs] = await connection.query(`
+      SELECT img, id_product
+      FROM product_imgs
+      WHERE id_product IN (${ids.join(",")})`);
+
+    const resultImgs = result.map((item) => {
+      item.img = imgs.filter((img) => img.id_product === item.id_product)[0];
+      return item;
+    });
 
     res.send({
       status: "OK",
       bookings: result,
-      bkInfo: moreInfo,
-      img: imgs,
+      usersInfo: moreInfo,
+      imgInfo: resultImgs,
     });
   } catch (error) {
     next(error);

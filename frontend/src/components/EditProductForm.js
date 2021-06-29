@@ -37,7 +37,6 @@ const EditProductForm = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
 
     if (res.ok) {
       setError("");

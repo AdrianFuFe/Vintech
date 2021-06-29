@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-
 import useRemoteSingleBooking from "../hooks/useRemoteSingleBooking";
 import HeaderBackTitle from "../components/HeaderBackTitle";
 import PhotoIcon from "@material-ui/icons/Photo";
 import BookingOptions from "../components/BookingOptions";
+import MenuBar from "../components/MenuBar";
+import "../css/booking-page.css";
 
 const BookingPage = (props) => {
   const [booking] = useRemoteSingleBooking();
@@ -29,39 +30,39 @@ const BookingPage = (props) => {
     : (bk = "cargando datos de reservas");
   console.log(bk.img);
   return (
-    <>
+    <div id="bk-page">
       <HeaderBackTitle />
-      <section className="bkProduct">
-        <h3>PRODUCTO</h3>
+      <section className="bk-product">
+        <div className="bk-img">
+          {bk.img ? (
+            <img
+              src={`http://localhost:3300/uploads/imgs/${bk.img}`}
+              alt="foto de producto"
+            />
+          ) : (
+            <PhotoIcon />
+          )}
+        </div>
         <Link to={`/product/${bk.product_id}`}>
-          <div className="div-img">
-            {bk.img ? (
-              <img
-                src={`http://localhost:3300/uploads/imgs/${bk.img}`}
-                alt="foto de producto"
-              />
-            ) : (
-              <PhotoIcon />
-            )}
-          </div>
-          <p>
-            {bk.product} {bk.price}
-          </p>
+          <h2>{bk.price} </h2>
+          <h3>{bk.product}</h3>
         </Link>
       </section>
-      <h3>VENDEDOR</h3>
-      <Link to={`/user/${bk.seller_id}`}>
-        <p>{bk.seller}</p>
-      </Link>
-      <section></section>
-      <h3>COMPRADOR</h3>
-      <Link to={`/user/${bk.buyer_id}`}>
-        <p>{bk.buyer}</p>
-      </Link>
-      <section>
+      <section className="bk-users">
+        <h3 id="bk-users-seller-title">Vendedor:</h3>
+        <Link id="bk-users-seller-data" to={`/user/${bk.seller_id}`}>
+          <p>{bk.seller}</p>
+        </Link>
+        <h3 id="bk-users-buyer-title">Comprador:</h3>
+        <Link id="bk-users-buyer-data" to={`/user/${bk.buyer_id}`}>
+          <p>{bk.buyer}</p>
+        </Link>
+      </section>
+      <section className="bk-options">
         <BookingOptions info={booking.booking} />
       </section>
-    </>
+      <MenuBar />
+    </div>
   );
 };
 export default BookingPage;

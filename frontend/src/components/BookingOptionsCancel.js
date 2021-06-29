@@ -47,7 +47,9 @@ const BookingOptionscancel = (props) => {
 
   return (
     <>
-      <button onClick={cancelHandler}>CANCELAR</button>
+      <button id="cancel-option" onClick={cancelHandler}>
+        CANCELAR
+      </button>
       {error && <p style={{ color: "red" }}>{error}</p>}
     </>
   );

@@ -8,10 +8,6 @@ import "../css/booking-list.css";
 const BookingsList = (props) => {
   const { bookings, usersInfo, imgInfo } = props;
 
-  console.log(bookings);
-  console.log(usersInfo);
-  console.log(imgInfo);
-
   const route = useLocation();
 
   let arrayBookings;
@@ -19,9 +15,6 @@ const BookingsList = (props) => {
     ? (arrayBookings = bookings.map((booking, index) => {
         const usersData = usersInfo[index];
         const imgData = imgInfo[index];
-
-        console.log(usersData);
-        console.log(imgData.img.img);
 
         return (
           <li key={booking.id} className="booking">

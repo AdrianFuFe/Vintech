@@ -30,7 +30,7 @@ const MyConfigMenu = (props) => {
 
   return (
     <div id="menu-profile">
-      <ul id="user-profile-menu">{menuOptionsArray}</ul>
+      <ul id="user-config-menu">{menuOptionsArray}</ul>
     </div>
   );
 };

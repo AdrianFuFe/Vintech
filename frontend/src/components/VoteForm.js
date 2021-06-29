@@ -1,17 +1,22 @@
 import { Rating } from "@material-ui/lab";
 import { useContext } from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import decodeToken from "../utils/decodeToken";
 import { TokenContext } from "./TokenContextProvider";
 
 const VoteForm = (props) => {
   const { product } = props;
 
+  const [error, setError] = useState();
+
   const [value, setValue] = useState();
   const [comment, setComment] = useState();
 
   const [token] = useContext(TokenContext);
   const decodedToken = decodeToken(token);
+
+  const history = useHistory();
 
   let id;
   if (Number(decodedToken.id) === Number(product.data[0].user_id)) {
@@ -33,6 +38,13 @@ const VoteForm = (props) => {
 
     const data = await res.json();
     console.log(data);
+
+    if (res.ok) {
+      setError("");
+      history.push(`/user/${id}/ratings`);
+    } else {
+      setError(data.error);
+    }
   }
 
   return (
@@ -60,6 +72,7 @@ const VoteForm = (props) => {
             />
           </label>
           <input type="submit" />
+          {error && <p style={{ color: "red" }}>{error}</p>}
         </form>
       </div>
     </>

@@ -25,6 +25,7 @@ import EditProductPage from "./pages/EditProductPage";
 import BookingPage from "./pages/BookingPage";
 import ChatListPage from "./pages/ChatListPage";
 import ChatRoomPage from "./pages/ChatRoomPage";
+import RatingsPage from "./pages/RatingsPage";
 
 function App() {
   return (
@@ -85,6 +86,9 @@ function App() {
             </Route>
             <Route exact path="/user/:id/favs">
               <FavsPage />
+            </Route>
+            <Route exact path="/user/:id/ratings">
+              <RatingsPage />
             </Route>
             <Route exact path="/upload-product">
               <UploadProductPage />

@@ -5,7 +5,7 @@ import "../css/header-title.css";
 
 const HeaderBackTitle = (props) => {
   const location = useLocation();
-  
+
   let title;
   if (location.pathname.includes("my-ratings")) {
     title = "MIS VALORACIONES";
@@ -33,6 +33,8 @@ const HeaderBackTitle = (props) => {
     title = "SUS PRODUCTOS";
   } else if (location.pathname.includes("messages")) {
     title = "MENSAJES";
+  } else if (location.pathname.includes("ratings")) {
+    title = "VALORACIONES";
   } else {
     title = "PERFIL DE USUARIO";
   }

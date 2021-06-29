@@ -9,14 +9,35 @@ const UserDataMyProfile = (props) => {
     <div id="user-data">
       <UserAvatar user={user} />
       <h3> Mis Datos </h3>
-      <EditUserInfoButton> <p>EDITAR</p> </EditUserInfoButton>
+      <EditUserInfoButton>
+        {" "}
+        <p>EDITAR</p>{" "}
+      </EditUserInfoButton>
       <ul>
-        <li>{user.username ? user.username : "alias"}</li>
-        <li>{user.fname ? user.fname : "nombre"}</li>
-        <li>{user.lname ? user.lname : "apellidos"}</li>
-        <li>{user.last_ubication ? user.last_ubication : "ubicación"}</li>
+        <li>{user.username || "alias"}</li>
+        <li>
+          {!user.fname || user.fname === "null" || user.fname === " "
+            ? (user.fname = "nombre")
+            : user.fname}
+        </li>
+        <li>
+          {!user.lname || user.lname === "null" || user.lname === " "
+            ? (user.lname = "apellidos")
+            : user.lname}
+        </li>
+        <li>
+          {!user.last_ubication ||
+          user.last_ubication === "null" ||
+          user.last_ubication === " "
+            ? (user.last_ubication = "ubicación")
+            : user.last_ubication}
+        </li>
       </ul>
-      <p id='bio'>{user.bio ? user.bio : "Biografía"}</p>
+      <p id="bio">
+        {!user.bio || user.bio === "null" || user.bio === " "
+          ? (user.bio = "Biografía")
+          : user.bio}
+      </p>
     </div>
   );
 };

@@ -10,7 +10,7 @@ const UserData = (props) => {
         <li>
           <h3> Datos de {user.username} </h3>
         </li>
-        <li>{user.fname}</li>
+        <li>{user.fname === "null" ? "nombre" : user.fname}</li>
         <li>{user.lname}</li>
         <li>{user.last_ubication}</li>
         <li>{user.bio}</li>

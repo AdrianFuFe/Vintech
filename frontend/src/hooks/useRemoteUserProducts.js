@@ -15,6 +15,7 @@ const useRemoteUserProducts = (props) => {
       });
       const data = await res.json();
       setProducts(data);
+      console.log(data);
     };
     loadProducts();
   }, []);

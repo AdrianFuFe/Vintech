@@ -15,6 +15,7 @@ const SellerInfo = () => {
   let decodedToken;
   if (token) decodedToken = decodeToken(token).id;
 
+  console.log(product);
   return product.data ? (
     <div id="seller-info">
       <Link to={`/user/${product.data[0].user_id}`}>

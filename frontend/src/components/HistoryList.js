@@ -6,6 +6,7 @@ import "../css/products-gallery.css";
 
 const HistoryList = (props) => {
   const { data } = props;
+
   let arrayData;
   data
     ? (arrayData = data.map((product) => (

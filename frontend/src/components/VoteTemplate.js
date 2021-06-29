@@ -12,9 +12,7 @@ const VoteTemplate = (props) => {
       <p className="time-ago">
         <ReactTimeAgo date={data.creation_date} locale="es-ES" />
       </p>
-      <p id="buyer">
-        {`${buyer.fname_buyer} ${buyer.lname_buyer}` || buyer.username_buyer}
-      </p>
+      <p id="buyer">{buyer.username_buyer}</p>
       <p id="comment">{data.comment}</p>
       <Rating name="read-only" value={data.stars} readOnly />
     </div>

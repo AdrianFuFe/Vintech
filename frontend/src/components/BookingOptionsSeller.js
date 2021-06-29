@@ -20,6 +20,7 @@ const BookingOptionsSeller = (props) => {
 
   const acceptHandler = async (e) => {
     e.preventDefault();
+
     const response = "accept";
     const res = await fetch(
       `http://localhost:3300/user/${decodedToken.id}/bookings/${infoParams.idBooking}/${response}`,

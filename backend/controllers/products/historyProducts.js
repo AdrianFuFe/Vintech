@@ -7,7 +7,7 @@ async function historyProducts(req, res, next) {
 
     const [result_sell] = await connection.query(
       `
-            SELECT *
+            SELECT category, description, id_seller, modification_date, price, status, title, ubication, id AS id_product
             FROM products
             WHERE id_seller = ? AND status = 'selled'
             GROUP BY products.id

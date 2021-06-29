@@ -21,7 +21,7 @@ async function getProduct(req, res, next) {
           U.id AS user_id, 
           U.img AS user_img, 
           U.username AS user_username, 
-          U.fname AS user_username, 
+          U.fname AS user_fname, 
           U.lname AS user_lastname, 
           U.bio AS user_bio, 
           U.last_ubication AS user_last_ubication

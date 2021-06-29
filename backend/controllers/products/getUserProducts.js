@@ -16,7 +16,7 @@ async function getUserProducts(req, res, next) {
       [id]
     );
 
-    if (products.length > 1) {
+    if (products.length >= 1) {
       const ids = products.map((item) => item.id);
 
       const [imgs] = await connection.query(`

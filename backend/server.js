@@ -25,6 +25,7 @@ const { changePwd } = require("./controllers/users/changePwd");
 //CONTROLADORES DE PRODUCTO
 const { newProduct } = require("./controllers/products/newProduct");
 const { getProduct } = require("./controllers/products/getProduct");
+const { getUserProducts } = require("./controllers/products/getUserProducts");
 const { listProducts } = require("./controllers/products/listProducts");
 const { editProduct } = require("./controllers/products/editProduct");
 const { deleteProduct } = require("./controllers/products/deleteProduct");
@@ -102,6 +103,8 @@ app.put("/user/:id/changePwd", validAuth, isSameUser, changePwd);
 app.post("/product", validAuth, newProduct);
 //OBTENER PRODUCTO
 app.get("/product/:id", getProduct);
+//OBTENER PRODUCTOS DE UN USUARIO CONCRETO
+app.get("/user/:id/products", getUserProducts);
 //LISTAR PRODUCTOS
 app.get("/products", listProducts);
 //EDITAR PRODUCTO

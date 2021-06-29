@@ -28,7 +28,7 @@ async function listConversations(req, res, next) {
        `,
       [req.auth.id]
     );
-    console.log(results);
+    // console.log(results);
     if (results.length < 1) throw new Error(`No hay ninguna conversación`);
     res.send({
       status: "OK",

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const MyConfigMenu = (props) => {
-  const menuOptions = ["edit-profile", "pwd"];
+  const menuOptions = ["edit-profile", "pwd", "delete-user"];
 
   const menuOptionsArray = menuOptions.map((opt, index) => {
     let title;
@@ -12,6 +12,9 @@ const MyConfigMenu = (props) => {
         break;
       case "pwd":
         title = "CAMBIAR CONTRASEÑA";
+        break;
+      case "delete-user":
+        title = "ELIMINAR CUENTA";
         break;
       default:
         title = "OPCION";

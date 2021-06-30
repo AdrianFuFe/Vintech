@@ -26,6 +26,8 @@ const DeleteUserPage = (props) => {
     const data = await res.json();
     if (res.ok) {
       setToken("");
+      setPwd("");
+      setConfirmPwd("");
       setError(
         <p>
           Cuenta eliminada corractamente{" "}

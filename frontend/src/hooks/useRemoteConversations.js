@@ -1,12 +1,15 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { TokenContext } from '../components/TokenContextProvider';
+import { TokenContext } from "../components/TokenContextProvider";
 
-
-const useRemoteConversations = () => {
+const useRemoteConversations = (props) => {
   const [conversations, setConversations] = useState([]);
-  const { id } = useParams();
+  let { id } = useParams();
   const [token] = useContext(TokenContext);
+
+  if (!id) {
+    id = props;
+  }
 
   const loadConversations = async () => {
     const res = await fetch(`http://localhost:3300/user/${id}/messages`, {
@@ -18,6 +21,7 @@ const useRemoteConversations = () => {
     });
     const data = await res.json();
     setConversations(data);
+    console.log(data);
   };
 
   useEffect(() => {

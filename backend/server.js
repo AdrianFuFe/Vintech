@@ -93,9 +93,9 @@ app.put("/user/:id", validAuth, isSameUser, editUser);
 //BORRAR USUARIO
 app.delete("/user/:id", validAuth, isSameUser, deleteUser);
 //RECOVER PASSWORD
-app.put("/recoverPwd", recoverPwd);
+app.post("/recoverPwd", recoverPwd);
 //RESET PASSWORD
-app.put("/reset/:code", resetPwd);
+app.put("/reset-password/:code", resetPwd);
 //EDITAR PASSWORD
 app.put("/user/:id/changePwd", validAuth, isSameUser, changePwd);
 //HISTORIAL DE PRODUCTOS

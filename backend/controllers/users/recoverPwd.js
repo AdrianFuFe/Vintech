@@ -36,7 +36,7 @@ async function recoverPwd(req, res, next) {
 
     //enviar correo de recuperacion
     //creamos un link de recuperacion
-    const recoverLink = `${process.env.DOMINIO}/reset/${code}`;
+    const recoverLink = `${process.env.DOMINIO_FRONT}/reset-password/${code}`;
     await sendMail({
       to: email,
       subject: "Recuperación de contraseña",

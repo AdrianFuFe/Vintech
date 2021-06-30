@@ -39,13 +39,13 @@ const BookingsList = (props) => {
                   <KeyboardArrowRightIcon />
                   <p id="seller">{usersData.username_seller}</p>
                 </span>
-                <p id="bk-status">estado de la reserva - {booking.status}</p>
+                <p id="bk-status">estado - {booking.status}</p>
               </Link>
             </div>
           </li>
         );
       }))
-    : (arrayBookings = "No se han encontrado reservas");
+    : (arrayBookings = " ");
 
   return <ul>{arrayBookings}</ul>;
 };

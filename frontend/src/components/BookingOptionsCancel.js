@@ -42,7 +42,7 @@ const BookingOptionscancel = (props) => {
       sendMessage({
         token,
         to,
-        text: `El usuario ha cancelado tu reserva`,
+        text: `El usuario ha cancelado tu reserva para el producto '${booking.moreInfo.title_product}'`,
       });
       history.goBack();
     } else {

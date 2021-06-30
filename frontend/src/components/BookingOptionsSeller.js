@@ -41,7 +41,7 @@ const BookingOptionsSeller = (props) => {
       sendMessage({
         token,
         to: booking.booking.id_user_B,
-        text: `El usuario ha aceptado tu reserva para el día ${meetDate} en ${ubication}`,
+        text: data.message,
       });
       history.goBack();
     } else {
@@ -70,7 +70,7 @@ const BookingOptionsSeller = (props) => {
       sendMessage({
         token,
         to: booking.booking.id_user_B,
-        text: `El usuario ha cancelado tu reserva`,
+        text: `El usuario ha cancelado tu reserva para el producto '${booking.moreInfo.title_product}'`,
       });
       history.goBack();
     } else {

@@ -3,6 +3,10 @@
   margin-top: 3.5rem;
 }
 
+ul {
+  margin-bottom: 5rem;
+}
+
 /* LIST */
 div#booking-template a {
   margin-top: 1rem;

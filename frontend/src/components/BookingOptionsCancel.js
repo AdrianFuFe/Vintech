@@ -35,9 +35,13 @@ const BookingOptionscancel = (props) => {
 
     if (res.ok) {
       setError("");
+      let to = booking.booking.id_user_A;
+      if (decodedToken.id === booking.booking.id_user_A) {
+        to = booking.booking.id_user_B;
+      }
       sendMessage({
         token,
-        to: booking.booking.id_user_B,
+        to,
         text: `El usuario ha cancelado tu reserva`,
       });
       history.goBack();

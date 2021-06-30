@@ -7,7 +7,7 @@ const useRemoteConversations = (props) => {
   let { id } = useParams();
   const [token] = useContext(TokenContext);
 
-  if (!id) {
+  if (props) {
     id = props;
   }
 

@@ -43,7 +43,7 @@ const BookButton = (props) => {
       sendMessage({
         token,
         to: info.id_user_A,
-        text: "Has recibido una reserva para este producto",
+        text: `Has recibido una reserva para el producto '${product.data[0].title}'`,
       });
       history.push(`/user/${decodedToken.id}/messages`);
     } else {

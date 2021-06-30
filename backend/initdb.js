@@ -133,7 +133,7 @@ function createFeedbacks(connection) {
   connection.query(
     `CREATE TABLE feedbacks(
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-        stars ENUM('0', '1', '2', '3', '4', '5') NOT NULL,
+        stars INT NOT NULL,
         comment TINYTEXT,
         creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         id_user_A INT UNSIGNED,

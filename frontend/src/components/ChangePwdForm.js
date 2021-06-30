@@ -25,7 +25,7 @@ const ChangePwdForm = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        authorization: `${token}`,
+        authorization: token,
       },
       body: JSON.stringify(info),
     });

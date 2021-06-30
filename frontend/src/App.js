@@ -8,6 +8,7 @@ import ActivationPage from "./pages/ActivationPage";
 import LoginPage from "./pages/LoginPage";
 import RecoverPwdPage from "./pages/RecoverPwdPage";
 import ResetPwdPage from "./pages/ResetPwdPage";
+import DeleteUserPage from "./pages/DeleteUserPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
@@ -61,6 +62,9 @@ function App() {
             </Route>
             <Route exact path="/reset-password/:code">
               <ResetPwdPage />
+            </Route>
+            <Route exact path="/user/:id/delete-user">
+              <DeleteUserPage />
             </Route>
             <Route exact path="/categories">
               <CategoriesPage />

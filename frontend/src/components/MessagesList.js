@@ -3,7 +3,7 @@ import { useRef } from "react";
 const MessagesList = (props) => {
   const { messages } = props;
   const fin = useRef();
-  console.log(fin);
+
   let arrayMessages;
   messages
     ? (arrayMessages = messages.map((message, index) => {

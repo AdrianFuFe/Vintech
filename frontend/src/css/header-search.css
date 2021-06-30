@@ -17,3 +17,13 @@
 .MuiInputBase-root {
   padding-left: 1rem;
 }
+
+@media (min-width: 600px), (max-width: 1200) {
+  #search-form {
+    min-width: 600px;
+    max-width: 600px;
+  }
+  div.MuiInputBase-root {
+    min-width: 550px;
+  }
+}

@@ -16,6 +16,21 @@ async function historyProducts(req, res, next) {
       [req.auth.id]
     );
 
+    if (result_sell) {
+      const ids = result_sell.map((item) => item.id_product);
+
+      const [imgs] = await connection.query(`
+        SELECT img, id_product
+        FROM product_imgs
+        WHERE id_product IN (${ids.join(",")})
+        ORDER BY id_product DESC`);
+
+      const resultImgs = result_sell.map((item) => {
+        item.img = imgs.filter((img) => img.id_product === item.id_product)[0];
+        return item;
+      });
+    }
+
     const [result_buy] = await connection.query(
       `
     SELECT * FROM products
@@ -24,6 +39,21 @@ async function historyProducts(req, res, next) {
     ORDER BY modification_date DESC`,
       [req.auth.id]
     );
+
+    if (result_buy) {
+      const ids = result_buy.map((item) => item.id_product);
+
+      const [imgs] = await connection.query(`
+        SELECT img, id_product
+        FROM product_imgs
+        WHERE id_product IN (${ids.join(",")})
+        ORDER BY id_product DESC`);
+
+      const resultImgs = result_buy.map((item) => {
+        item.img = imgs.filter((img) => img.id_product === item.id_product)[0];
+        return item;
+      });
+    }
 
     res.send({
       status: "OK",

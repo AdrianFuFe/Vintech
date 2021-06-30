@@ -7,10 +7,13 @@ import "../css/products-gallery.css";
 const HistoryList = (props) => {
   const { data } = props;
 
+  console.log(data);
+
   let arrayData;
   data
-    ? (arrayData = data.map((product) => (
-        <li key={product.id} className="product">
+    ? (arrayData = data.map((product, index) => (
+        <li key={index} className="product">
+          {console.log(index)}
           <Link to={`/product/${product.id_product}`}>
             <div className="div-img">
               {product.img ? (

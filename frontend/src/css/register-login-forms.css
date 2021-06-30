@@ -80,3 +80,16 @@ div.r-l-forms {
   margin-left: 1rem;
   display: inline-block;
 }
+
+/* RECOVER */
+p#recover-text {
+  margin-top: 10rem;
+}
+
+form#recover-form {
+  margin-top: 5rem;
+}
+
+input#recover-btn {
+  margin-top: -3.5rem;
+}

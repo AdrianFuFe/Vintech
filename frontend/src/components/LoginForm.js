@@ -58,6 +58,10 @@ const LoginForm = (props) => {
           Todavía no tengo cuenta, <Link to="/register">Crear cuenta</Link>
         </p>
 
+        <p>
+          <Link to="/recover-password">¿ Has olvidado tu contraseña ? </Link>
+        </p>
+
         <input type="submit" value="Enviar" />
         {error && <p style={{ color: "red" }}>{error}</p>}
       </form>

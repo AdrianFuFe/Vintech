@@ -1,8 +1,22 @@
 import { useEffect, useState } from "react";
+import queryString from "query-string";
+import { useLocation } from "react-router";
 
-const useRemoteProducts = (props) => {
+const useRemoteProducts = () => {
+  const { search } = useLocation();
+  const value = queryString.parse(search).search;
+  const min = queryString.parse(search).min;
+  const max = queryString.parse(search).max;
+
+  const info = {
+    min: min || 0,
+    max: max || Infinity,
+  };
+
   let direction;
-  props ? (direction = `?search=${props}`) : (direction = "");
+  search
+    ? (direction = `?search=${value}&min=${info.min}&max=${info.max}`)
+    : (direction = "");
   const [products, setProducts] = useState([]);
 
   const loadProducts = async () => {
@@ -18,7 +32,7 @@ const useRemoteProducts = (props) => {
 
   useEffect(() => {
     loadProducts();
-  }, [props]);
+  }, [search]);
 
   return [products, setProducts];
 };

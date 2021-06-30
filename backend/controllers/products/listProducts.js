@@ -4,7 +4,7 @@ async function listProducts(req, res, next) {
   let connection;
   try {
     connection = await getConnection();
-    const { search } = req.query;
+    const { search, min, max } = req.query;
     let result;
 
     if (search) {
@@ -32,10 +32,18 @@ async function listProducts(req, res, next) {
             `);
     }
 
+    if (min) {
+      result = result.filter((result) => Number(result.price) >= min);
+    }
+
+    if (max) {
+      result = result.filter((result) => Number(result.price) <= max);
+    }
+
     if (result.length < 1) {
       res.send({
         status: "OK",
-        message: `La búsqueda del término ${search} no arroja resultados`,
+        message: `No hay productos que mostrar`,
       });
     } else {
       const ids = result.map((item) => item.id);

@@ -6,8 +6,7 @@ import "../css/products-gallery.css";
 import useRemoteProducts from "../hooks/useRemoteProducts";
 
 const SearchGallery = (props) => {
-  const { search } = props;
-  const [products] = useRemoteProducts(search);
+  const [products] = useRemoteProducts();
   const data = products.data;
   let arrayData;
   data

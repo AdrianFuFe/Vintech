@@ -137,9 +137,9 @@ const EditUserForm = (props) => {
             accept="image/*"
           />
         </label>
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
         <input type="submit" value="Actualizar mis datos" />
-        {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
     </div>
   );

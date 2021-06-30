@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-
 const useRemoteVotes = () => {
   const [votes, setVotes] = useState([]);
   const { id } = useParams();
@@ -15,6 +14,7 @@ const useRemoteVotes = () => {
     });
     const data = await res.json();
     setVotes(data);
+    console.log(data);
   };
 
   useEffect(() => {

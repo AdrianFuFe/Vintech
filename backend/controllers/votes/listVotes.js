@@ -26,13 +26,14 @@ async function listVotes(req, res, next) {
         U.id AS id_buyer, 
         U.username AS username_buyer, 
         U.fname AS fname_buyer, 
-        U.lname AS lname_buyer
+        U.lname AS lname_buyer,
+        U.img AS img_buyer
       FROM feedbacks F
       LEFT JOIN users U ON F.id_user_A = U.id
       WHERE id_user_B = ?
       `,
       [id]
-    )
+    );
 
     if (result.length < 1) throw new Error("No hay ningún feedback");
     res.send({

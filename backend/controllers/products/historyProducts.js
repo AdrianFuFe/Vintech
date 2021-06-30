@@ -11,12 +11,12 @@ async function historyProducts(req, res, next) {
             FROM products
             WHERE id_seller = ? AND status = 'selled'
             GROUP BY products.id
-            ORDER BY modification_date DESC
+            ORDER BY id DESC
             `,
       [req.auth.id]
     );
 
-    if (result_sell) {
+    if (result_sell > 0) {
       const ids = result_sell.map((item) => item.id_product);
 
       const [imgs] = await connection.query(`
@@ -39,9 +39,10 @@ async function historyProducts(req, res, next) {
     ORDER BY modification_date DESC`,
       [req.auth.id]
     );
-
-    if (result_buy) {
+    console.log(result_buy);
+    if (result_buy.length > 0) {
       const ids = result_buy.map((item) => item.id_product);
+      console.log(result_buy);
 
       const [imgs] = await connection.query(`
         SELECT img, id_product

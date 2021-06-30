@@ -1,8 +1,9 @@
 import ReactTimeAgo from "react-time-ago/commonjs/ReactTimeAgo";
-
+import { useRef } from "react";
 const MessagesList = (props) => {
   const { messages } = props;
-
+  const fin = useRef();
+  console.log(fin);
   let arrayMessages;
   messages
     ? (arrayMessages = messages.map((message, index) => {
@@ -19,6 +20,13 @@ const MessagesList = (props) => {
       }))
     : (arrayMessages = "Cargando");
 
-  return <ul id="messages-list">{arrayMessages}</ul>;
+  setTimeout(() => fin.current?.scrollIntoView({ behavior: "smooth" }), 500);
+
+  return (
+    <ul id="messages-list">
+      {arrayMessages}
+      <div className="fin" ref={fin} />
+    </ul>
+  );
 };
 export default MessagesList;

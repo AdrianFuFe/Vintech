@@ -19,6 +19,7 @@ async function listBookingsOut(req, res, next) {
         SELECT *
         FROM bookings
         WHERE id_user_B=?
+        ORDER BY id DESC
         `,
       [req.auth.id]
     );
@@ -48,6 +49,7 @@ async function listBookingsOut(req, res, next) {
             LEFT JOIN users US ON B.id_user_B = US.id
             LEFT JOIN products P ON B.id_product = P.id
             WHERE id_user_B=?
+            ORDER BY B.id DESC
             `,
       [req.auth.id]
     );
@@ -57,7 +59,8 @@ async function listBookingsOut(req, res, next) {
     const [imgs] = await connection.query(`
       SELECT img, id_product
       FROM product_imgs
-      WHERE id_product IN (${ids.join(",")})`);
+      WHERE id_product IN (${ids.join(",")})
+      ORDER BY id_product DESC`);
 
     const resultImgs = result.map((item) => {
       item.img = imgs.filter((img) => img.id_product === item.id_product)[0];

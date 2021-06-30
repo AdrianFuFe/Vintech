@@ -19,7 +19,7 @@ const MyBookingsPage = (props) => {
   const handleTabs = (e, val) => {
     setValue(val);
   };
-
+  console.log(bookingsIn);
   return (
     <>
       <HeaderBackTitle />

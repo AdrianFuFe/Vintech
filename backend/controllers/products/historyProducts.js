@@ -20,7 +20,8 @@ async function historyProducts(req, res, next) {
       `
     SELECT * FROM products
     RIGHT JOIN (SELECT * FROM bookings WHERE status = 'accepted' AND id_user_B = ?) AS B
-    ON B.id_product = products.id`,
+    ON B.id_product = products.id
+    ORDER BY modification_date DESC`,
       [req.auth.id]
     );
 

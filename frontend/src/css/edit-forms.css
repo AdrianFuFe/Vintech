@@ -64,6 +64,7 @@ div.form-wrapper {
 section#category {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  max-width: 350px;
 }
 
 #category label#category-header {
@@ -84,6 +85,9 @@ section#category {
 }
 
 /* EDIT PRODUCT */
+div#edit-form {
+  margin-top: 0;
+}
 .form-wrapper ul {
   display: grid;
   grid-template-columns: 1fr 1fr;

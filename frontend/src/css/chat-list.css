@@ -29,13 +29,12 @@ ul#chatlist a {
   display: flex;
 }
 
-#chatlist h3 {
+#chatlist h3#chatlist-user {
+  grid-area: center1;
   color: #d07017;
   font-size: 1rem;
 }
-#chatlist h3#chatlist-user {
-  grid-area: center1;
-}
+
 #chatlist h4#chatlist-product {
   grid-area: center2;
 }
@@ -54,4 +53,23 @@ ul#chatlist a {
 
 #chatlist {
   margin-bottom: 5rem;
+}
+
+@media (min-width: 700px), (max-width: 1200) {
+  ul#chatlist a {
+    grid-template-columns: 160px 1fr 6rem;
+  }
+  #chatlist div.MuiAvatar-root {
+    max-height: 8rem;
+    max-width: 8rem;
+  }
+  #chatlist h3#chatlist-user {
+    font-size: 1.5rem;
+  }
+  #chatlist p {
+    font-size: 1rem;
+  }
+  #chatlist #chatlist-time-ago {
+    font-size: 1rem;
+  }
 }

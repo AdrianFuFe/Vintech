@@ -68,3 +68,20 @@
 #categories #Otros {
   background-image: url("https://api.iconify.design/mdi:washing-machine.svg?color=%23828282");
 }
+
+@media (min-width: 700px) {
+  ul#categories-list {
+    margin: 0 auto;
+    min-width: min-content;
+    max-width: min-content;
+  }
+
+  #categories-list li {
+    margin-bottom: 0.8rem;
+  }
+
+  #categories a {
+    text-align: left;
+    font-size: 1.2rem;
+  }
+}

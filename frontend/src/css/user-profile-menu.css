@@ -33,3 +33,25 @@ ul#user-config-menu {
 #menu-profile ul#user-profile-menu {
   margin: 0.5rem 0 4rem 0.5rem;
 }
+
+@media (min-width: 700px) {
+  #menu-profile li {
+    margin: 0 auto;
+    margin-top: 1rem;
+    max-width: 15rem;
+    border-bottom: 0.15rem solid rgba(200, 200, 200, 1);
+    border-radius: 5px;
+  }
+  #menu-profile ul#my-user-menu {
+    max-height: none;
+    overflow-y: scroll;
+  }
+
+  ul#user-config-menu {
+    margin: 3.5rem auto 0 auto;
+  }
+
+  #menu-profile a {
+    margin: 0 auto;
+  }
+}

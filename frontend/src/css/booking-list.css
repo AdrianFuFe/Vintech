@@ -3,10 +3,6 @@
   margin-top: 3.5rem;
 }
 
-ul {
-  margin-bottom: 5rem;
-}
-
 /* LIST */
 div#booking-template a {
   margin-top: 1rem;
@@ -22,6 +18,10 @@ div#booking-template a {
   color: gray;
 }
 
+ul.bookings-list {
+  margin-bottom: 5rem;
+}
+
 .booking-list .bk-img {
   grid-area: img;
   padding: 1rem;
@@ -29,6 +29,7 @@ div#booking-template a {
 
 .booking-list h2 {
   grid-area: center1;
+  align-self: center;
   font-size: 0.8rem;
 }
 .booking-list h3 {
@@ -65,4 +66,39 @@ div#booking-template a {
 
 #booking-lists {
   margin-bottom: 5rem;
+}
+
+@media (min-width: 700px), (max-width: 1200) {
+  div#booking-template a {
+    grid-template-columns: 160px 1fr 10rem;
+  }
+
+  .booking-list h2 {
+    font-size: 1.4rem;
+  }
+
+  .booking-list h3 {
+    font-size: 1.2rem;
+    align-self: center;
+  }
+
+  .booking-list .bk-users {
+    font-size: 1rem;
+  }
+
+  .booking-list .bk-time-ago {
+    font-size: 1rem;
+    align-self: center;
+  }
+
+  .booking-list #bk-status {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  div#booking-template a {
+    grid-template-columns: 200px 1fr 15rem;
+  }
 }

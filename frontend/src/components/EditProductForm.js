@@ -47,7 +47,7 @@ const EditProductForm = (props) => {
   }
 
   return (
-    <div className="form-wrapper">
+    <div className="form-wrapper" id="edit-form">
       <form id="edit-product" onSubmit={editProduct}>
         <label htmlFor="edit-title">
           <p>Título:</p>

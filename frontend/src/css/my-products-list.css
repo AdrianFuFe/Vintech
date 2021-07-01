@@ -33,6 +33,7 @@ ul#products-list {
   text-align: left;
   color: black;
   font-size: 0.8rem;
+  margin-top: 0.5rem;
 }
 
 #products-list .prod-ubication {
@@ -64,4 +65,28 @@ div.img-list {
 .prod-ubication svg {
   max-height: 0.8rem;
   margin: 0;
+}
+
+@media (min-width: 700px), (max-width: 1200) {
+  #products-list li a {
+    grid-template-columns: 160px 1fr 8rem;
+  }
+
+  #products-list h3 {
+    font-size: 1.4rem;
+    align-self: center;
+  }
+
+  #products-list .prod-title {
+    font-size: 1.2rem;
+  }
+
+  #products-list .time-ago {
+    font-size: 1rem;
+    margin-top: 0.6rem;
+  }
+
+  #products-list .prod-ubication {
+    font-size: 1rem;
+  }
 }

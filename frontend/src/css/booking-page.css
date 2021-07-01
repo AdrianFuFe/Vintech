@@ -11,22 +11,26 @@ div#bk-page {
 }
 
 /* PRODUCT SECTION */
+#bk-page img {
+  max-width: 90vw;
+}
+
 .bk-product h2 {
   font-size: 1.5rem;
   text-align: left;
-  margin: 0.5rem auto 0 2rem;
+  margin: 0.5rem auto 0 10%;
   color: #d07017;
 }
 
 .bk-product h3 {
   font-size: 1rem;
   text-align: left;
-  margin: 0.5rem 2rem 1rem 2rem;
+  margin: 0.5rem 2rem 1rem 10%;
 }
 
 /* USERS SECTION */
 section.bk-users {
-  margin: 0 3rem 0 3rem;
+  margin: 0 auto;
   display: grid;
   grid-template-areas:
     "vendedor1 vendedor2"
@@ -38,10 +42,12 @@ section.bk-users {
   text-align: right;
   margin-right: 0.5rem;
   color: #828282;
+  margin: 1rem;
 }
 .bk-users a {
   margin-left: 0.5rem;
   text-align: left;
+  margin: 1rem;
 }
 h3#bk-users-seller-title {
   grid: vendedor1;
@@ -114,4 +120,22 @@ a#bk-users-buyer-data {
 /* CANCEL */
 button#cancel-option {
   margin-top: 2rem;
+}
+
+@media (min-width: 700px), (max-width: 1200) {
+  .bk-product h2 {
+    font-size: 1.8rem;
+  }
+  .bk-product h3 {
+    font-size: 1.5rem;
+  }
+  .bk-users h3 {
+    font-size: 1.2rem;
+  }
+  .bk-users a {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1200px) {
 }

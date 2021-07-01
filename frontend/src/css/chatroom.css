@@ -1,12 +1,14 @@
+/* HEADER */
 div#chatroom-header {
   position: fixed;
   min-width: 100%;
-  top: 4rem;
+  top: 3.5rem;
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 2.5rem 1fr;
   padding: 0.5rem;
   align-items: center;
   border-bottom: 1px solid gray;
+  z-index: 99;
   background-color: white;
 }
 
@@ -14,6 +16,7 @@ div#chatroom-header {
   padding: 0.2rem;
   width: fit-content;
   display: flex;
+  font-size: 1rem;
 }
 
 #chatroom-header div.MuiAvatar-root {
@@ -27,6 +30,7 @@ div#chatroom-header {
   box-sizing: content-box;
 }
 
+/* INPUT TEXT */
 .chatroom-input {
   position: fixed;
   min-width: 100%;
@@ -44,12 +48,13 @@ div#chatroom-header {
   min-width: 100%;
 }
 
+/* MESSAGE LIST */
 ul#messages-list {
   position: absolute;
-  top: 9rem;
-  height: 19.5rem;
+  top: 8rem;
+  bottom: 1.2rem;
   overflow-y: scroll;
-  margin: 0.1rem 0.5rem;
+  margin: 0.1rem 0.5rem 5rem 0.5rem;
 }
 
 li.message {
@@ -78,4 +83,26 @@ p.message-text {
   font-size: 0.9rem;
   text-align: left;
   margin-left: 1rem;
+}
+
+@media (min-width: 700px) {
+  div#chatroom-header {
+    grid-template-columns: 5rem 1fr;
+  }
+  #chatroom-header div.MuiAvatar-root {
+    width: 4rem;
+    height: 4rem;
+  }
+  #chatroom-header h3 {
+    font-size: 1.5rem;
+  }
+  ul#messages-list {
+    position: absolute;
+    top: 9.5rem;
+    overflow-y: scroll;
+    margin: 0.1rem 0.5rem 5rem 0.5rem;
+  }
+  li.message {
+    grid-template-columns: 1fr 6rem;
+  }
 }

@@ -16,11 +16,11 @@ ul#favoritos {
 
 .fav .div-img {
   grid-area: img;
-  padding: 1rem;
+  padding: 0.7rem;
 }
 
 .fav h2 {
-  grid-area: center1;
+  grid-area: center2;
   color: #d07017;
   font-size: 1rem;
 }
@@ -36,7 +36,8 @@ ul#favoritos {
 }
 
 .fav .fav-title {
-  grid-area: center2;
+  grid-area: center1;
+  align-self: center;
   text-align: left;
   color: black;
   font-size: 0.8rem;
@@ -58,4 +59,28 @@ ul#favoritos {
 .fav-ubication svg {
   max-height: 0.8rem;
   margin: 0;
+}
+
+@media (min-width: 700px), (max-width: 1200) {
+  #favoritos li a {
+    grid-template-columns: 160px 1fr 8rem;
+  }
+
+  .fav h2 {
+    font-size: 1.4rem;
+    align-self: center;
+  }
+
+  .fav .fav-title {
+    font-size: 1.2rem;
+  }
+
+  .fav .time-ago {
+    font-size: 1rem;
+    margin-top: 0.6rem;
+  }
+
+  .fav .fav-ubication {
+    font-size: 1rem;
+  }
 }

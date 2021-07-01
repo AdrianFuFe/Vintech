@@ -1,18 +1,22 @@
+/* GENERAL */
 #product-page {
   margin-bottom: 8rem;
 }
 
+/* FAV BUTTON */
 div#fav-btn {
   max-width: fit-content;
-  margin-top: 0.5rem;
-  top: 1.8rem;
   position: relative;
-  left: 17rem;
+  float: right;
+  margin-right: 10%;
+  margin-top: 2rem;
 }
 
+/* PRODUCT INFO */
 .product-sheet {
   text-align: left;
   padding: 0 1rem;
+  margin-top: 2rem;
 }
 
 .product-sheet #price {
@@ -34,6 +38,7 @@ div#fav-btn {
   color: gray;
 }
 
+/* SELLER INFO */
 #seller-info a {
   padding: 1rem;
   text-decoration: none;
@@ -78,6 +83,7 @@ div#product-options {
   display: flex;
 }
 
+/* BUTTONS */
 #product-page #product-options button {
   padding: 0.2rem 0.3rem;
   margin: 2rem auto;
@@ -93,4 +99,51 @@ div#product-options {
 
 #product-page #product-options button:hover {
   background-color: rgba(255, 229, 191, 1);
+}
+
+@media (min-width: 700px) {
+  /* PRODUCT */
+  div#fav-btn {
+    margin-right: 20%;
+  }
+  h2#price {
+    margin: 0 auto;
+    max-width: 700px;
+  }
+  h2#title {
+    margin: 0 auto;
+    max-width: 700px;
+  }
+  p#description {
+    margin: 0 auto;
+    max-width: 700px;
+  }
+  p#date {
+    margin: 0 auto;
+    max-width: 700px;
+  }
+
+  /* SELLER */
+  #seller-info a {
+    margin: 0 auto;
+    max-width: 700px;
+    grid-template-columns: 6rem 1fr;
+  }
+  #seller-info h3 {
+    font-size: 1.4rem;
+  }
+  #seller-info #seller-avatar {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  div#product-options {
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+  #product-page #product-options button {
+    font-size: 1.2rem;
+    min-height: 4rem;
+    min-width: 8rem;
+  }
 }

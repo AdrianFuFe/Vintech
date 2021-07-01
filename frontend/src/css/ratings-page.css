@@ -1,3 +1,72 @@
 .vote {
   margin-top: 6rem;
 }
+div#vote-template {
+  min-width: 100vw;
+  display: grid;
+  grid-template-areas: "img1 user1 user2 rating" "img2 text11 text12 text13" "date text21 text22 text23";
+  grid-template-columns: 2fr 3fr 3fr 3fr;
+  grid-template-rows: 1.5rem 1fr 1.5rem;
+  border-bottom: 0.1rem solid grey;
+  margin-top: 0.5rem;
+  padding: 0 1rem 0 1rem;
+}
+
+#vote-template p {
+  display: flex;
+}
+
+div.MuiAvatar-root {
+  grid-area: img1 / img1 / span 2 / span 1;
+  width: 60px;
+  height: 60px;
+  justify-self: center;
+}
+
+#vote-template p#buyer {
+  grid-area: user1;
+  margin-left: 1rem;
+  font-size: 1rem;
+}
+
+#vote-template span#rating-stars {
+  grid-area: rating;
+  justify-self: right;
+}
+
+#vote-template p#comment {
+  grid-area: text11 / text11 / span 2 / span 3;
+  text-align: left;
+  height: 5rem;
+  overflow-y: scroll;
+  margin-left: 1rem;
+  font-size: 0.8rem;
+  color: grey;
+}
+
+#vote-template p.time-ago {
+  grid-area: date;
+  font-size: 0.7rem;
+  justify-self: center;
+}
+
+@media (min-width: 700px) {
+  div.MuiAvatar-root {
+    width: 100px;
+    height: 100px;
+  }
+
+  #vote-template p#buyer {
+    margin-left: 0;
+    font-size: 1.4rem;
+  }
+
+  #vote-template p#comment {
+    font-size: 1.2rem;
+    margin-left: 0;
+  }
+
+  #vote-template p.time-ago {
+    font-size: 1rem;
+  }
+}

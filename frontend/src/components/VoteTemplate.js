@@ -1,7 +1,7 @@
 import { Avatar } from "@material-ui/core";
 import ReactTimeAgo from "react-time-ago";
 import { Rating } from "@material-ui/lab";
-import "../css/vote-template.css";
+import "../css/ratings-page.css";
 
 const VoteTemplate = (props) => {
   const { data, buyer } = props;
@@ -14,7 +14,7 @@ const VoteTemplate = (props) => {
       </p>
       <p id="buyer">{buyer.username_buyer}</p>
       <p id="comment">{data.comment}</p>
-      <Rating name="read-only" value={data.stars} readOnly />
+      <Rating id="rating-stars" name="read-only" value={data.stars} readOnly />
     </div>
   );
 };

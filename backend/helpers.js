@@ -7,7 +7,7 @@ const sendgrid = require("@sendgrid/mail");
 
 sendgrid.setApiKey(process.env.APIKEY);
 
-async function sendMail({to, subject, message}) {
+async function sendMail({ to, subject, message }) {
   try {
     const msg = {
       to: to,
@@ -34,8 +34,8 @@ async function uploadImage({ file, directory }) {
   //sacamos info de la img
   const infoImage = await image.metadata();
   //redimension de img si tiene ancho mayor a 1000px
-  if (infoImage.width > 1000) {
-    image.resize(1000);
+  if (infoImage.width > 800) {
+    image.resize(800);
   }
   //creamos nombre para la img
   const filename = `${uuid.v4()}.jpg`;
@@ -78,8 +78,6 @@ async function entryExists(table, id) {
     if (connection) connection.release();
   }
 }
-
-
 
 async function getDbInfo(table, id) {
   let connection;

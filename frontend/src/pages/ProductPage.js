@@ -15,8 +15,10 @@ const ProductPage = (props) => {
     <>
       <div id="product-page">
         <HeaderBackSearchFavs />
-        <CarouselImagenes />
-        <FavButton productData={product.data}/>
+        <div id="carousel">
+          <CarouselImagenes />
+        </div>
+        <FavButton productData={product.data} />
         <ProductInfo />
         <SellerInfo />
         <ProductBuyerOptions productData={product.data} />

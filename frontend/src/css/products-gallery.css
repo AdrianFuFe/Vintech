@@ -67,7 +67,10 @@ div.div-img {
   max-height: 0.8rem;
   margin: 0;
 }
-
+#filters {
+  max-width: 600px;
+  margin: auto;
+}
 #filters form {
   display: flex;
   flex-direction: row;
@@ -95,8 +98,10 @@ div.div-img {
   border: 0rem;
   box-shadow: 0rem 0.2rem 0.5rem rgb(100, 100, 100);
   background-color: rgba(255, 229, 191, 1);
-  color: #8b8b8b;
-  font-weight: bold;
+  /*   color: #8b8b8b;
+ */
+  /*   font-weight: bold;
+ */
 }
 
 @media (min-width: 700px) {

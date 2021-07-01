@@ -18,6 +18,11 @@ const BookingOptionscancel = (props) => {
 
   const [booking] = useRemoteSingleBooking();
 
+  function cancelConfirm(e) {
+    if (window.confirm("¿Seguro que deseas cancelar esta reserva?"))
+      cancelHandler(e);
+  }
+
   const cancelHandler = async (e) => {
     e.preventDefault();
     const res = await fetch(
@@ -60,7 +65,7 @@ const BookingOptionscancel = (props) => {
   return (
     <>
       {display && (
-        <button id="cancel-option" onClick={cancelHandler}>
+        <button id="cancel-option" onClick={cancelConfirm}>
           CANCELAR
         </button>
       )}

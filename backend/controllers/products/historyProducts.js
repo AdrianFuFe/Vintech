@@ -16,7 +16,7 @@ async function historyProducts(req, res, next) {
       [req.auth.id]
     );
 
-    if (result_sell > 0) {
+    if (result_sell.length > 0) {
       const ids = result_sell.map((item) => item.id_product);
 
       const [imgs] = await connection.query(`
@@ -39,7 +39,7 @@ async function historyProducts(req, res, next) {
     ORDER BY modification_date DESC`,
       [req.auth.id]
     );
-    console.log(result_buy);
+
     if (result_buy.length > 0) {
       const ids = result_buy.map((item) => item.id_product);
       console.log(result_buy);

@@ -102,6 +102,13 @@ div#product-options {
 }
 
 @media (min-width: 700px) {
+  #carousel {
+    max-width: 300px;
+    margin: auto;
+  }
+  div img {
+    max-width: 300px;
+  }
   /* PRODUCT */
   div#fav-btn {
     margin-right: 20%;

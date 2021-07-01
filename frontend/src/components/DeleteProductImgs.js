@@ -8,6 +8,10 @@ const DeleteProductImgs = (props) => {
 
   const [token] = useContext(TokenContext);
 
+  function confirmDelete(e) {
+    if (window.confirm("¿Realmente deseas eliminar esta foto?")) deleteImg(e);
+  }
+
   async function deleteImg(e) {
     const res = await fetch(
       `http://localhost:3300/product/${id}/images/${e.target.id}`,
@@ -20,6 +24,7 @@ const DeleteProductImgs = (props) => {
     );
     const data = await res.json();
     console.log(data);
+    window.location.reload();
   }
 
   const arrayImages = imgs.map((img, index) => {
@@ -27,7 +32,7 @@ const DeleteProductImgs = (props) => {
       <li key={index}>
         <img
           id={img.id}
-          onClick={deleteImg}
+          onClick={confirmDelete}
           src={`http://localhost:3300/uploads/imgs/${img.img}`}
           alt="Foto de producto"
         />

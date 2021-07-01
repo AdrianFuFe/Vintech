@@ -123,3 +123,8 @@ input#upload-img {
   font-size: 1rem;
   font-weight: bold;
 }
+
+#delete-images {
+  max-width: 500px;
+  margin: 5rem auto;
+}

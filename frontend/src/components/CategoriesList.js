@@ -26,7 +26,7 @@ const CategoriesList = (props) => {
   return (
     <div id="categories">
       <h2>Categorías</h2>
-      <ul>{categoriesArray}</ul>
+      <ul id="categories-list">{categoriesArray}</ul>
     </div>
   );
 };

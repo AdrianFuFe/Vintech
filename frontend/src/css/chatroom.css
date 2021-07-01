@@ -97,9 +97,8 @@ p.message-text {
     font-size: 1.5rem;
   }
   ul#messages-list {
-    position: relative;
+    position: absolute;
     top: 9.5rem;
-    bottom: 5rem;
     overflow-y: scroll;
     margin: 0.1rem 0.5rem 5rem 0.5rem;
   }

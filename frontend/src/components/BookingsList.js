@@ -47,7 +47,7 @@ const BookingsList = (props) => {
       }))
     : (arrayBookings = " ");
 
-  return <ul>{arrayBookings}</ul>;
+  return <ul className="bookings-list">{arrayBookings}</ul>;
 };
 
 export default BookingsList;

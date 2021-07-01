@@ -31,7 +31,6 @@ div#user-data div {
   display: inline-block;
   text-decoration: none;
   justify-self: center;
-  align-self: flex-end;
 }
 
 #user-data #editBtn {
@@ -61,4 +60,30 @@ div#user-data div {
   grid-area: bio;
   display: flex;
   text-align: left;
+}
+
+@media (min-width: 700px), (max-width: 1200) {
+  #user-data .MuiAvatar-root {
+    grid-area: img;
+    width: 150px;
+    height: 150px;
+    margin: 0.5rem;
+  }
+  div#user-data div {
+    justify-self: right;
+  }
+
+  div#user-data a {
+    justify-self: flex-end;
+    margin-right: 2.5rem;
+  }
+
+  #user-data ul {
+    margin: 0 auto 0 0;
+
+    font-size: 1.2rem;
+  }
+  #user-data p#bio {
+    font-size: 1.2rem;
+  }
 }

@@ -59,7 +59,7 @@ Crear usuario en Sendgrid, configurar un email y obtener una Apikey del servicio
 	node initdb.js  -->  crear la base de datos
 	npm run dev --> iniciar servidor utilizando nodemon a través de npm
 	npm start --> iniciar servior
-	
+
 
 
 ---
@@ -275,6 +275,7 @@ app.get("/user/:id/products", getUserProducts);
 	-ENDPOINT getUserProducts
 	-REQ:
 		-params: id
+	-RES: muestra los productos de un usuario concreto
 
 //MARCAR PRODUCTO COMO VENDIDO
 app.put("/product/:id/sell", validAuth, sellProduct);
@@ -285,6 +286,7 @@ app.put("/product/:id/sell", validAuth, sellProduct);
 	-REQ:
 		-header: req.auth.id
 		-params: sellProduct
+	-RES: marca un producto como vendido en la BBDD
 
 //OBTENER HISTORIAL DE PRODUCTOS DE USUARIO
 app.get("/user/:id/history", validAuth, isSameUser, historyProducts);
@@ -295,6 +297,7 @@ app.get("/user/:id/history", validAuth, isSameUser, historyProducts);
 	-REQ:
 		-header: req.auth.id
 		-params: id
+	-RES: obtiene una lista de productos comprados y vendidos del usuario
 
 	
 	
@@ -396,9 +399,9 @@ app.get("/user/:id/bookings/:idBooking", validAuth, isSameUser, getBooking);
 	
 
 //CANCELAR UNA RESERVA REALIZADA
-app.delete("/user/:id/bookings-out/:idProduct/cancel", validAuth, isSameUser, cancelBookingOut);
+app.delete("/user/:id/bookings-out/:idProduct/response/cancel", validAuth, isSameUser, cancelBookingOut);
 	-METODO: DELETE
-	-URL: apiUrl/user/:id/bookings-out/:idProduct/cancel
+	-URL: apiUrl/user/:id/bookings-out/:idProduct/response/cancel
 	-MIDDLEWARES: validAuth, isSameUser
 	-ENDPOINT: cancelBookingOut
 	-REQ: 

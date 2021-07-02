@@ -11,7 +11,7 @@ const useRemoteUser = () => {
 
   useEffect(() => {
     //comparamos el id de la url con el del token del usuario que accede para diferenciar la peticion a la api entre buscar mis datos y los de otro usuario
-    if (Number(id) === decodedToken.id) {
+    if (decodedToken && Number(id) === decodedToken.id) {
       const chargeUser = async () => {
         const res = await fetch(
           `http://localhost:3300/user/${decodedToken.id}/myProfile`,

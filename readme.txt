@@ -10,8 +10,42 @@ Los usuarios registrados pueden editar su perfil,
 	 o rechazar las reservas que reciben de otros usuarios,
 	 También podrán hablar con otros usuarios sobre algún producto concreto.
 
-	 
+
+
+------------------------------ FRONTEND ---------------------------------------------------------------------------------
+
+NOTA IMPORTANTE: el frontend hace llamadas a la API en el puerto 3300. Por favor, configurar este puerto en el .env del backend (PORT)
+
+## REQUERIMIENTOS
+
+Para el desarrollo del proyecto hemos utilizado:
+    -Git
+    -Visual Studio Code
+    -Navegador Chrome
+    -React (y algunas dependencias como material-ui administradas con npm)
+
 ---
+
+## INSTALACION
+
+git clone https://github.com/anxogcd/vintech-place.git  --> clonar repositorio
+cd PROJECT_TITLE_DIRECTORY  --> movernos al directorio del proyecto
+cd frontend  --> movernos al directorio de frontend
+- ejecutar en consola:
+    npm install --> instala las dependencias y crea la carpeta node_modules
+
+---
+
+## EJECUCIÓN
+
+- ejecutar en consola:
+    npm start --> inicia la app en el navegador
+
+
+
+
+	 
+------------------------------  BACKEND ----------------------------------------------------------------------------------
 
 ## REQUIRIMIENTOS
 
@@ -29,7 +63,9 @@ Para el desarrollo del proyecto hemos utilizado:
 
 git clone https://github.com/anxogcd/vintech-place.git  --> clonar repositorio
 cd PROJECT_TITLE_DIRECTORY  --> movernos al directorio del proyecto
+cd backend  --> movernos al directorio de backend
 npm init --> instalar dependencias de proyecto
+
 Crear usuario en Sendgrid, configurar un email y obtener una Apikey del servicio.
 
 
@@ -58,7 +94,7 @@ Crear usuario en Sendgrid, configurar un email y obtener una Apikey del servicio
 -ejecutar en consola
 	node initdb.js  -->  crear la base de datos
 	npm run dev --> iniciar servidor utilizando nodemon a través de npm
-	npm start --> iniciar servior
+    npm start --> iniciar servior
 	
 
 

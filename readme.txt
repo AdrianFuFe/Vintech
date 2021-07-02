@@ -14,7 +14,7 @@ Los usuarios registrados pueden editar su perfil,
 
 ------------------------------ FRONTEND ---------------------------------------------------------------------------------
 
-NOTA IMPORTANTE: el frontend hace llamadas a la API en el puerto 3300. Por favor, configurar este puerto en el .env del backend (PORT)
+######## NOTA IMPORTANTE: el frontend hace llamadas a la API en el puerto 3300. Por favor, configurar este puerto en el .env del backend (PORT)
 
 ## REQUERIMIENTOS
 
